@@ -10,11 +10,12 @@
 		5D255EF7E415E172A86A8F28 /* Pods_fikit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD7E66F75ADD080D8981F4E /* Pods_fikit.framework */; };
 		8629F4C81FA75D5000DBD7F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */; };
 		8629F4CA1FA75D5000DBD7F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4C91FA75D5000DBD7F0 /* ViewController.swift */; };
-		8629F4CD1FA75D5000DBD7F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4CB1FA75D5000DBD7F0 /* Main.storyboard */; };
 		8629F4CF1FA75D5000DBD7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */; };
 		8629F4D21FA75D5000DBD7F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */; };
 		8629F4DD1FA75D5000DBD7F0 /* fikitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4DC1FA75D5000DBD7F0 /* fikitTests.swift */; };
 		86D4C5511FCC5F2500D75DCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5501FCC5F2500D75DCC /* GoogleService-Info.plist */; };
+		86D4C5571FCC678D00D75DCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5551FCC678D00D75DCC /* Main.storyboard */; };
+		86D4C5591FCC67F500D75DCC /* fikaright.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5581FCC67F500D75DCC /* fikaright.storyboard */; };
 		9CF8F1D8E01D4CB0E9EA0034 /* Pods_fikitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B00E6CAB2B3E47D577A335 /* Pods_fikitTests.framework */; };
 		A732F69B1FB708C30096C287 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F69A1FB708C30096C287 /* SignUpViewController.swift */; };
 		A732F69D1FB7104D0096C287 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F69C1FB7104C0096C287 /* LoginViewController.swift */; };
@@ -42,7 +43,6 @@
 		8629F4C41FA75D5000DBD7F0 /* fikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fikit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8629F4C91FA75D5000DBD7F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8629F4CC1FA75D5000DBD7F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8629F4D11FA75D5000DBD7F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8629F4D31FA75D5000DBD7F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		8629F4DC1FA75D5000DBD7F0 /* fikitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fikitTests.swift; sourceTree = "<group>"; };
 		8629F4DE1FA75D5000DBD7F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86D4C5501FCC5F2500D75DCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		86D4C5561FCC678D00D75DCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		86D4C5581FCC67F500D75DCC /* fikaright.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = fikaright.storyboard; sourceTree = "<group>"; };
 		A732F69A1FB708C30096C287 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A732F69C1FB7104C0096C287 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A732F69E1FB712D10096C287 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -123,16 +125,14 @@
 		8629F4C61FA75D5000DBD7F0 /* fikit */ = {
 			isa = PBXGroup;
 			children = (
+				86D4C5521FCC643C00D75DCC /* loginControllers */,
 				A779BF951FC9DC7F00E0C1F4 /* fikit.entitlements */,
 				8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */,
 				8629F4C91FA75D5000DBD7F0 /* ViewController.swift */,
-				A732F69A1FB708C30096C287 /* SignUpViewController.swift */,
-				A732F69C1FB7104C0096C287 /* LoginViewController.swift */,
-				A732F69E1FB712D10096C287 /* HomeViewController.swift */,
-				A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */,
-				8629F4CB1FA75D5000DBD7F0 /* Main.storyboard */,
+				86D4C5551FCC678D00D75DCC /* Main.storyboard */,
 				8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */,
 				8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */,
+				86D4C5581FCC67F500D75DCC /* fikaright.storyboard */,
 				8629F4D31FA75D5000DBD7F0 /* Info.plist */,
 			);
 			path = fikit;
@@ -146,6 +146,17 @@
 				8629F4DE1FA75D5000DBD7F0 /* Info.plist */,
 			);
 			path = fikitTests;
+			sourceTree = "<group>";
+		};
+		86D4C5521FCC643C00D75DCC /* loginControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A732F69A1FB708C30096C287 /* SignUpViewController.swift */,
+				A732F69C1FB7104C0096C287 /* LoginViewController.swift */,
+				A732F69E1FB712D10096C287 /* HomeViewController.swift */,
+				A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */,
+			);
+			path = loginControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,10 +252,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86D4C5591FCC67F500D75DCC /* fikaright.storyboard in Resources */,
 				8629F4D21FA75D5000DBD7F0 /* LaunchScreen.storyboard in Resources */,
+				86D4C5571FCC678D00D75DCC /* Main.storyboard in Resources */,
 				86D4C5511FCC5F2500D75DCC /* GoogleService-Info.plist in Resources */,
 				8629F4CF1FA75D5000DBD7F0 /* Assets.xcassets in Resources */,
-				8629F4CD1FA75D5000DBD7F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,20 +425,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8629F4CB1FA75D5000DBD7F0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8629F4CC1FA75D5000DBD7F0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8629F4D11FA75D5000DBD7F0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		86D4C5551FCC678D00D75DCC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				86D4C5561FCC678D00D75DCC /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
