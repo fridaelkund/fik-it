@@ -2,8 +2,7 @@
 //  fikitTests.swift
 //  fikitTests
 //
-//  Created by Frida Eklund on 2017-11-27.
-//  Copyright © 2017 Frida Eklund. All rights reserved.
+//  Created by Frida Eklund on 2017-10-30.
 //
 
 import XCTest

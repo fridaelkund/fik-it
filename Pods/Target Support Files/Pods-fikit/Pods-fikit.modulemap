@@ -1,0 +1,6 @@
+framework module Pods_fikit {
+  umbrella header "Pods-fikit-umbrella.h"
+
+  export *
+  module * { export * }
+}
