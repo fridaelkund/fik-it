@@ -106,7 +106,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 // SET PLACEHOLDER ???
             }
         }
-    
         
         
 
