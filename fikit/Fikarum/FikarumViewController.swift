@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class FikarumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -51,7 +52,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             if let indexPath = collectionView.indexPathsForSelectedItems {
            
             // I realize this isn't the way to do it, but it works.
-            destView.name = friends[indexPath[0][1]]
+                destView.name = friends[indexPath[0][1]] as! String
             }
 
         }
