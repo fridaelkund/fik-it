@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login Controller-->
+        <!--Go Fika View Controller-->
         <scene sceneID="3iY-vZ-M3j">
             <objects>
-                <viewController storyboardIdentifier="gofika" id="6A3-Vg-uvh" customClass="LoginController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Gofika" id="6A3-Vg-uvh" customClass="GoFikaViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3NA-WG-ChA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crc-P9-7pj">
-                                <rect key="frame" x="105" y="162" width="163" height="21"/>
+                                <rect key="frame" x="105" y="160" width="163" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Sugen på fika? ">
@@ -42,8 +42,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="toFikarumAction:" destination="6A3-Vg-uvh" eventType="touchUpInside" id="50y-ZX-NuK"/>
-                                    <segue destination="hQ3-mK-YgX" kind="show" id="cBb-ZW-zIb"/>
+                                    <segue destination="hQ3-mK-YgX" kind="show" id="W85-uO-13E"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsc-jc-7TT">
@@ -71,47 +70,47 @@
             </objects>
             <point key="canvasLocation" x="776.79999999999995" y="-633.73313343328346"/>
         </scene>
-        <!--View Controller-->
+        <!--Fikarum View Controller-->
         <scene sceneID="mQB-XG-r0Z">
             <objects>
-                <viewController id="hQ3-mK-YgX" customClass="ViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hQ3-mK-YgX" customClass="FikarumViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w7a-Md-eOv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axZ-uc-WOZ">
-                                <rect key="frame" x="0.0" y="132" width="375" height="298"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Nki-LS-KNw">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="185" height="136"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Fotocell" id="tFx-Ec-3nS" customClass="FikarumPhotoCell" customModule="fikit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="Fotocell" id="tFx-Ec-3nS" customClass="FikarumPhotoCell" customModule="fikit" customModuleProvider="target">
+                                        <rect key="frame" x="95" y="0.0" width="185" height="136"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="185" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zAE-DF-PWj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="103" height="112"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="FikarumCell" translatesAutoresizingMaskIntoConstraints="NO" id="zAE-DF-PWj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="185" height="136"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <connections>
                                             <outlet property="imageView" destination="zAE-DF-PWj" id="Vkw-My-Dw3"/>
-                                            <segue destination="9oo-Ix-M5h" kind="modal" identifier="VCToInviteFriendVC" id="DGm-SR-jvt"/>
+                                            <segue destination="9oo-Ix-M5h" kind="modal" identifier="InviteFriendSegue" id="DGm-SR-jvt"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="hQ3-mK-YgX" id="Que-dY-6Sa"/>
-                                    <outlet property="delegate" destination="hQ3-mK-YgX" id="moW-o5-0PT"/>
+                                    <outlet property="dataSource" destination="hQ3-mK-YgX" id="ZXQ-kg-Ykn"/>
+                                    <outlet property="delegate" destination="hQ3-mK-YgX" id="lOW-y6-fD0"/>
                                 </connections>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dDe-KK-fyb">
@@ -130,7 +129,7 @@
                         <viewLayoutGuide key="safeArea" id="1nk-hT-j6p"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="axZ-uc-WOZ" id="qL8-wQ-iOg"/>
+                        <outlet property="collectionView" destination="axZ-uc-WOZ" id="LCw-hj-h13"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Df-k7-Fb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,6 +193,6 @@
         <image name="coffee_emoji" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cBb-ZW-zIb"/>
+        <segue reference="W85-uO-13E"/>
     </inferredMetricsTieBreakers>
 </document>
