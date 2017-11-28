@@ -9,9 +9,13 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    //Reference to Database
+    var ref = Database.database().reference()
     
-        
+    
     //MARK: Outlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
@@ -38,11 +42,18 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //MARK: Actions
     //Logout action
     @IBAction func logOutAction(_ sender: Any) {
+        
         //We can logout if there is a current user logged in
-        if Auth.auth().currentUser != nil {
+        if let currentUser = Auth.auth().currentUser {
             do {
                 try Auth.auth().signOut()
                 //Switch view to "SignUp" view
+                
+                //Set status to offline in database for the user when signed out
+                self.ref.child("users").child(currentUser.uid).child("/status").setValue("offline")
+            
+
+                
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUp")
                 present(vc, animated: true, completion: nil)
                 
@@ -52,6 +63,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    //Choose profile pic - FUNKAR EJ NU
     @IBAction func selectImageFromLibrary(_ sender: UITapGestureRecognizer) {
         
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
@@ -72,6 +84,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         if let currentUser = Auth.auth().currentUser {
             nameLabel.text = currentUser.displayName
+            //Add user to database
+            self.ref.child("users").child(currentUser.uid).setValue(["username": currentUser.displayName, "status": "online"])
+
             
             //DISPLAY PROFILE IMAGE
             if currentUser.photoURL != nil {
@@ -91,7 +106,10 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 // SET PLACEHOLDER ???
             }
         }
-    
+        
+        
+
+        
     }
     
     override func didReceiveMemoryWarning() {
