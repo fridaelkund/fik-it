@@ -43,6 +43,20 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         
         // Do any additional setup after loading the view.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "InviteFriendSegue"{
+            
+            let destView = segue.destination as! inviteFriendViewController
+            if let indexPath = collectionView.indexPathsForSelectedItems {
+           
+            // I realize this isn't the way to do it, but it works.
+            destView.name = friends[indexPath[0][1]]
+            }
+
+        }
+    }
+    
 
 }
 
