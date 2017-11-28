@@ -13,6 +13,7 @@
 		8629F4CF1FA75D5000DBD7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */; };
 		8629F4D21FA75D5000DBD7F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */; };
 		8629F4DD1FA75D5000DBD7F0 /* fikitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4DC1FA75D5000DBD7F0 /* fikitTests.swift */; };
+		8674B09B1FCDAF620070C0D0 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8674B09A1FCDAF620070C0D0 /* settings.storyboard */; };
 		86D4C5511FCC5F2500D75DCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5501FCC5F2500D75DCC /* GoogleService-Info.plist */; };
 		86D4C5571FCC678D00D75DCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5551FCC678D00D75DCC /* Main.storyboard */; };
 		86D4C5591FCC67F500D75DCC /* fikaright.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5581FCC67F500D75DCC /* fikaright.storyboard */; };
