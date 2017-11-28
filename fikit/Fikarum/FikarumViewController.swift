@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import Firebase
 
 class FikarumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var friends = ["Josefine", "Frida", "Alex", "Linnea"]
+    //MARK: Variables
+    var ref = Database.database().reference()
+    var friends : Array<Any> = []
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "Fotocell"
@@ -20,6 +23,23 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let currentUser = Auth.auth().currentUser {
+            //Observe status change in database for the user -- will be stored in self.status
+            self.ref.observe(DataEventType.value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let users = value?["users"] as? NSDictionary
+                let user = users?[currentUser.uid] as? NSDictionary
+                let userFriends = user?["friends"] as? Any
+                self.friends = userFriends as! [Any]
+                print("Users friends are", self.friends)
+            })
+        }
+        else{
+            print("User is not authenticated - ERROR")
+        }
+        
+        
         
         // Do any additional setup after loading the view.
     }

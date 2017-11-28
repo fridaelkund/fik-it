@@ -84,6 +84,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         if let currentUser = Auth.auth().currentUser {
             nameLabel.text = currentUser.displayName
+            
             //Add user to database
             self.ref.child("users").child(currentUser.uid).setValue(["username": currentUser.displayName, "status": "online"])
 
@@ -116,7 +117,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //Updating userInfo on authentication object - if we want to use this somehow - for changing images and such ?
     func updateUserInfo(){
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = "Josefine Testuser"
