@@ -49,11 +49,12 @@ class LoginViewController: UIViewController {
                     return
                 }
                 else{
-                    print("Facebook and firebase login successfulSuccess")
+                    print("Facebook and firebase login successfulSuccess", user ?? "no user")
                     //Go to HomeViewController if the login is sucessful
                     let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
 
                     self.present(viewController, animated: false, completion: nil)
+
                 }
             })
             
