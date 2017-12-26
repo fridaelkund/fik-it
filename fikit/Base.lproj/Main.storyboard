@@ -223,8 +223,8 @@
                         <viewLayoutGuide key="safeArea" id="Oa9-HA-czO"/>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="GOj-FD-H40" id="7rC-8B-9Tb"/>
-                        <outlet property="passwordTextField" destination="z80-zw-8BU" id="nWp-pr-0ch"/>
+                        <outlet property="emailTextField" destination="GOj-FD-H40" id="gTk-0l-4MO"/>
+                        <outlet property="passwordTextField" destination="z80-zw-8BU" id="L9f-oT-1Va"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="biH-o9-2aK" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -49,10 +49,12 @@ class LoginViewController: UIViewController {
                     return
                 }
                 else{
-                    print("Facebook and firebase login successfulSuccess")
+                    print("Facebook and firebase login successfulSuccess", user ?? "no user")
                     //Go to HomeViewController if the login is sucessful
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
-                    self.present(vc!, animated: true, completion: nil)
+                    let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
+
+                    self.present(viewController, animated: false, completion: nil)
+
                 }
             })
             
@@ -80,8 +82,9 @@ class LoginViewController: UIViewController {
                     print("You have successfully logged in with email and password")
                     
                     //Go to the HomeViewController if the login is sucessful
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
-                    self.present(vc!, animated: true, completion: nil)
+                    let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
+                    
+                    self.present(viewController, animated: false, completion: nil)
                     
                 } else {
                     
