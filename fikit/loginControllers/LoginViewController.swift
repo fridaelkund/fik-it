@@ -17,6 +17,10 @@ class LoginViewController: UIViewController {
     
     //MARK: Actions
     
+    // *** DEN HÄR FÖRSÖKTE JAG LÄGGA TILL DATAMODEL OCKSÅ MEN DET BLEV MASSA KONSTIGA ERROR ***
+    // *** Eventuellt har vi kvar den som den är men cleanar upp lite i koden senare bara    ***
+    
+    
     //LOGIN WITH FACEBOOK
     @IBAction func facebookLoginAction(_ sender: UIButton) {
         let fbLoginManager = FBSDKLoginManager()

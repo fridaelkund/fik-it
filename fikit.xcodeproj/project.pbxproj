@@ -27,6 +27,7 @@
 		A732F69D1FB7104D0096C287 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F69C1FB7104C0096C287 /* LoginViewController.swift */; };
 		A732F69F1FB712D10096C287 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F69E1FB712D10096C287 /* HomeViewController.swift */; };
 		A732F6A11FB71C340096C287 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */; };
+		A7AB19D61FF3E04D00F59B2C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB19D51FF3E04C00F59B2C /* DataModel.swift */; };
 		A7E994E71FB23E1400566902 /* fikit in Resources */ = {isa = PBXBuildFile; fileRef = A7E994E61FB23E1400566902 /* fikit */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		A732F69E1FB712D10096C287 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		A779BF951FC9DC7F00E0C1F4 /* fikit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fikit.entitlements; sourceTree = "<group>"; };
+		A7AB19D51FF3E04C00F59B2C /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataModel.swift; path = "/Users/josefinemoller/Desktop/fik-it/fikit/DataModel.swift"; sourceTree = "<absolute>"; };
 		A7E994E61FB23E1400566902 /* fikit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fikit; sourceTree = SOURCE_ROOT; };
 		B4B00E6CAB2B3E47D577A335 /* Pods_fikitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fikitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,6 +143,7 @@
 				86D4C5521FCC643C00D75DCC /* loginControllers */,
 				A779BF951FC9DC7F00E0C1F4 /* fikit.entitlements */,
 				8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */,
+				A7AB19D51FF3E04C00F59B2C /* DataModel.swift */,
 				8629F4C91FA75D5000DBD7F0 /* ViewController.swift */,
 				86D4C5551FCC678D00D75DCC /* Main.storyboard */,
 				8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */,
@@ -437,6 +440,7 @@
 				863A0FB11FF2699100BCCD84 /* SettingsViewController.swift in Sources */,
 				8629F4CA1FA75D5000DBD7F0 /* ViewController.swift in Sources */,
 				8629F4C81FA75D5000DBD7F0 /* AppDelegate.swift in Sources */,
+				A7AB19D61FF3E04D00F59B2C /* DataModel.swift in Sources */,
 				A732F69D1FB7104D0096C287 /* LoginViewController.swift in Sources */,
 				86D4C5621FCD561E00D75DCC /* FikarumViewController.swift in Sources */,
 				86D4C5641FCD576A00D75DCC /* FikarumPhotoCell.swift in Sources */,

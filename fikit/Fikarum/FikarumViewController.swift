@@ -14,40 +14,33 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: Variables
-    var ref = Database.database().reference()
-    var friends : Array<Any> = []
+    var dataModel = DataModel()
+    var friends: Array<Any> = []
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "Fotocell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
     fileprivate let itemsPerRow: CGFloat = 3
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let currentUser = Auth.auth().currentUser {
-            //Observe status change in database for the user -- will be stored in self.status
-            self.ref.observe(DataEventType.value, with: { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                let users = value?["users"] as? NSDictionary
-                let user = users?[currentUser.uid] as? NSDictionary
-                let userFriends = user?["friends"] as? Any
-                self.friends = userFriends as! [Any]
-                print("Users friends are", self.friends)
-            })
+        //Get user data
+        dataModel.observeDatabase { [weak self] (data: NSDictionary) in
+            //When we have the data we can use it here
+            self?.useData(data: data)
         }
-        else{
-            print("User is not authenticated - ERROR")
-        }
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
+    
+    //Using the data that we got from the model
+    private func useData(data: NSDictionary) {
+        self.friends = data["friends"] as! Array<Any>
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "InviteFriendSegue"{
-            
             let destView = segue.destination as! inviteFriendViewController
             if let indexPath = collectionView.indexPathsForSelectedItems {
            
@@ -57,11 +50,10 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
 
         }
     }
-    
-
 }
 
-// MARK: - Private
+// --- OK VAD GÖR DESSA HÄR ?? De kanske ska läggas i egna filer sen ?? ---
+
 
 // MARK: - UICollectionViewDataSource
 extension FikarumViewController {
