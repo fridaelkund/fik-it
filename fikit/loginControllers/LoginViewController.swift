@@ -11,17 +11,13 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
-    //MARK: Labels
+    //MARK: Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     //MARK: Actions
     
-    // *** DEN HÄR FÖRSÖKTE JAG LÄGGA TILL DATAMODEL OCKSÅ MEN DET BLEV MASSA KONSTIGA ERROR ***
-    // *** Eventuellt har vi kvar den som den är men cleanar upp lite i koden senare bara    ***
-    
-    
-    //LOGIN WITH FACEBOOK
+    //Facebook login
     @IBAction func facebookLoginAction(_ sender: UIButton) {
         let fbLoginManager = FBSDKLoginManager()
         //Login with chosen permissions
@@ -45,19 +41,14 @@ class LoginViewController: UIViewController {
                     print("Firebase login failed: \(error.localizedDescription)")
                     
                     //Send an alert to the user if login failed
-                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                    //Controlling the OK button on the alert
-                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(okayAction)
-                    self.present(alertController, animated: true, completion: nil)
+                    self.alertWindow(title: "Login error", message: error.localizedDescription)
                     return
                 }
                 else{
                     print("Facebook and firebase login successfulSuccess", user ?? "no user")
-                    //Go to HomeViewController if the login is sucessful
-                    let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
-
-                    self.present(viewController, animated: false, completion: nil)
+                    
+                    //Go to FikaView if the login is sucessful
+                    self.presentFikaView()
 
                 }
             })
@@ -65,15 +56,13 @@ class LoginViewController: UIViewController {
         }
     }
     
-    //LOGIN WITH EMAIL AND PASSWORD
+    //Email + password login
     @IBAction func loginAction(_ sender: UIButton) {
         //Check if user has filled in information
         if self.emailTextField.text == "" || self.passwordTextField.text == "" {
+            
             //Alert to tell the user that there was an error because they didn't fill anything in
-            let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
+            self.alertWindow(title: "Error", message: "Please enter an email and password.")
             
         } else {
             //User is logged in
@@ -85,21 +74,33 @@ class LoginViewController: UIViewController {
                     //Print into the console if successfully logged in
                     print("You have successfully logged in with email and password")
                     
-                    //Go to the HomeViewController if the login is sucessful
-                    let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
-                    
-                    self.present(viewController, animated: false, completion: nil)
-                    
+                    //Go to the FikaView if the login is sucessful
+                    self.presentFikaView()
+                   
                 } else {
                     
                     //Alert the user that there is an error
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
+                    self.alertWindow(title: "Login error", message: (error?.localizedDescription)!)
+                    
                 }
             }
         }
+    }
+    
+    //MARK: Private functions
+    
+    // Alert window
+    private func alertWindow(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //Present fikaView on login success
+    private func presentFikaView(){
+        let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
+        self.present(viewController, animated: false, completion: nil)
     }
 }
 

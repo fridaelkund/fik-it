@@ -16,20 +16,17 @@ class ResetPasswordViewController: UIViewController {
     
     //MARK: Actions
     
-    //SUBMIT EMAIL FOR NEW PASSWORD
+    //Submit email for new password
     @IBAction func submitAction(_ sender: Any) {
         //Needs to bee an email filled in
         if self.emailTextField.text == "" {
             //If not alert user to fill in email
-            let alertController = UIAlertController(title: "Oops!", message: "Please enter an email.", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            present(alertController, animated: true, completion: nil)
+            self.alertWindow(title: "Oops!", message: "Please enter an email.")
             
         } else {
             //If email filled in authenticate with Firebase for a password reset
             Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text!, completion: { (error) in
-                
+            
                 var title = ""
                 var message = ""
                 
@@ -43,11 +40,20 @@ class ResetPasswordViewController: UIViewController {
                 }
                 
                 //Alert used for both success and error message depending on outcome
-                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                self.present(alertController, animated: true, completion: nil)
+                self.alertWindow(title: title, message: message)
+        
             })
         }
+    }
+    
+    //MARK: Private functions
+    
+    //Alert
+    private func alertWindow(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        present(alertController, animated: true, completion: nil)
+        
     }
 }

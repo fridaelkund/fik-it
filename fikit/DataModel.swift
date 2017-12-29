@@ -5,7 +5,7 @@
 //  Created by Josefine Möller on 2017-12-27.
 //
 
-import Foundation
+import UIKit
 import Firebase
 
 class DataModel {
@@ -67,8 +67,7 @@ class DataModel {
             print("no current user")
         }
     }
-    
-    
+        
     //SignUp
     func signUp(email: String, password: String, completion: @escaping ((_ data: String) -> Void)){
         //Lets authenticate and create user in firebase
@@ -82,6 +81,11 @@ class DataModel {
                completion("Fail")
             }
         }
+    }
+    
+    //Logout
+    func logout(){
+        
     }
 
 }

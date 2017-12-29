@@ -20,15 +20,11 @@ class SignUpViewController: UIViewController {
     
     //MARK: Actions
 
+    //Sign up action
     @IBAction func createAccountAction(_ sender: AnyObject) {
         //Has user typed in email field or is it blank
         if emailTextField.text == "" || self.passwordTextField.text == "" {
-            //Lets alert that user needs to enter email and password
-            let alertController = UIAlertController(title: "Error", message: "Please enter email and password to sign up", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            present(alertController, animated: true, completion: nil)
-            
+            self.alertWindow(title: "Error", message: "Please enter email and password to sign up")
         } else {
         
             //Lets authenticate and create user in firebase
@@ -39,22 +35,34 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    //MARK: Functions
+    //MARK: Private functions
     
     //Using the data that we got from the model
     private func useData(data: String) {
         //data can be success or fail depending on if signup was successful or not
         if(data == "Success"){
             
-            // --> FIX SO IT LEADS TO RIGHT STORY BOARD
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
-            self.present(vc!, animated: true, completion: nil)
+            //SignUp successful - we login (Go to FikaView)
+            self.presentFikaView()
+            
         }
         else{
-            let alertController = UIAlertController(title: "Error", message: "Not able to sign up", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
+            //Signup failed, display alert with error message
+            self.alertWindow(title: "SignUp error", message: "Not able to sign up")
         }
+    }
+    
+    //Alert window for this controller
+    private func alertWindow(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //Go to fikaView if signup is successful (because then we login)
+    private func presentFikaView(){
+        let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
+        self.present(viewController, animated: false, completion: nil)
     }
 }

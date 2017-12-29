@@ -8,16 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="jRH-51-kwK">
             <objects>
-                <viewController id="DUD-dy-5oN" customClass="LoginViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogIn" id="DUD-dy-5oN" customClass="LoginViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N2d-1u-Mcc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +86,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Logga in">
                                         <attributes>
-                                            <font key="NSFont" size="17" name="Merriweather"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -237,7 +232,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="0ys-eT-3MF"/>
                                 </constraints>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="Sign Up and Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -267,7 +262,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Ny användare">
                                         <attributes>
-                                            <font key="NSFont" size="17" name="Merriweather"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -324,81 +319,10 @@
             </objects>
             <point key="canvasLocation" x="-1151.2" y="460.11994002998506"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="ZWM-cP-Lu2">
-            <objects>
-                <viewController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vLo-Z8-uNq" customClass="HomeViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="M26-fe-Mck"/>
-                        <viewControllerLayoutGuide type="bottom" id="FHI-8f-kA5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="B6W-ga-4NA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkt-E7-cUC">
-                                <rect key="frame" x="135" y="609" width="104" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logOutAction:" destination="vLo-Z8-uNq" eventType="touchUpInside" id="Ag6-lU-vg1"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cSn-EX-eOr">
-                                <rect key="frame" x="0.0" y="40" width="375" height="337"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImage" translatesAutoresizingMaskIntoConstraints="NO" id="RVM-MQ-M5x">
-                                        <rect key="frame" x="59.5" y="0.0" width="256" height="256"/>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="532-pg-Qdp" appends="YES" id="AcB-Gu-Y5a"/>
-                                        </connections>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are logged in as" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZJ-gv-rwl">
-                                        <rect key="frame" x="110.5" y="276" width="154.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVu-EK-WJz">
-                                        <rect key="frame" x="165" y="316.5" width="45" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.87843137250000003" green="1" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="cSn-EX-eOr" firstAttribute="leading" secondItem="g3D-JO-e84" secondAttribute="leading" id="9Is-sf-bwu"/>
-                            <constraint firstItem="cSn-EX-eOr" firstAttribute="top" secondItem="M26-fe-Mck" secondAttribute="bottom" constant="20" id="BT4-uk-pSf"/>
-                            <constraint firstItem="g3D-JO-e84" firstAttribute="trailing" secondItem="cSn-EX-eOr" secondAttribute="trailing" id="uLv-7Z-Yyy"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="g3D-JO-e84"/>
-                    </view>
-                    <connections>
-                        <outlet property="nameLabel" destination="HVu-EK-WJz" id="CRt-WD-gED"/>
-                        <outlet property="profileImage" destination="RVM-MQ-M5x" id="1bj-nO-mfP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VqK-eA-Faq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="532-pg-Qdp">
-                    <connections>
-                        <action selector="selectImageFromLibrary:" destination="vLo-Z8-uNq" id="mvh-k7-3tf"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="-18.399999999999999" y="680.5097451274363"/>
-        </scene>
     </scenes>
     <resources>
         <image name="coffee_emoji" width="240" height="240"/>
         <image name="facebook_icon" width="50" height="50"/>
-        <image name="placeholderImage" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xaz-39-Oqr"/>
