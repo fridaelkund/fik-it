@@ -10,41 +10,59 @@ import Firebase
 import FirebaseAuth
 
 class SignUpViewController: UIViewController {
+    
+    //MARK: Properties
+    var dataModel = DataModel()
 
     //MARK: Labels
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     //MARK: Actions
-    
-    //SIGNUP WITH EMAIL
+
+    //Sign up action
     @IBAction func createAccountAction(_ sender: AnyObject) {
         //Has user typed in email field or is it blank
         if emailTextField.text == "" || self.passwordTextField.text == "" {
-            //Lets alert that user needs to enter email and password
-            let alertController = UIAlertController(title: "Error", message: "Please enter email and password to sign up", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            present(alertController, animated: true, completion: nil)
-            
+            self.alertWindow(title: "Error", message: "Please enter email and password to sign up")
         } else {
+        
             //Lets authenticate and create user in firebase
-            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-                
-                if error == nil {
-                    print("You have successfully signed up")
-                    //--> Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
-                    self.present(vc!, animated: true, completion: nil)
-                    
-                } else {
-                    //Error alerting user that authentication failed
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
-                }
+            dataModel.signUp(email: emailTextField.text!, password:passwordTextField.text!) { [weak self] (data: String) in
+                //When we have the data we can use it here
+                self?.useData(data: data)
             }
         }
+    }
+    
+    //MARK: Private functions
+    
+    //Using the data that we got from the model
+    private func useData(data: String) {
+        //data can be success or fail depending on if signup was successful or not
+        if(data == "Success"){
+            
+            //SignUp successful - we login (Go to FikaView)
+            self.presentFikaView()
+            
+        }
+        else{
+            //Signup failed, display alert with error message
+            self.alertWindow(title: "SignUp error", message: "Not able to sign up")
+        }
+    }
+    
+    //Alert window for this controller
+    private func alertWindow(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //Go to fikaView if signup is successful (because then we login)
+    private func presentFikaView(){
+        let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
+        self.present(viewController, animated: false, completion: nil)
     }
 }
