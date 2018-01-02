@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Go Fika View Controller-->
+        <!--Fika-->
         <scene sceneID="3iY-vZ-M3j">
             <objects>
-                <viewController storyboardIdentifier="Gofika" id="6A3-Vg-uvh" customClass="GoFikaViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6A3-Vg-uvh" customClass="GoFikaViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3NA-WG-ChA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,19 +56,13 @@
                                     <action selector="goFikaAction:" destination="6A3-Vg-uvh" eventType="touchUpInside" id="oFf-FU-xgc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S7-3F-IWf">
-                                <rect key="frame" x="334" y="20" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="settings"/>
-                                <connections>
-                                    <segue destination="YyV-VM-wdT" kind="show" id="VyT-cv-F3X"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.8751849532" green="0.99795752760000001" blue="0.91554695370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="oZe-mS-YvA"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2Wv-OF-CRK"/>
+                    <navigationItem key="navigationItem" title="Fika" id="2Wv-OF-CRK">
+                        <barButtonItem key="backBarButtonItem" title="Tillbaka" id="Dfv-1r-yYa"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="goFikaButton" destination="Tsc-jc-7TT" id="rgU-Hd-94R"/>
                         <outlet property="toFikarumButton" destination="4sU-AW-2yn" id="AjU-1I-j9S"/>
@@ -76,15 +70,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFY-qT-tCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776.79999999999995" y="-633.73313343328346"/>
+            <point key="canvasLocation" x="454" y="68"/>
+        </scene>
+        <!--settingsLaunch-->
+        <scene sceneID="YIu-E5-6FA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="settingsLaunch" id="ozq-mK-nQc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="d7g-44-PvL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4q0-tw-9Ri" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="453" y="-1512"/>
         </scene>
         <!--settingsLaunch-->
         <scene sceneID="FMr-t1-M5o">
             <objects>
-                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="settingsLaunch" id="YyV-VM-wdT" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="settingsLaunch" id="YyV-VM-wdT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="omn-CU-d7U"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tt-gb-mv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2055" y="-751"/>
+            <point key="canvasLocation" x="453" y="-711"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ItW-Ss-UW5">
+            <objects>
+                <tabBarController storyboardIdentifier="Gofika" id="S8E-XS-SAK" sceneMemberID="viewController">
+                    <tabBar key="tabBar" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kQd-2I-0Yd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="lTi-a8-xtK" kind="relationship" relationship="viewControllers" id="R6z-2A-aTn"/>
+                        <segue destination="2Lm-V1-DHl" kind="relationship" relationship="viewControllers" id="8ns-Cy-8mX"/>
+                        <segue destination="GBw-mL-j2k" kind="relationship" relationship="viewControllers" id="12f-GK-GON"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sKV-X2-Nkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1366" y="-710"/>
         </scene>
         <!--Fikarum View Controller-->
         <scene sceneID="mQB-XG-r0Z">
@@ -95,29 +125,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axZ-uc-WOZ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Nki-LS-KNw">
-                                    <size key="itemSize" width="185" height="136"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="15" id="Nki-LS-KNw">
+                                    <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="Fotocell" id="tFx-Ec-3nS" customClass="FikarumPhotoCell" customModule="fikit" customModuleProvider="target">
-                                        <rect key="frame" x="95" y="0.0" width="185" height="136"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Fotocell" id="tFx-Ec-3nS" customClass="FikarumPhotoCell" customModule="fikit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="5" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="185" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="FikarumCell" translatesAutoresizingMaskIntoConstraints="NO" id="zAE-DF-PWj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="185" height="136"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="FikarumCell" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAE-DF-PWj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="154"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="zAE-DF-PWj" secondAttribute="trailing" id="7nA-Oz-rpl"/>
+                                            <constraint firstItem="zAE-DF-PWj" firstAttribute="leading" secondItem="tFx-Ec-3nS" secondAttribute="leading" id="LWJ-RL-itb"/>
+                                            <constraint firstAttribute="bottom" secondItem="zAE-DF-PWj" secondAttribute="bottom" id="qlF-o7-Ymi"/>
+                                            <constraint firstItem="zAE-DF-PWj" firstAttribute="top" secondItem="tFx-Ec-3nS" secondAttribute="top" id="tC9-zD-ELS"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="zAE-DF-PWj" id="Vkw-My-Dw3"/>
                                             <segue destination="9oo-Ix-M5h" kind="modal" identifier="InviteFriendSegue" id="DGm-SR-jvt"/>
@@ -129,17 +164,6 @@
                                     <outlet property="delegate" destination="hQ3-mK-YgX" id="lOW-y6-fD0"/>
                                 </connections>
                             </collectionView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dDe-KK-fyb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <items>
-                                    <navigationItem title="Mitt fikarum" id="0S6-nN-afp"/>
-                                </items>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="cHT-CX-HV7" appends="YES" id="vAH-jW-alH"/>
-                                </connections>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.8751849532" green="0.99795752760000001" blue="0.91554695370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="1nk-hT-j6p"/>
@@ -149,13 +173,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Df-k7-Fb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="cHT-CX-HV7">
-                    <connections>
-                        <segue destination="6A3-Vg-uvh" kind="show" id="t8X-vD-iea"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="cHT-CX-HV7"/>
             </objects>
-            <point key="canvasLocation" x="776.79999999999995" y="119.1904047976012"/>
+            <point key="canvasLocation" x="1344.8" y="67.916041979010501"/>
         </scene>
         <!--Invite Friend View Controller-->
         <scene sceneID="dNS-Ua-tjd">
@@ -165,34 +185,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vhy-HG-ljR">
-                                <rect key="frame" x="67" y="159" width="240" height="216"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhy-HG-ljR">
+                                <rect key="frame" x="20" y="120" width="335" height="211"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyF-Rc-vJb">
-                                        <rect key="frame" x="86" y="24" width="69" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
-                                        </accessibility>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="är sugen på att fika!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpW-NJ-KJC">
+                                        <rect key="frame" x="8" y="43" width="319" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="oIN-ab-dMr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOy-h9-6jB">
-                                        <rect key="frame" x="69" y="150" width="102" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Close"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyF-Rc-vJb">
+                                        <rect key="frame" x="8" y="20" width="319" height="21"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="rfE-Og-2Ca"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOy-h9-6jB">
+                                        <rect key="frame" x="60" y="170" width="87" height="33"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="683-rk-h3B"/>
+                                            <constraint firstAttribute="width" constant="87" id="RPV-46-s7p"/>
+                                        </constraints>
+                                        <state key="normal" title="Avbryt"/>
                                         <connections>
                                             <action selector="closeModal:" destination="9oo-Ix-M5h" eventType="touchUpInside" id="mGV-nQ-uMd"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Skicka en notis för att berätta att du också är fikasugen" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nHy-Lo-huM">
+                                        <rect key="frame" x="20" y="76" width="295" height="58"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="58" id="7yc-Nf-Blg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEm-M9-fCv">
+                                        <rect key="frame" x="173" y="170" width="102" height="33"/>
+                                        <color key="backgroundColor" red="0.3548433781" green="0.63476294280000001" blue="0.46166265010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="TaU-HL-rF0"/>
+                                            <constraint firstAttribute="width" constant="102" id="X8I-dW-rO0"/>
+                                        </constraints>
+                                        <state key="normal" title="Skicka notis">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tEm-M9-fCv" secondAttribute="trailing" constant="60" id="1Tj-Kb-Umo"/>
+                                    <constraint firstAttribute="bottom" secondItem="OOy-h9-6jB" secondAttribute="bottom" constant="8" id="ApU-OD-NL2"/>
+                                    <constraint firstItem="XyF-Rc-vJb" firstAttribute="top" secondItem="Vhy-HG-ljR" secondAttribute="top" constant="20" id="F8h-kP-mIy"/>
+                                    <constraint firstItem="nHy-Lo-huM" firstAttribute="top" secondItem="zpW-NJ-KJC" secondAttribute="bottom" constant="12" id="ITM-dR-fxD"/>
+                                    <constraint firstItem="zpW-NJ-KJC" firstAttribute="leading" secondItem="Vhy-HG-ljR" secondAttribute="leading" constant="8" id="K2z-TK-dPc"/>
+                                    <constraint firstItem="nHy-Lo-huM" firstAttribute="leading" secondItem="Vhy-HG-ljR" secondAttribute="leading" constant="20" id="NjR-Lm-wGo"/>
+                                    <constraint firstItem="zpW-NJ-KJC" firstAttribute="top" secondItem="XyF-Rc-vJb" secondAttribute="bottom" constant="2" id="OzZ-jl-ydc"/>
+                                    <constraint firstAttribute="height" constant="211" id="Sku-xS-1nY"/>
+                                    <constraint firstAttribute="trailing" secondItem="zpW-NJ-KJC" secondAttribute="trailing" constant="8" id="cuP-k8-c4d"/>
+                                    <constraint firstItem="XyF-Rc-vJb" firstAttribute="leading" secondItem="Vhy-HG-ljR" secondAttribute="leading" constant="8" id="dGK-9b-sOw"/>
+                                    <constraint firstAttribute="trailing" secondItem="XyF-Rc-vJb" secondAttribute="trailing" constant="8" id="gU5-8F-LRR"/>
+                                    <constraint firstAttribute="trailing" secondItem="nHy-Lo-huM" secondAttribute="trailing" constant="20" id="j6D-Lr-Wb8"/>
+                                    <constraint firstItem="OOy-h9-6jB" firstAttribute="leading" secondItem="Vhy-HG-ljR" secondAttribute="leading" constant="60" id="pdI-QL-84C"/>
+                                    <constraint firstAttribute="bottom" secondItem="tEm-M9-fCv" secondAttribute="bottom" constant="8" id="qUa-Mw-8D8"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20288420376712329" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6lr-pM-cAs" firstAttribute="trailing" secondItem="Vhy-HG-ljR" secondAttribute="trailing" constant="20" id="QIf-5g-Qne"/>
+                            <constraint firstItem="Vhy-HG-ljR" firstAttribute="leading" secondItem="6lr-pM-cAs" secondAttribute="leading" constant="20" id="XBO-Bp-BGH"/>
+                            <constraint firstItem="Vhy-HG-ljR" firstAttribute="top" secondItem="6lr-pM-cAs" secondAttribute="top" constant="100" id="vE3-fT-HZs"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6lr-pM-cAs"/>
                     </view>
                     <navigationItem key="navigationItem" id="cQe-B3-dIa"/>
@@ -202,14 +277,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5MT-ez-8zl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1589.5999999999999" y="118.29085457271366"/>
+            <point key="canvasLocation" x="1344.8" y="823.53823088455783"/>
+        </scene>
+        <!--Fika-->
+        <scene sceneID="Hbq-nn-yDe">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tqE-hF-dLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Lm-V1-DHl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Fika" image="tabBarCoffee" landscapeImage="tabBarCoffee" largeContentSizeImage="tabBarCoffee" id="8p7-bE-yVb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3fI-VB-AQ7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G59-KU-s91">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="6A3-Vg-uvh" kind="relationship" relationship="rootViewController" id="aSU-XI-BSL"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-455" y="68"/>
+        </scene>
+        <!--Vänner-->
+        <scene sceneID="QQt-jr-Rou">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lTi-a8-xtK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Vänner" image="tabBarFriends" landscapeImage="tabBarFriends" largeContentSizeImage="tabBarFriends" id="tMe-YH-64j"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UvE-C2-bdr">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YyV-VM-wdT" kind="relationship" relationship="rootViewController" id="Nl0-oy-gCF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EsN-tg-zU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-455" y="-710"/>
+        </scene>
+        <!--Profil-->
+        <scene sceneID="PmP-xa-LA4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GBw-mL-j2k" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profil" image="tabBarProfileImage" landscapeImage="tabBarProfileImage" largeContentSizeImage="tabBarProfileImage" id="Fne-Pc-nNV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dfD-ZI-y2j">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ozq-mK-nQc" kind="relationship" relationship="rootViewController" id="nxE-x0-8nB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="poS-ib-tIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-455" y="-1511"/>
         </scene>
     </scenes>
     <resources>
         <image name="coffee_emoji" width="240" height="240"/>
-        <image name="settings" width="25" height="25"/>
+        <image name="tabBarCoffee" width="25" height="25"/>
+        <image name="tabBarFriends" width="25" height="25"/>
+        <image name="tabBarProfileImage" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="W85-uO-13E"/>
-    </inferredMetricsTieBreakers>
 </document>

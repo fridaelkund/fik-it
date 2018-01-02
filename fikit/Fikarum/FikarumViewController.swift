@@ -15,27 +15,28 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     
     //MARK: Variables
     var dataModel = DataModel()
-    var friends: Array<Any> = []
+ //   var friends: Array<Any> = []
+    
+    var friends: Array<Any> = ["Frida", "Josefine", "Linnea"]
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "Fotocell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
     fileprivate let itemsPerRow: CGFloat = 3
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Get user data
-        dataModel.observeDatabase { [weak self] (data: NSDictionary) in
+    //    dataModel.observeDatabase { [weak self] (data: NSDictionary) in
             //When we have the data we can use it here
-            self?.useData(data: data)
-        }
+         //   self?.useData(data: data)
+   //     }
     }
     
     //Using the data that we got from the model
     private func useData(data: NSDictionary) {
-        self.friends = data["friends"] as! Array<Any>
+     //   self.friends = data["friends"] as! Array<Any>
     }
     
     
@@ -44,7 +45,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             let destView = segue.destination as! inviteFriendViewController
             if let indexPath = collectionView.indexPathsForSelectedItems {
            
-            // I realize this isn't the way to do it, but it works.
+            // I realize this isn't how you should do it, but it works.
                 destView.name = friends[indexPath[0][1]] as! String
             }
 
@@ -75,6 +76,10 @@ extension FikarumViewController {
         //2
         cell.imageView.image = UIImage(named:"placeholderImage")
         
+        //3
+        cell.imageView.layer.cornerRadius = 70
+        cell.imageView.clipsToBounds = true
+        
         return cell
     }
 }
@@ -86,8 +91,7 @@ extension FikarumViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         //2
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
+        let availableWidth = view.frame.width
         let widthPerItem = availableWidth / itemsPerRow
         
         return CGSize(width: widthPerItem, height: widthPerItem)
