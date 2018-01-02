@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     
+
     //MARK: Properties
     var dataModel = DataModel()
     
@@ -21,19 +22,19 @@ class ProfileViewController: UIViewController {
     
     //Logout action
     @IBAction func logoutAction(_ sender: Any) {
+        print("lets try logging out")
         do {
             try Auth.auth().signOut()
-            
-            //Set status to offline in database for the user when signed out
-            dataModel.setStatus(status: "offline")
-            
-            //Switch view to "SignUp" view
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn")
-            present(vc, animated: true, completion: nil)
-            
         } catch let error as NSError {
             print("Logout error", error.localizedDescription)
         }
+        
+        //Set status to offline in database for the user when signed out
+        dataModel.setStatus(status: "offline")
+        
+        //Switch view to "login" view
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn")
+        present(vc, animated: true, completion: nil)
 
     }
     
@@ -77,17 +78,7 @@ class ProfileViewController: UIViewController {
                 if data!.length > 0 {
                     profileImage.image = UIImage(data:data! as Data)
                 }
-//                else {
-//                    //SET PLACEHOLDER IMAGE
-//                    print("placeholder here")
-//                    //It's already set I think
-//                }
             }
-//            else {
-//                print("No image avaliable")
-//                // SET PLACEHOLDER ???
-//                //It's already set
-//            }
         }
     }
 
