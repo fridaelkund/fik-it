@@ -8,65 +8,86 @@
 import UIKit
 import Firebase
 
-class ProfileViewController: UIViewController {
-
-    //MARK: Outlets
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: Properties
     var dataModel = DataModel()
+    let picker = UIImagePickerController()
+    
+    //MARK: Outlets
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var editNameField: UITextField!
     
     //MARK: Actions
     
-    //Logout action
+    //change image
+    @IBAction func changeImageAction(_ sender: Any) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+    }
+    
+    //save changes
+    @IBAction func saveChanges(_ sender: Any) {
+        updateUserName(newName: editNameField.text!)
+    }
+    
+    //logout action
     @IBAction func logoutAction(_ sender: Any) {
         do {
             try Auth.auth().signOut()
-            
-            //Set status to offline in database for the user when signed out
-            dataModel.setStatus(status: "offline")
-            
-            //Switch view to "SignUp" view
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn")
-            present(vc, animated: true, completion: nil)
-            
         } catch let error as NSError {
             print("Logout error", error.localizedDescription)
         }
+        
+        //Set status to offline in database for the user when signed out
+        dataModel.setStatus(status: "offline")
+        
+        //Switch view to "login" view
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn")
+        present(vc, animated: true, completion: nil)
 
     }
     
     
     //MARK: Functions
     
-    //Updating userInfo on authentication object
-    //THIS FUNCTIONS CHANGES NAME TO PRESET VALUE - we can have this value as anything
-    func updateUserInfo(){
+    //image picker
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        // use the image
+        //Save profile image to db user
+        profileImage.image = chosenImage
         
-        //TODO:
-        //Make this function work with edit option in storyboard and
-        //have it change name to any new name typed in
-        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func updateUserName(newName: String){
+        print("new name is", newName)
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = "Josefine Testuser"
+        changeRequest?.displayName = newName
         changeRequest?.commitChanges { (error) in
             // ...
             print("committed new changes")
-            self.nameLabel.text = changeRequest?.displayName
         }
     }
+    
     
     //TODO:
     //Add function for changing profile image
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        picker.delegate = self
+        
         if let currentUser = Auth.auth().currentUser {
             
             //Display username
-            nameLabel.text = currentUser.displayName
+            editNameField.text = currentUser.displayName
             
             //Display profile image
             if currentUser.photoURL != nil {
@@ -77,17 +98,7 @@ class ProfileViewController: UIViewController {
                 if data!.length > 0 {
                     profileImage.image = UIImage(data:data! as Data)
                 }
-//                else {
-//                    //SET PLACEHOLDER IMAGE
-//                    print("placeholder here")
-//                    //It's already set I think
-//                }
             }
-//            else {
-//                print("No image avaliable")
-//                // SET PLACEHOLDER ???
-//                //It's already set
-//            }
         }
     }
 
@@ -95,16 +106,8 @@ class ProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+
+
