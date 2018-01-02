@@ -1,5 +1,5 @@
 //
-//  FirebaseCommunication.swift
+//  Datamodel.swift
 //  
 //
 //  Created by Josefine Möller on 2017-12-27.
