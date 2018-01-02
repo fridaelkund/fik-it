@@ -70,7 +70,7 @@
 		A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		A779BF951FC9DC7F00E0C1F4 /* fikit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fikit.entitlements; sourceTree = "<group>"; };
 		A7A63E011FF64C0800D7B545 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		A7AB19D51FF3E04C00F59B2C /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataModel.swift; path = "/Users/josefinemoller/Desktop/fik-it/fikit/DataModel.swift"; sourceTree = "<absolute>"; };
+		A7AB19D51FF3E04C00F59B2C /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		A7E994E61FB23E1400566902 /* fikit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fikit; sourceTree = SOURCE_ROOT; };
 		B4B00E6CAB2B3E47D577A335 /* Pods_fikitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fikitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
