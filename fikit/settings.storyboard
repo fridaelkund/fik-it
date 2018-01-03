@@ -265,6 +265,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="placeholderImage" width="256" height="256"/>
+        <image name="placeholderImage" width="920" height="920"/>
     </resources>
 </document>
