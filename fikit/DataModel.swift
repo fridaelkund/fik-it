@@ -17,22 +17,25 @@ class DataModel {
     //Observing and parsing user data
     func observeDatabase(completion: @escaping ((_ data: NSDictionary) -> Void)) {
 
-        if let currentUser = Auth.auth().currentUser{
+//        if let currentUser = Auth.auth().currentUser{
             //Observe user information from database
             self.ref.observe(DataEventType.value, with: { (snapshot) in
                 
                 let value = snapshot.value as? NSDictionary
                 let users = value?["users"] as? NSDictionary
-                let user = users?[currentUser.uid] as? NSDictionary
+                
+                //let user = users?[currentUser.uid] as? NSDictionary
+                
                 //self.user = user!
+                
                 //Completion - we have the user data
-                completion(user!)
+                completion(users!)
             })
-        }
-        else{
-            //Add redirect here later (to login page)
-            print("no current user")
-        }
+//        }
+//        else{
+//            //Add redirect here later (to login page)
+//            print("no current user")
+//        }
     }
     
     //Setting status in database
@@ -59,7 +62,7 @@ class DataModel {
             self.ref.child("users").child(currentUser.uid).setValue(
                 ["username": currentUser.displayName ?? "no name",
                  "status": "offline",
-                 "friends": ["frida", "josefine", "alex", "linnea"]]
+                 "friends": ["frida", "Josefine Möller", "alex", "linnea"]]
             )
         }
         else{

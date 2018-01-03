@@ -35,7 +35,11 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     
     //Using the data that we got from the model
     private func useData(data: NSDictionary) {
-        self.friends = data["friends"] as! Array<Any>
+        if let currentUser = Auth.auth().currentUser{
+            let user = data[currentUser.uid] as! NSDictionary
+            self.friends = user["friends"] as! Array<Any>
+        }
+        else{print("no user")}
     }
     
     
