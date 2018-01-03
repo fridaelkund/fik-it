@@ -9,14 +9,14 @@ import UIKit
 import Firebase
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     //MARK: Properties
     var dataModel = DataModel()
     let picker = UIImagePickerController()
+    fileprivate var tableVC: NameTableViewController?
     
     //MARK: Outlets
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var editNameField: UITextField!
+    @IBOutlet weak var changeProfileImageBtn: UIButton!
     
     //MARK: Actions
     
@@ -29,12 +29,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     //save changes
     @IBAction func saveChanges(_ sender: Any) {
-        updateUserName(newName: editNameField.text!)
+        print(tableVC?.nameInputField.text!)
+        updateUserName(newName: (tableVC?.nameInputField.text!)!)
     }
     
     //logout action
     @IBAction func logoutAction(_ sender: Any) {
-        print("log me out")
         do {
             try Auth.auth().signOut()
         } catch let error as NSError {
@@ -47,13 +47,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         //Switch view to "login" view
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn")
         present(vc, animated: true, completion: nil)
-
     }
-    
     
     //MARK: Functions
     
-    //image picker
+    //Image picker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         // use the image
@@ -67,8 +65,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         dismiss(animated: true, completion: nil)
     }
     
+    //TODO:
+    //Add function for changing profile image
+    
+    
+    // Update username
     func updateUserName(newName: String){
-        print("new name is", newName)
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = newName
         changeRequest?.commitChanges { (error) in
@@ -77,18 +79,33 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    
-    //TODO:
-    //Add function for changing profile image
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        picker.delegate = self
+    // Styling of profile picture
+    func profilePictureCircle(){
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.clipsToBounds = true
+    }
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        // Toggles the edit button state
+        super.setEditing(editing, animated: animated)
         
+        changeProfileImageBtn.isHidden = false
+        
+        // Toggles the actual editing actions appearing on a table view
+        //tableView.setEditing(editing, animated: true)
+    }
+    
+    
+
+    
+    // Function to load initial data and display name, profile picture, etc
+    func loadInitialData(){
         if let currentUser = Auth.auth().currentUser {
             
-            //Display username
-            editNameField.text = currentUser.displayName
+            // Display name and email
+            self.tableVC?.nameInputField.text = currentUser.displayName
+            self.tableVC?.mailLabel.text = currentUser.email
             
             //Display profile image
             if currentUser.photoURL != nil {
@@ -102,12 +119,51 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // Add segue to embedded tableViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? NameTableViewController,
+            segue.identifier == "profileTableViewSegue" {
+            self.tableVC = vc
+        }
     }
+    
+    // View did load
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        picker.delegate = self
+        
+        // Loading of intial data
+        loadInitialData()
+        
+        // Styling of profile image
+        profilePictureCircle()
+        
+        // Adding edit button to navigation bar
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        changeProfileImageBtn.isHidden = true
+    }
+}
 
+// MARK: Table view controller
+
+class NameTableViewController: UITableViewController {
+    // MARK: - Table view data source
+    @IBOutlet weak var nameInputField: UITextField!
+    @IBOutlet weak var mailLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
 }
 
 
