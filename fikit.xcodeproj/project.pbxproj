@@ -14,6 +14,7 @@
 		8629F4D21FA75D5000DBD7F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */; };
 		8629F4DD1FA75D5000DBD7F0 /* fikitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4DC1FA75D5000DBD7F0 /* fikitTests.swift */; };
 		863A0FB11FF2699100BCCD84 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A0FB01FF2699100BCCD84 /* SettingsViewController.swift */; };
+		864A5AF81FFCEF09004FC946 /* profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864A5AF71FFCEF09004FC946 /* profil.storyboard */; };
 		8674B09B1FCDAF620070C0D0 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8674B09A1FCDAF620070C0D0 /* settings.storyboard */; };
 		86D4C5511FCC5F2500D75DCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5501FCC5F2500D75DCC /* GoogleService-Info.plist */; };
 		86D4C5571FCC678D00D75DCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5551FCC678D00D75DCC /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		8629F4DC1FA75D5000DBD7F0 /* fikitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fikitTests.swift; sourceTree = "<group>"; };
 		8629F4DE1FA75D5000DBD7F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		863A0FB01FF2699100BCCD84 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		864A5AF71FFCEF09004FC946 /* profil.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = profil.storyboard; sourceTree = "<group>"; };
 		8674B09A1FCDAF620070C0D0 /* settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
 		86D4C5501FCC5F2500D75DCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		86D4C5561FCC678D00D75DCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */,
 				86D4C5581FCC67F500D75DCC /* fikaright.storyboard */,
 				8674B09A1FCDAF620070C0D0 /* settings.storyboard */,
+				864A5AF71FFCEF09004FC946 /* profil.storyboard */,
 				86D4C55E1FCD54C000D75DCC /* Fikarum */,
 				8629F4D31FA75D5000DBD7F0 /* Info.plist */,
 			);
@@ -301,6 +304,7 @@
 				86D4C5571FCC678D00D75DCC /* Main.storyboard in Resources */,
 				86D4C5511FCC5F2500D75DCC /* GoogleService-Info.plist in Resources */,
 				8629F4CF1FA75D5000DBD7F0 /* Assets.xcassets in Resources */,
+				864A5AF81FFCEF09004FC946 /* profil.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

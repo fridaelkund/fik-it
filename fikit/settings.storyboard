@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="37.600000000000001" y="736.28185907046486"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--View Controller-->
         <scene sceneID="sW9-Op-2UU">
             <objects>
-                <viewController id="ufr-pa-ukZ" customClass="ProfileViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ufr-pa-ukZ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sOU-0h-Xak">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="569"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
