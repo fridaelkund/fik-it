@@ -59,7 +59,11 @@ class GoFikaViewController: UIViewController {
     
     //Using the data that we got from the model
     private func useData(data: NSDictionary) {
-        self.status = data["status"] as? String ?? ""
+        if let currentUser = Auth.auth().currentUser{
+            let user = data[currentUser.uid] as! NSDictionary
+             self.status = user["status"] as? String ?? ""
+        }
+        else{print("no user")}
     }
     
     

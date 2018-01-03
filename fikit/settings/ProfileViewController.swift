@@ -34,6 +34,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     //logout action
     @IBAction func logoutAction(_ sender: Any) {
+        print("log me out")
         do {
             try Auth.auth().signOut()
         } catch let error as NSError {

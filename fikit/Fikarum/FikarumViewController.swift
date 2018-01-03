@@ -15,9 +15,9 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     
     //MARK: Variables
     var dataModel = DataModel()
- //   var friends: Array<Any> = []
+    var friends: Array<Any> = []
     
-    var friends: Array<Any> = ["Frida", "Josefine", "Linnea"]
+ //   var friends: Array<Any> = ["Frida", "Josefine", "Linnea"]
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "Fotocell"
@@ -28,15 +28,19 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidLoad()
         
         //Get user data
-    //    dataModel.observeDatabase { [weak self] (data: NSDictionary) in
+        dataModel.observeDatabase { [weak self] (data: NSDictionary) in
             //When we have the data we can use it here
-         //   self?.useData(data: data)
-   //     }
+            self?.useData(data: data)
+        }
     }
     
     //Using the data that we got from the model
     private func useData(data: NSDictionary) {
-     //   self.friends = data["friends"] as! Array<Any>
+        if let currentUser = Auth.auth().currentUser{
+            let user = data[currentUser.uid] as! NSDictionary
+            self.friends = user["friends"] as! Array<Any>
+        }
+        else{print("no user")}
     }
     
     
