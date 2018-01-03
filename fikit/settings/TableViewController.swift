@@ -49,11 +49,18 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Epmty lists
+        self.friends = []
+        self.allUsers = []
+        self.nonFriends = []
 
         //Get user data
         dataModel.observeDatabase { [weak self] (data: NSDictionary) in
             //When we have the data we can use it here
             self?.useData(data: data)
+            //Reload data so it appears in view
+            self?.tableView.reloadData()
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -65,34 +72,24 @@ class TableViewController: UITableViewController {
     
     //Using the data that we got from the model
     private func useData(data: NSDictionary) {
+        
         if let currentUser = Auth.auth().currentUser{
             let user = data[currentUser.uid] as! NSDictionary
             self.friends = user["friends"] as! Array<Any>
-            //self.allUsers = data
-            //print(self.friends, self.allUsers)
-            
-            //DO THINGS WITH THE DATA
-//            for (key, value) in users {
-//               // print(key, value)
-//                objectArray.append(Objects(sectionName: key, sectionObjects: value))
-//            }
             
             //loop through all users and append to users array
             for (key, _) in data as NSDictionary{
                 let userloop = data[key] as! NSDictionary
                 let username = userloop["username"] as! String
-                
-                //APPEND IN RIGHT PLACE - so match is skipped but the rest is added one time each
                 allUsers.append(username)
             }
             createUserList()
-            
-            //add all users to objectArray
-           // objectArray.append(Objects(sectionName: "Alla användare", sectionObjects: allUsers as! [String]))
         }
         else{print("no user")}
     }
     
+    //Going trough lists of users and friends and sorting out friends
+    //from users to be displayed in two different lists
     func createUserList(){
         for user in allUsers {
             var isFriend = false
@@ -116,10 +113,11 @@ class TableViewController: UITableViewController {
             }
            
         }
+        //We append the friend list the the list of other users to the objects array that is displayed in table view
         objectArray.append(Objects(sectionName: "Vänner", sectionObjects: self.friends as! [String]))
-        objectArray.append(Objects(sectionName: "Andra användare", sectionObjects: nonFriends as! [String]))
-        
+        objectArray.append(Objects(sectionName: "Andra användare", sectionObjects: self.nonFriends as! [String]))
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -152,29 +150,5 @@ class TableViewController: UITableViewController {
 
         return objectArray[section].sectionName
     }
-    
-    
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

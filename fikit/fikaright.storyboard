@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="453" y="-1512"/>
         </scene>
-        <!--settingsLaunch-->
+        <!--profilsida-->
         <scene sceneID="FMr-t1-M5o">
             <objects>
-                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="settingsLaunch" id="YyV-VM-wdT" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="profilsida" id="YyV-VM-wdT" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="omn-CU-d7U"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tt-gb-mv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,7 +143,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="FikarumCell" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAE-DF-PWj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="154"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -282,7 +282,6 @@
         <!--Fika-->
         <scene sceneID="Hbq-nn-yDe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tqE-hF-dLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Lm-V1-DHl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Fika" image="tabBarCoffee" landscapeImage="tabBarCoffee" largeContentSizeImage="tabBarCoffee" id="8p7-bE-yVb"/>
                     <toolbarItems/>
@@ -298,6 +297,7 @@
                         <segue destination="6A3-Vg-uvh" kind="relationship" relationship="rootViewController" id="aSU-XI-BSL"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tqE-hF-dLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-455" y="68"/>
         </scene>
