@@ -55,6 +55,8 @@ class DataModel {
         }
     }
     
+    //TODO: FIXA SÅ DEN INTE LÄGGER TILL SÅHÄR
+    
     //Add user info to database
     func addUser(){
         //FRIEND LIST SHOULD NOT BE LIKE THIS (need to be different for all users, containing ids or something)
@@ -70,7 +72,17 @@ class DataModel {
             print("no current user")
         }
     }
-        
+    
+    func addFriends(friends: Array<Any>) {
+        print("friends are", friends as! [String])
+         if let currentUser = Auth.auth().currentUser {
+            //self.ref.child("users").child(currentUser.uid).updateChildValues(["friends" : friends])
+            self.ref.root.child("users").child(currentUser.uid).updateChildValues(["friends": friends])
+
+        }
+    }
+    
+    
     //SignUp
     func signUp(email: String, password: String, completion: @escaping ((_ data: String) -> Void)){
         //Lets authenticate and create user in firebase

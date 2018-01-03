@@ -42,9 +42,7 @@ class GoFikaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            //Add user to database
-            dataModel.addUser()
-
+        
             //Hide Fika-room button in the beginning. User needs to be "online" to access it
             toFikarumButton.isHidden = true
             
