@@ -17,8 +17,6 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     var dataModel = DataModel()
     var friends: Array<Any> = []
     
- //   var friends: Array<Any> = ["Frida", "Josefine", "Linnea"]
-    
     // MARK: - Properties
     fileprivate let reuseIdentifier = "Fotocell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
@@ -31,6 +29,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         dataModel.observeDatabase { [weak self] (data: NSDictionary) in
             //When we have the data we can use it here
             self?.useData(data: data)
+            self?.collectionView.reloadData()
         }
     }
     
@@ -43,21 +42,20 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         else{print("no user")}
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "InviteFriendSegue"{
             let destView = segue.destination as! inviteFriendViewController
             if let indexPath = collectionView.indexPathsForSelectedItems {
            
             // I realize this isn't how you should do it, but it works.
-                destView.name = friends[indexPath[0][1]] as! String
+                destView.name = self.friends[indexPath[0][1]] as! String
             }
 
         }
     }
 }
 
-// --- OK VAD GÖR DESSA HÄR ?? De kanske ska läggas i egna filer sen ?? ---
+// --- Creating collection view ---
 
 
 // MARK: - UICollectionViewDataSource
@@ -69,7 +67,7 @@ extension FikarumViewController {
     
     //2
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return friends.count
+        return self.friends.count
     }
     
     //3
