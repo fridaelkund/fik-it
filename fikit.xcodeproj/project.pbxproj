@@ -147,6 +147,7 @@
 			children = (
 				863A0FA91FF2668C00BCCD84 /* settings */,
 				86D4C5521FCC643C00D75DCC /* loginControllers */,
+				864A5AF91FFD082F004FC946 /* Profile */,
 				A779BF951FC9DC7F00E0C1F4 /* fikit.entitlements */,
 				8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */,
 				A7AB19D51FF3E04C00F59B2C /* DataModel.swift */,
@@ -177,11 +178,18 @@
 			isa = PBXGroup;
 			children = (
 				863A0FB01FF2699100BCCD84 /* SettingsViewController.swift */,
-				A7A63E011FF64C0800D7B545 /* ProfileViewController.swift */,
 				A75E3FE11FFBE9B300A1C400 /* TableViewController.swift */,
 				A75E3FE31FFC018400A1C400 /* TableViewCell.swift */,
 			);
 			path = settings;
+			sourceTree = "<group>";
+		};
+		864A5AF91FFD082F004FC946 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A7A63E011FF64C0800D7B545 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		86D4C5521FCC643C00D75DCC /* loginControllers */ = {
