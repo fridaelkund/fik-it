@@ -38,6 +38,23 @@ class DataModel {
 //        }
     }
     
+    func getData(onSuccess:  @escaping (Profile) -> Void) {
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+           // let value = snapshot.value as? [String : AnyObject]
+           // let users = value?["users"] as? NSDictionary
+            
+            let profileDict = snapshot.value as? [String : AnyObject]
+            let users = profileDict!["users"] as?  [String : AnyObject]
+            if let profile = Profile(data: users) {
+                onSuccess(profile)
+            }
+            else{
+                print("no profile")
+            }
+        })
+    }
+    
+    
     //Setting status in database
     func setStatus(status: String){
         
