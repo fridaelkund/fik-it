@@ -27,12 +27,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.present(picker, animated: true, completion: nil)
     }
     
-    //save changes
-    @IBAction func saveChanges(_ sender: Any) {
-        print(tableVC?.nameInputField.text!)
-        updateUserName(newName: (tableVC?.nameInputField.text!)!)
-    }
-    
     //logout action
     @IBAction func logoutAction(_ sender: Any) {
         do {
@@ -50,7 +44,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     //MARK: Functions
-    
     //Image picker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
@@ -65,9 +58,62 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         dismiss(animated: true, completion: nil)
     }
     
+    // Styling of profile picture
+    func profilePictureCircle(){
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.clipsToBounds = true
+    }
+    
     //TODO:
     //Add function for changing profile image
     
+
+    // Functions for editing data
+    @objc func enterEditing(sender: UIBarButtonItem) {
+        // Setting buttons to done and cancle
+        self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .cancel, target: self,
+                                                             action: #selector(cancelEditing(sender:))), animated: true)
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self,
+                                                              action: #selector(doneEditing(sender:))), animated: true)
+        // Displays editing features
+        changeProfileImageBtn.isHidden = false
+        tableVC?.nameInputField.isUserInteractionEnabled = true
+        tableVC?.nameInputField.clearButtonMode = UITextFieldViewMode.always
+
+    }
+    
+    func leaveEditing() {
+        // Hides cancle button and sets editing button
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .edit, target: self,
+                                                              action: #selector(enterEditing(sender:))), animated: true)
+        self.navigationItem.leftBarButtonItem = nil
+        
+        // Hides editing features
+        changeProfileImageBtn.isHidden = true
+        tableVC?.nameInputField.isUserInteractionEnabled = false
+        tableVC?.nameInputField.clearButtonMode = UITextFieldViewMode.never
+        
+    }
+    
+    @objc func cancelEditing(sender: UIBarButtonItem) {
+        leaveEditing()
+        
+        // Sets data to previous values
+        displayUserData()
+        
+    }
+    
+    @objc func doneEditing(sender: UIBarButtonItem) {
+        leaveEditing()
+        
+        // Saving changes, locally and to database
+        updateUserName(newName: (tableVC?.nameInputField.text!)!)
+        print("In done editing")
+        dataModel.updateDatabase(value: ["username" : tableVC?.nameInputField.text!])
+        
+        // Skicka in bild sen också?
+    }
     
     // Update username
     func updateUserName(newName: String){
@@ -79,28 +125,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    // Styling of profile picture
-    func profilePictureCircle(){
-        profileImage.layer.masksToBounds = false
-        profileImage.layer.cornerRadius = profileImage.frame.height/2
-        profileImage.clipsToBounds = true
-    }
-
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        // Toggles the edit button state
-        super.setEditing(editing, animated: animated)
-        
-        changeProfileImageBtn.isHidden = false
-        
-        // Toggles the actual editing actions appearing on a table view
-        //tableView.setEditing(editing, animated: true)
-    }
-    
-    
-
-    
     // Function to load initial data and display name, profile picture, etc
-    func loadInitialData(){
+    func displayUserData(){
         if let currentUser = Auth.auth().currentUser {
             
             // Display name and email
@@ -116,6 +142,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 if data!.length > 0 {
                     profileImage.image = UIImage(data:data! as Data)
                 }
+            }else{
+                profileImage.image = UIImage(named: "placeholderImage")
             }
         }
     }
@@ -134,19 +162,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         picker.delegate = self
         
         // Loading of intial data
-        loadInitialData()
+        displayUserData()
         
         // Styling of profile image
         profilePictureCircle()
         
-        // Adding edit button to navigation bar
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        changeProfileImageBtn.isHidden = true
+        // Make sure the view are not in editing mode
+        leaveEditing()
     }
 }
 
-// MARK: Table view controller
 
+// MARK: Table view controller
 class NameTableViewController: UITableViewController {
     // MARK: - Table view data source
     @IBOutlet weak var nameInputField: UITextField!
@@ -165,6 +192,3 @@ class NameTableViewController: UITableViewController {
     }
     
 }
-
-
-

@@ -82,6 +82,13 @@ class DataModel {
         }
     }
     
+    // Send data to database
+    func updateDatabase(value: Dictionary<String, Any>){
+        print("adding to database")
+        if let currentUser = Auth.auth().currentUser {
+            self.ref.root.child("users").child(currentUser.uid).updateChildValues(value)
+        }
+    }
     
     //SignUp
     func signUp(email: String, password: String, completion: @escaping ((_ data: String) -> Void)){
