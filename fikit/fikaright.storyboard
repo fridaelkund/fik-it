@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="415" y="-1299"/>
         </scene>
-        <!--profilsida-->
+        <!--friendsView-->
         <scene sceneID="FMr-t1-M5o">
             <objects>
-                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="profilsida" id="YyV-VM-wdT" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="friendsView" id="YyV-VM-wdT" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Vänner" id="omn-CU-d7U"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tt-gb-mv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -124,8 +124,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have no friends online, come back later!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mtb-AS-5uc">
+                                <rect key="frame" x="83" y="177" width="208" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axZ-uc-WOZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="15" id="Nki-LS-KNw">
@@ -170,12 +177,13 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="axZ-uc-WOZ" id="LCw-hj-h13"/>
+                        <outlet property="emptyStateLabel" destination="Mtb-AS-5uc" id="Qpo-FY-eqM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Df-k7-Fb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="cHT-CX-HV7"/>
             </objects>
-            <point key="canvasLocation" x="1344.8" y="67.916041979010501"/>
+            <point key="canvasLocation" x="1344.8" y="469.1154422788606"/>
         </scene>
         <!--Invite Friend View Controller-->
         <scene sceneID="dNS-Ua-tjd">
@@ -209,18 +217,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOy-h9-6jB">
-                                        <rect key="frame" x="60" y="170" width="87" height="33"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="33" id="683-rk-h3B"/>
-                                            <constraint firstAttribute="width" constant="87" id="RPV-46-s7p"/>
-                                        </constraints>
-                                        <state key="normal" title="Avbryt"/>
-                                        <connections>
-                                            <action selector="closeModal:" destination="9oo-Ix-M5h" eventType="touchUpInside" id="mGV-nQ-uMd"/>
-                                        </connections>
-                                    </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Skicka en notis för att berätta att du också är fikasugen" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nHy-Lo-huM">
                                         <rect key="frame" x="20" y="76" width="295" height="58"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -231,24 +227,36 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEm-M9-fCv">
-                                        <rect key="frame" x="173" y="170" width="102" height="33"/>
+                                        <rect key="frame" x="153" y="170" width="142" height="33"/>
                                         <color key="backgroundColor" red="0.3548433781" green="0.63476294280000001" blue="0.46166265010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="142" id="I8r-kZ-p10"/>
                                             <constraint firstAttribute="height" constant="33" id="TaU-HL-rF0"/>
-                                            <constraint firstAttribute="width" constant="102" id="X8I-dW-rO0"/>
                                         </constraints>
-                                        <state key="normal" title="Skicka notis">
+                                        <state key="normal" title="Skicka fikainbjudan">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOy-h9-6jB">
+                                        <rect key="frame" x="20" y="170" width="87" height="33"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="683-rk-h3B"/>
+                                            <constraint firstAttribute="width" constant="87" id="RPV-46-s7p"/>
+                                        </constraints>
+                                        <state key="normal" title="Avbryt"/>
+                                        <connections>
+                                            <action selector="closeModal:" destination="9oo-Ix-M5h" eventType="touchUpInside" id="mGV-nQ-uMd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="tEm-M9-fCv" secondAttribute="trailing" constant="60" id="1Tj-Kb-Umo"/>
                                     <constraint firstAttribute="bottom" secondItem="OOy-h9-6jB" secondAttribute="bottom" constant="8" id="ApU-OD-NL2"/>
                                     <constraint firstItem="XyF-Rc-vJb" firstAttribute="top" secondItem="Vhy-HG-ljR" secondAttribute="top" constant="20" id="F8h-kP-mIy"/>
                                     <constraint firstItem="nHy-Lo-huM" firstAttribute="top" secondItem="zpW-NJ-KJC" secondAttribute="bottom" constant="12" id="ITM-dR-fxD"/>
                                     <constraint firstItem="zpW-NJ-KJC" firstAttribute="leading" secondItem="Vhy-HG-ljR" secondAttribute="leading" constant="8" id="K2z-TK-dPc"/>
+                                    <constraint firstAttribute="trailing" secondItem="tEm-M9-fCv" secondAttribute="trailing" constant="40" id="LxF-0h-qc2"/>
                                     <constraint firstItem="nHy-Lo-huM" firstAttribute="leading" secondItem="Vhy-HG-ljR" secondAttribute="leading" constant="20" id="NjR-Lm-wGo"/>
                                     <constraint firstItem="zpW-NJ-KJC" firstAttribute="top" secondItem="XyF-Rc-vJb" secondAttribute="bottom" constant="2" id="OzZ-jl-ydc"/>
                                     <constraint firstAttribute="height" constant="211" id="Sku-xS-1nY"/>
@@ -256,7 +264,7 @@
                                     <constraint firstItem="XyF-Rc-vJb" firstAttribute="leading" secondItem="Vhy-HG-ljR" secondAttribute="leading" constant="8" id="dGK-9b-sOw"/>
                                     <constraint firstAttribute="trailing" secondItem="XyF-Rc-vJb" secondAttribute="trailing" constant="8" id="gU5-8F-LRR"/>
                                     <constraint firstAttribute="trailing" secondItem="nHy-Lo-huM" secondAttribute="trailing" constant="20" id="j6D-Lr-Wb8"/>
-                                    <constraint firstItem="OOy-h9-6jB" firstAttribute="leading" secondItem="Vhy-HG-ljR" secondAttribute="leading" constant="60" id="pdI-QL-84C"/>
+                                    <constraint firstItem="OOy-h9-6jB" firstAttribute="leading" secondItem="Vhy-HG-ljR" secondAttribute="leading" constant="40" id="pdI-QL-84C"/>
                                     <constraint firstAttribute="bottom" secondItem="tEm-M9-fCv" secondAttribute="bottom" constant="8" id="qUa-Mw-8D8"/>
                                 </constraints>
                             </view>
@@ -277,7 +285,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5MT-ez-8zl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1344.8" y="823.53823088455783"/>
+            <point key="canvasLocation" x="2236" y="468.21589205397305"/>
         </scene>
         <!--Fika-->
         <scene sceneID="Hbq-nn-yDe">

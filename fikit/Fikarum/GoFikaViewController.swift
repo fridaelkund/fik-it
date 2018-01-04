@@ -21,13 +21,14 @@ class GoFikaViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func goFikaAction(_ sender: Any) {
+        print(status)
             //Perform action depending on current status (toggle)
             if(status == "offline"){
                 //Set online
                 dataModel.setStatus(status: "online")
                 
                 //View update
-                goFikaButton.setTitle("Go offline", for: .normal)
+                goFikaButton.setTitle("Jag vill inte fika", for: .normal)
                 toFikarumButton.isHidden = false
             }
             else if(status == "online"){
@@ -35,7 +36,7 @@ class GoFikaViewController: UIViewController {
                 dataModel.setStatus(status: "offline")
                 
                 //View update
-                goFikaButton.setTitle("Go online", for: .normal)
+                goFikaButton.setTitle("Jag vill fika", for: .normal)
                 toFikarumButton.isHidden = true
             }
     }
@@ -43,16 +44,13 @@ class GoFikaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            //Hide Fika-room button in the beginning. User needs to be "online" to access it
-            toFikarumButton.isHidden = true
-            
-            //Get user data
-            dataModel.observeDatabase { [weak self] (data: NSDictionary) in
-                //When we have the data we can use it here
-                self?.useData(data: data)
-            }
-        
-        
+        //Get user data
+        dataModel.observeDatabase { [weak self] (data: NSDictionary) in
+            //When we have the data we can use it here
+            self?.useData(data: data)
+        }
+        goFikaAction(self)
+
     }
     
     //Using the data that we got from the model
