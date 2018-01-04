@@ -41,7 +41,9 @@ class SignUpViewController: UIViewController {
     private func useData(data: String) {
         //data can be success or fail depending on if signup was successful or not
         if(data == "Success"){
-            
+            //Add user to database
+            dataModel.addUser()
+
             //SignUp successful - we login (Go to FikaView)
             self.presentFikaView()
             
