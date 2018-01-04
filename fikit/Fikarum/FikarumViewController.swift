@@ -57,7 +57,6 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
 
 // --- Creating collection view ---
 
-
 // MARK: - UICollectionViewDataSource
 extension FikarumViewController {
     //1
