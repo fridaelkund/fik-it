@@ -18,37 +18,19 @@ class TableViewController: UITableViewController {
     var allUsers: Array<Any> = []
     var nonFriends: Array<Any> = []
 
-    //MARK: Actions
-    @IBAction func logoutAction(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        } catch let error as NSError {
-            print("Logout error", error.localizedDescription)
-        }
-        
-        //Set status to offline in database for the user when signed out
-        dataModel.setStatus(status: "offline")
-        
-        //Switch view to "login" view
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn")
-        present(vc, animated: true, completion: nil)
-        
-    }
-
     //MARK: Object
-    
     struct Objects {
-        
         var sectionName : String!
         var sectionObjects : [String]!
     }
     
     var objectArray = [Objects]()
     
-    //MARK: Functions
     
+    //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Get user data
         dataModel.observeDatabase { [weak self] (data: NSDictionary) in
             //When we have the data we can use it here
@@ -57,21 +39,18 @@ class TableViewController: UITableViewController {
             //Reload lists
             self?.createUserList()
             
-    
             self?.tableView.reloadData()
-
-            //self?.reloadLists()
         }
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    
+    
+    //TODO:
+    // Clean up så vi gör som i FriendsModel - det var snyggare
+    // fixa med ID med
     
     //Going trough lists of users and friends and sorting out friends
     //from users to be displayed in two different lists
@@ -88,13 +67,12 @@ class TableViewController: UITableViewController {
             if(!isFriend){
                 nonFriends.append(user)
             }
-            
-            
         }
         //We append the friend list the the list of other users to the objects array that is displayed in table view
         self.objectArray.append(Objects(sectionName: "Vänner", sectionObjects: self.friends as! [String]))
         self.objectArray.append(Objects(sectionName: "Andra användare", sectionObjects: self.nonFriends as! [String]))
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -104,88 +82,63 @@ class TableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
+    // We want as many sections as we have objects in objectsArray
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return objectArray.count
     }
-
+    
+    // We want as many rows in each section as the number of items for each object in ObjectsArray
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return objectArray[section].sectionObjects.count
     }
 
   
+    // creating cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
-        //Button
-        let button : UIButton = UIButton(type:UIButtonType.custom) as UIButton
-        button.frame = CGRect(origin: CGPoint(x: 200,y :60), size: CGSize(width: 100, height: 24))
-        let cellHeight: CGFloat = 44.0
-        button.center = CGPoint(x: view.bounds.width / (4/3), y: cellHeight / 2.0)
-        
-        button.setTitleColor(.blue, for: .normal)
-        button.tag = indexPath.row
-        button.setTitle("Add", for: UIControlState.normal)
-        button.addTarget(self, action: #selector(TableViewController.btnAction(_:)), for: .touchUpInside)
-        
-        
-        if(objectArray[indexPath.section].sectionName == "Vänner"){
-            print("VÄN")
-            // Configure the cell...
-            cell.textLabel?.text = objectArray[indexPath.section].sectionObjects[indexPath.row]
-        }
-        else{
-            // Configure the cell...
-            cell.textLabel?.text = objectArray[indexPath.section].sectionObjects[indexPath.row]
-            cell.addSubview(button)
-        }
+        cell.textLabel?.text = objectArray[indexPath.section].sectionObjects[indexPath.row]
         
         return cell
     }
     
-    
-    @objc func btnAction(_ sender: UIButton) {
-        print("LETS ADD", sender)
-        let point = sender.convert(CGPoint.zero, to: self.tableView as UIView)
-        print("POINT IS", point)
-        let indexPath: IndexPath! = self.tableView.indexPathForRow(at: point)
-        print("INDEX POINT IS", indexPath)
-        // print(indexPath)
-        // print("row is = \(indexPath.row) && section is = \(indexPath.section)")
-        
-        sender.removeFromSuperview()
-        //Perform addUserToFriends
-        self.friends.append(objectArray[indexPath.section].sectionObjects[indexPath.row])
-        
-        //Add friends to Database
-        dataModel.addFriends(friends: self.friends)
-        
-    }
-    
-    
+    // setting the title according to sectionName in objectsArray
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return objectArray[section].sectionName
     }
 
+    
+    // Selected row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    NSLog("You selected cell number: \(indexPath.row)!")
-        
+    NSLog("You selected cell number: \(indexPath.section)!")
+        //If non-friends section
+        if(indexPath.section == 1){
+            print("we should add this friend")
+         
+            alertWindow(title: "Add friend", message: "Do you want do add " + objectArray[indexPath.section].sectionObjects[indexPath.row] + " as your friend?", indexPath: indexPath)
+            
+        }
+        //If friends section
+        else{
+            print("we should not add")
+            //MAYBE ADD REMOVE FRIEND HERE
+        }
     }
+    
     
     //MARK: Private functions
     
     //Clearing lists function
     private func refreshLists(){
-        self.nonFriends = []
-        self.objectArray = [Objects]()
-        self.friends = []
-        self.allUsers = []
+        self.nonFriends.removeAll()
+        self.objectArray.removeAll()
+        self.friends.removeAll()
+        self.allUsers.removeAll()
     }
 
+    //TODO: FIXA SÅ DEN BLIR SNYGGARE OCH LÄGGER IN ID OSV
     //Using the data that we got from the model
     private func useData(data: NSDictionary) {
-        
         //Clear so we can refresh view with correct data
         self.refreshLists()
         
@@ -202,5 +155,30 @@ class TableViewController: UITableViewController {
         }
         else{print("no user")}
     }
+    
+    
+   // Modal for confirming adding a user
+    private func alertWindow(title: String, message: String, indexPath: IndexPath){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // OK button
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+            // Code in this block will trigger when OK button tapped.
+            print("Ok button tapped");
+            self.friends.append(self.objectArray[indexPath.section].sectionObjects[indexPath.row])
+            self.dataModel.addFriends(friends: self.friends)
+        }
+        alertController.addAction(OKAction)
+        
+        // Cancel button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        alertController.addAction(cancelAction)
+        
+        //Show modal
+        self.present(alertController, animated: true, completion:nil)
+    }
+    
     
 }
