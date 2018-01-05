@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="415" y="-1299"/>
         </scene>
-        <!--friendsView-->
+        <!--profilsida-->
         <scene sceneID="FMr-t1-M5o">
             <objects>
-                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="friendsView" id="YyV-VM-wdT" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="settings" referencedIdentifier="profilsida" id="YyV-VM-wdT" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Vänner" id="omn-CU-d7U"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tt-gb-mv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
