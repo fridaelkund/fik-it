@@ -7,10 +7,10 @@
 
 import UIKit
 
-class FriendsViewController: UIViewController {
+class FriendsViewController: UIViewController, FriendsViewModelDelegate {
 
     //Hämtar data från model
-    fileprivate let viewModel = ProfileViewModel()
+    fileprivate let viewModel = FriendsViewModel()
 
     @IBOutlet weak var tableView: UITableView?
     
@@ -36,11 +36,12 @@ class FriendsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-}
-
-extension FriendsViewController: ProfileViewModelDelegate {
     func didFinishUpdates() {
+        print("did finish updating", self.viewModel.items[0].type)
         self.tableView?.reloadData()
-
     }
+    
+    
 }
+
+

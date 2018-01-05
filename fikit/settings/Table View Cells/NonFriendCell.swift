@@ -13,6 +13,9 @@ class NonFriendCell: UITableViewCell {
     @IBOutlet weak var pictureImageView: UIImageView!
     
     @IBOutlet weak var addFriendButton: UIButton!
+    fileprivate let viewModel = FriendsViewModel()
+
+    var dataModel = DataModel()
     
     var item: Friend? {
         didSet {
@@ -20,20 +23,18 @@ class NonFriendCell: UITableViewCell {
                 return
             }
             
-            if let pictureUrl = item.pictureUrl {
-                pictureImageView?.image = UIImage(named: pictureUrl)
-            }
+//            if let pictureUrl = item.pictureUrl {
+//                pictureImageView?.image = UIImage(named: pictureUrl)
+//            }
             
             nameLabel?.text = item.name
         }
     }
     
     @IBAction func addFriendAction(_ sender: UIButton) {
-        print(self.item?.name)
+        print(self.item)
         //Now we should add and remove friends from arrays
-        
         //self.friends.append(objectArray["Vänner"].sectionObjects[self.item.name])
-
     }
     
     
