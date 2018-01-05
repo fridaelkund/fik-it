@@ -13,6 +13,8 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var emptyStateLabel: UILabel!
+    
     //MARK: Variables
     var dataModel = DataModel()
     var friends: Array<Any> = []
@@ -24,6 +26,8 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emptyStateLabel.isHidden = true
         
         //Get user data
         dataModel.observeDatabase { [weak self] (data: NSDictionary) in
@@ -38,16 +42,24 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         if let currentUser = Auth.auth().currentUser{
             let user = data[currentUser.uid] as! NSDictionary
             self.friends = user["friends"] as! Array<Any>
+            
+            
+            
+            // Get only online friends
+            if(self.friends.count < 1){
+                emptyStateLabel.isHidden = false
+            }
         }
-        else{print("no user")}
+        else{
+            print("error")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "InviteFriendSegue"{
             let destView = segue.destination as! inviteFriendViewController
             if let indexPath = collectionView.indexPathsForSelectedItems {
-           
-            // I realize this isn't how you should do it, but it works.
+
                 destView.name = self.friends[indexPath[0][1]] as! String
             }
 
