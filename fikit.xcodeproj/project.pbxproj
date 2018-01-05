@@ -30,9 +30,9 @@
 		A75E3FE21FFBE9B300A1C400 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75E3FE11FFBE9B300A1C400 /* TableViewController.swift */; };
 		A75E3FE41FFC018400A1C400 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75E3FE31FFC018400A1C400 /* TableViewCell.swift */; };
 		A787FC191FFE352E007EE428 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A787FC181FFE352E007EE428 /* FriendsViewController.swift */; };
-		A787FC1B1FFE3765007EE428 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A787FC1A1FFE3765007EE428 /* ProfileModel.swift */; };
+		A787FC1B1FFE3765007EE428 /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A787FC1A1FFE3765007EE428 /* FriendsModel.swift */; };
 		A787FC1D1FFE3A22007EE428 /* ServerData.json in Resources */ = {isa = PBXBuildFile; fileRef = A787FC1C1FFE3A22007EE428 /* ServerData.json */; };
-		A787FC1F1FFE3B81007EE428 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A787FC1E1FFE3B81007EE428 /* ProfileViewModel.swift */; };
+		A787FC1F1FFE3B81007EE428 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A787FC1E1FFE3B81007EE428 /* FriendsViewModel.swift */; };
 		A787FC251FFE43A5007EE428 /* NamePictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A787FC231FFE43A5007EE428 /* NamePictureCell.swift */; };
 		A787FC261FFE43A5007EE428 /* NamePictureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A787FC241FFE43A5007EE428 /* NamePictureCell.xib */; };
 		A787FC2D1FFE4661007EE428 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A787FC2B1FFE4661007EE428 /* FriendsCell.swift */; };
@@ -86,9 +86,9 @@
 		A75E3FE31FFC018400A1C400 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		A779BF951FC9DC7F00E0C1F4 /* fikit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fikit.entitlements; sourceTree = "<group>"; };
 		A787FC181FFE352E007EE428 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
-		A787FC1A1FFE3765007EE428 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		A787FC1A1FFE3765007EE428 /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
 		A787FC1C1FFE3A22007EE428 /* ServerData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServerData.json; sourceTree = "<group>"; };
-		A787FC1E1FFE3B81007EE428 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		A787FC1E1FFE3B81007EE428 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		A787FC231FFE43A5007EE428 /* NamePictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamePictureCell.swift; sourceTree = "<group>"; };
 		A787FC241FFE43A5007EE428 /* NamePictureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NamePictureCell.xib; sourceTree = "<group>"; };
 		A787FC2B1FFE4661007EE428 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
@@ -202,8 +202,8 @@
 				A75E3FE11FFBE9B300A1C400 /* TableViewController.swift */,
 				A75E3FE31FFC018400A1C400 /* TableViewCell.swift */,
 				A787FC181FFE352E007EE428 /* FriendsViewController.swift */,
-				A787FC1A1FFE3765007EE428 /* ProfileModel.swift */,
-				A787FC1E1FFE3B81007EE428 /* ProfileViewModel.swift */,
+				A787FC1A1FFE3765007EE428 /* FriendsModel.swift */,
+				A787FC1E1FFE3B81007EE428 /* FriendsViewModel.swift */,
 				A787FC1C1FFE3A22007EE428 /* ServerData.json */,
 			);
 			path = settings;
@@ -510,11 +510,11 @@
 				A787FC251FFE43A5007EE428 /* NamePictureCell.swift in Sources */,
 				86D4C5641FCD576A00D75DCC /* FikarumPhotoCell.swift in Sources */,
 				A732F69B1FB708C30096C287 /* SignUpViewController.swift in Sources */,
-				A787FC1F1FFE3B81007EE428 /* ProfileViewModel.swift in Sources */,
+				A787FC1F1FFE3B81007EE428 /* FriendsViewModel.swift in Sources */,
 				A7A63E021FF64C0800D7B545 /* ProfileViewController.swift in Sources */,
 				A787FC351FFE4A6A007EE428 /* NonFriendCell.swift in Sources */,
 				A732F6A11FB71C340096C287 /* ResetPasswordViewController.swift in Sources */,
-				A787FC1B1FFE3765007EE428 /* ProfileModel.swift in Sources */,
+				A787FC1B1FFE3765007EE428 /* FriendsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

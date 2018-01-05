@@ -11,7 +11,7 @@ import Firebase
 class DataModel {
     //MARK: Properties
     var ref = Database.database().reference()
-
+    var friends: Array<Any> = []
     //MARK: Functions
     
     //Observing and parsing user data
@@ -39,12 +39,15 @@ class DataModel {
     }
     
     func getData(onSuccess:  @escaping (Profile) -> Void) {
+        let currentUser = Auth.auth().currentUser
         self.ref.observe(DataEventType.value, with: { (snapshot) in
            // let value = snapshot.value as? [String : AnyObject]
            // let users = value?["users"] as? NSDictionary
             
             let profileDict = snapshot.value as? [String : AnyObject]
             let users = profileDict!["users"] as?  [String : AnyObject]
+            self.friends = users![(currentUser?.uid)!]!["friends"] as! Array<Any>
+            print("FRIENDS ARE", self.friends)
             if let profile = Profile(data: users) {
                 onSuccess(profile)
             }
@@ -81,7 +84,7 @@ class DataModel {
             self.ref.child("users").child(currentUser.uid).setValue(
                 ["username": currentUser.displayName ?? "no name",
                  "status": "offline",
-                 "friends": ["frida", "Josefine Möller", "alex", "linnea"]]
+                 "friends": ["QzPQZbJu5FNfVhJN4ePstfSF0yW2", "gGInt0CaGFPT5FlMKSq2nDnyqZG2"]]
             )
         }
         else{
@@ -90,12 +93,14 @@ class DataModel {
         }
     }
     
+    
+
     func addFriends(friends: Array<Any>) {
+        
         print("friends are", friends as! [String])
          if let currentUser = Auth.auth().currentUser {
             //self.ref.child("users").child(currentUser.uid).updateChildValues(["friends" : friends])
             self.ref.root.child("users").child(currentUser.uid).updateChildValues(["friends": friends])
-
         }
     }
     

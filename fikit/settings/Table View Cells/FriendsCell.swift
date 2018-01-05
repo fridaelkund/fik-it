@@ -18,9 +18,9 @@ class FriendsCell: UITableViewCell {
                 return
             }
             
-            if let pictureUrl = item.pictureUrl {
-                pictureImageView?.image = UIImage(named: pictureUrl)
-            }
+//            if let pictureUrl = item.pictureUrl {
+//                pictureImageView?.image = UIImage(named: pictureUrl)
+//            }
             
             nameLabel?.text = item.name
         }
