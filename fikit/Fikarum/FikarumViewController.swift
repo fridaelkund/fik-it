@@ -17,7 +17,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     
     //MARK: Properties
     var dataModel = DataModel()
-    var friends: Array<Any> = []
+    var friends: Array<AnyObject> = []
     
     fileprivate let reuseIdentifier = "Fotocell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
@@ -42,8 +42,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             let destView = segue.destination as! inviteFriendViewController
             if let indexPath = collectionView.indexPathsForSelectedItems {
 
-//                destView.name = self.friends[indexPath[0][1]] as! String
-                destView.name = "Ryan"
+                destView.name = self.friends[indexPath[0][1]]["username"] as! String
             }
 
         }
@@ -57,7 +56,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             let user = data[currentUser.uid] as! NSDictionary
             
             //Call function creating list of current users friends
-            self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<Any>)
+            self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<AnyObject>)
             
             // Get only online friends
             if(self.friends.count < 1){
