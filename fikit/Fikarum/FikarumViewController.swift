@@ -41,9 +41,9 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     private func useData(data: NSDictionary) {
         if let currentUser = Auth.auth().currentUser{
             let user = data[currentUser.uid] as! NSDictionary
-            self.friends = user["friends"] as! Array<Any>
             
-            
+            //Call function creating list of current users friends
+            self.createFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<Any>)
             
             // Get only online friends
             if(self.friends.count < 1){
@@ -52,6 +52,17 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         else{
             print("error")
+        }
+    }
+    
+    //Creating friendslist
+    private func createFriendsList(hasFriends: Bool, userFriends: Array<Any>){
+        //If user has friends we fetch them, else we start with empty friends array
+        if(hasFriends == false){
+            self.friends = []
+        }
+        else{
+            self.friends = userFriends
         }
     }
     

@@ -12,38 +12,24 @@ class DataModel {
     //MARK: Properties
     var ref = Database.database().reference()
     var friends: Array<Any> = []
+    
     //MARK: Functions
     
     //Observing and parsing user data
     func observeDatabase(completion: @escaping ((_ data: NSDictionary) -> Void)) {
-
-//        if let currentUser = Auth.auth().currentUser{
-            //Observe user information from database
             self.ref.observe(DataEventType.value, with: { (snapshot) in
-                
                 let value = snapshot.value as? NSDictionary
                 let users = value?["users"] as? NSDictionary
-                
-                //let user = users?[currentUser.uid] as? NSDictionary
-                
-                //self.user = user!
                 
                 //Completion - we have the user data
                 completion(users!)
             })
-//        }
-//        else{
-//            //Add redirect here later (to login page)
-//            print("no current user")
-//        }
     }
     
+//--- NOT USED ANYMORE BUT WILL FAIL IF WE REMOVE AS LONG AS WE KEEP OLD FILES ---
     func getData(onSuccess:  @escaping (Profile) -> Void) {
         let currentUser = Auth.auth().currentUser
         self.ref.observe(DataEventType.value, with: { (snapshot) in
-           // let value = snapshot.value as? [String : AnyObject]
-           // let users = value?["users"] as? NSDictionary
-            
             let profileDict = snapshot.value as? [String : AnyObject]
             let users = profileDict!["users"] as?  [String : AnyObject]
             self.friends = users![(currentUser?.uid)!]!["friends"] as! Array<Any>
@@ -56,6 +42,7 @@ class DataModel {
             }
         })
     }
+// -------------------------------------------------------------------------------
     
     
     //Setting status in database
@@ -75,35 +62,30 @@ class DataModel {
         }
     }
     
-    //TODO: FIXA SÅ DEN INTE LÄGGER TILL SÅHÄR
     
     //Add user info to database
     func addUser(){
-        //FRIEND LIST SHOULD NOT BE LIKE THIS (need to be different for all users, containing ids or something)
         if let currentUser = Auth.auth().currentUser {
             self.ref.child("users").child(currentUser.uid).setValue(
                 ["username": currentUser.displayName ?? "no name",
                  "status": "offline",
-                 "friends": ["QzPQZbJu5FNfVhJN4ePstfSF0yW2", "gGInt0CaGFPT5FlMKSq2nDnyqZG2"]]
+                 "hasFriends": false, //Used to check if user has friends or if we should display empty array
+                 "friends" : ["default friend"], //we need to have a fake-friend as default - else entry won't exist
+                 "id": currentUser.uid]
             )
         }
-        else{
-            //Add redirect here later (to login page)
-            print("no current user")
-        }
     }
     
-    
-
+    //Add new friends to database
     func addFriends(friends: Array<Any>) {
-        
-        print("friends are", friends as! [String])
          if let currentUser = Auth.auth().currentUser {
-            //self.ref.child("users").child(currentUser.uid).updateChildValues(["friends" : friends])
             self.ref.root.child("users").child(currentUser.uid).updateChildValues(["friends": friends])
+            //Now user has friends
+            self.ref.root.child("users").child(currentUser.uid).updateChildValues(["hasFriends": true])
         }
     }
     
+    //ARE WE USING ?? check so that it works with addFriends-changes in that case
     // Send data to database
     func updateDatabase(value: Dictionary<String, Any>){
         print("adding to database")
@@ -127,9 +109,4 @@ class DataModel {
         }
     }
     
-    //Logout
-    func logout(){
-        
-    }
-
 }
