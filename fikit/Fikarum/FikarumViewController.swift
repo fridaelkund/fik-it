@@ -42,7 +42,8 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             let destView = segue.destination as! inviteFriendViewController
             if let indexPath = collectionView.indexPathsForSelectedItems {
 
-                destView.name = self.friends[indexPath[0][1]] as! String
+//                destView.name = self.friends[indexPath[0][1]] as! String
+                destView.name = "Ryan"
             }
 
         }
