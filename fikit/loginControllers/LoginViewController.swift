@@ -86,7 +86,8 @@ class LoginViewController: UIViewController {
             }
         }
     }
-        
+    
+    //CHANGE TO WILL APPEAR??? 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if(Auth.auth().currentUser != nil){

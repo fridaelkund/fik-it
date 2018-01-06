@@ -14,14 +14,13 @@ class TableViewController: UITableViewController {
 
     //MARK: Properties
     var dataModel = DataModel()
-    var friends: Array<Any> = []
-    var allUsers: Array<Any> = []
-    var nonFriends: Array<Any> = []
+    var friends: Array<AnyObject> = []
+    var nonFriends: Array<AnyObject> = []
 
     //MARK: Object
     struct Objects {
         var sectionName : String!
-        var sectionObjects : [String]!
+        var sectionObjects : Array<AnyObject>!
     }
     //Array for storing objects
     var objectArray = [Objects]()
@@ -61,9 +60,11 @@ class TableViewController: UITableViewController {
   
     // creating cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
-        cell.textLabel?.text = objectArray[indexPath.section].sectionObjects[indexPath.row]
+        let user = objectArray[indexPath.section].sectionObjects[indexPath.row]
+        
+        cell.textLabel?.text = user["username"] as? String
+        cell.imageView?.image = UIImage(named:"placeholderImage")
         
         return cell
     }
@@ -76,18 +77,17 @@ class TableViewController: UITableViewController {
     
     // Selected row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    NSLog("You selected cell number: \(indexPath.section)!")
+        
         //If non-friends section
         if(indexPath.section == 1){
-            print("we should add this friend")
-         
-            alertWindow(title: "Add friend", message: "Do you want do add " + objectArray[indexPath.section].sectionObjects[indexPath.row] + " as your friend?", indexPath: indexPath)
+            let user = objectArray[indexPath.section].sectionObjects[indexPath.row]["username"] as! String
+            alertWindow(title: "Add friend", message: "Do you want do add " + user + " as your friend?", indexPath: indexPath)
             
         }
         //If friends section
         else{
             print("we should not add")
-            //MAYBE ADD REMOVE FRIEND HERE
+            //MAYBE REMOVE FRIEND HERE
         }
     }
     
@@ -99,11 +99,11 @@ class TableViewController: UITableViewController {
         self.nonFriends.removeAll()
         self.objectArray.removeAll()
         self.friends.removeAll()
-        self.allUsers.removeAll()
     }
 
     //Using the data that we got from the model
     private func useData(data: NSDictionary) {
+        
         //Clear so we can refresh view with correct data
         self.refreshLists()
         
@@ -111,33 +111,37 @@ class TableViewController: UITableViewController {
             let user = data[currentUser.uid] as! NSDictionary
             
             //Call function creating list of current users friends
-            self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<Any>)
-            
+            self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<AnyObject>)
+        
             //loop through all users
             for (key, _) in data as NSDictionary{
-                let userloop = data[key] as! NSDictionary
-                
+                let user = data[key] as! NSDictionary
+               
+                //Create user structure to be appended to friends or nonFriends lists
+                let userObj = dataModel.getUserStructure(user: user)
+              
                 if key as? String != currentUser.uid {
+                    
                     var isFriend = false
                     //We check for nonFriends among all users
                     for friend in self.friends {
-                        if(friend as! String == key as! String){
+                        if(friend["id"] as! String == key as! String){
                             isFriend = true
                             break
                         }
                     }
-                    
+
                     //If user was not a friend we add to 'nonFriends'
                     if(!isFriend){
-                        let username = userloop["username"] as! String //Check what to add here
-                        self.nonFriends.append(username)
+                        self.nonFriends.append(userObj)
+                        print(self.nonFriends)
                     }
                     
                 }
             }
             //We append the friend list the the list of other users to the objects array that is displayed in table view
-            self.objectArray.append(Objects(sectionName: "Vänner", sectionObjects: self.friends as! [String]))
-            self.objectArray.append(Objects(sectionName: "Andra användare", sectionObjects: self.nonFriends as! [String]))
+            self.objectArray.append(Objects(sectionName: "Vänner", sectionObjects: self.friends))
+            self.objectArray.append(Objects(sectionName: "Andra användare", sectionObjects: self.nonFriends))
         }
     }
     
@@ -145,18 +149,18 @@ class TableViewController: UITableViewController {
     private func alertWindow(title: String, message: String, indexPath: IndexPath){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        // OK button
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-            // Code in this block will trigger when OK button tapped.
-            print("Ok button tapped");
+        // YES - add this friend
+        let OKAction = UIAlertAction(title: "YES", style: .default) { (action:UIAlertAction!) in
+            
+            // We add this friend in friendslist and database
             self.friends.append(self.objectArray[indexPath.section].sectionObjects[indexPath.row])
             self.dataModel.addFriends(friends: self.friends)
         }
         alertController.addAction(OKAction)
         
-        // Cancel button
+        // Cancel - don't add this friend
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
-            print("Cancel button tapped");
+            print("No, don't add this friend");
         }
         alertController.addAction(cancelAction)
         

@@ -41,7 +41,6 @@ class GoFikaViewController: UIViewController {
     }
     
     //MARK: Functions
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

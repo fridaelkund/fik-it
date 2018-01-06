@@ -59,7 +59,8 @@ class DataModel {
              "status": "offline",
              "hasFriends": false, //Used to check if user has friends or if we should display empty array
              "friends" : ["default friend"], //we need to have a fake-friend as default - else entry won't exist
-                "id": self.currentUser?.uid as Any]
+            "id": self.currentUser?.uid as Any,
+            "image": "no image"]
         )
     }
     
@@ -91,14 +92,29 @@ class DataModel {
         }
     }
     
-
-    func getFriendsList(hasFriends: Bool, userFriends: Array<Any>) -> Array<Any>{
-        var friends: Array<Any> = []
+    //RETURNING DATA STRUCTURES
+    
+    //Returning friendsLists depending on if user has friends or not 
+    func getFriendsList(hasFriends: Bool, userFriends: Array<AnyObject>) -> Array<AnyObject>{
+        var friends: Array<AnyObject> = []
         //If user has friends we fetch them, else we start with empty friends array
         if(hasFriends){
             friends = userFriends
         }
         return friends
+    }
+    
+    //Creating a Dictionary with user info and returning it
+    func getUserStructure(user: NSDictionary) -> NSDictionary {
+        var userObj: NSDictionary = [:]
+        let username = user["username"] as! String
+        let userid = user["id"] as! String
+        let userImage = user["image"] as! String
+        userObj = ["id": userid,
+                   "username": username,
+                   "image": userImage]
+        
+        return userObj
     }
     
 }
