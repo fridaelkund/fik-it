@@ -23,56 +23,22 @@ class TableViewController: UITableViewController {
         var sectionName : String!
         var sectionObjects : [String]!
     }
-    
+    //Array for storing objects
     var objectArray = [Objects]()
     
-    
     //MARK: Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Get user data
         dataModel.observeDatabase { [weak self] (data: NSDictionary) in
             //When we have the data we can use it here
             self?.useData(data: data)
-        
-            //Reload lists
-            self?.createUserList()
-            
             self?.tableView.reloadData()
         }
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
-    
-    
-    
-    //TODO:
-    // Clean up så vi gör som i FriendsModel - det var snyggare
-    // fixa med ID med
-    
-    //Going trough lists of users and friends and sorting out friends
-    //from users to be displayed in two different lists
-    func createUserList(){
-        for user in allUsers {
-            var isFriend = false
-            for friend in self.friends{
-                if( user as! String == friend as! String){
-                    isFriend = true
-                    break
-                }
-            }
-            //We append all non-friends to separate list
-            if(!isFriend){
-                nonFriends.append(user)
-            }
-        }
-        //We append the friend list the the list of other users to the objects array that is displayed in table view
-        self.objectArray.append(Objects(sectionName: "Vänner", sectionObjects: self.friends as! [String]))
-        self.objectArray.append(Objects(sectionName: "Andra användare", sectionObjects: self.nonFriends as! [String]))
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -136,7 +102,6 @@ class TableViewController: UITableViewController {
         self.allUsers.removeAll()
     }
 
-    //TODO: FIXA SÅ DEN BLIR SNYGGARE OCH LÄGGER IN ID OSV
     //Using the data that we got from the model
     private func useData(data: NSDictionary) {
         //Clear so we can refresh view with correct data
@@ -144,18 +109,37 @@ class TableViewController: UITableViewController {
         
         if let currentUser = Auth.auth().currentUser{
             let user = data[currentUser.uid] as! NSDictionary
-            self.friends = user["friends"] as! Array<Any>
             
-            //loop through all users and append to users array
+            //Call function creating list of current users friends
+            self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<Any>)
+            
+            //loop through all users
             for (key, _) in data as NSDictionary{
                 let userloop = data[key] as! NSDictionary
-                let username = userloop["username"] as! String //Check how we should append to get whole object
-                allUsers.append(username)
+                
+                if key as? String != currentUser.uid {
+                    var isFriend = false
+                    //We check for nonFriends among all users
+                    for friend in self.friends {
+                        if(friend as! String == key as! String){
+                            isFriend = true
+                            break
+                        }
+                    }
+                    
+                    //If user was not a friend we add to 'nonFriends'
+                    if(!isFriend){
+                        let username = userloop["username"] as! String //Check what to add here
+                        self.nonFriends.append(username)
+                    }
+                    
+                }
             }
+            //We append the friend list the the list of other users to the objects array that is displayed in table view
+            self.objectArray.append(Objects(sectionName: "Vänner", sectionObjects: self.friends as! [String]))
+            self.objectArray.append(Objects(sectionName: "Andra användare", sectionObjects: self.nonFriends as! [String]))
         }
-        else{print("no user")}
     }
-    
     
    // Modal for confirming adding a user
     private func alertWindow(title: String, message: String, indexPath: IndexPath){

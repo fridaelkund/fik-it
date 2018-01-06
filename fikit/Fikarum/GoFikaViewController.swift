@@ -10,10 +10,16 @@ import Firebase
 import FirebaseDatabase
 
 class GoFikaViewController: UIViewController {
+    
     //MARK: Properties
     var dataModel = DataModel()
-    var ref = Database.database().reference()
-    var status = "offline"
+    
+    var status = "offline" {
+        didSet{
+            //On change we call self.fikaMode() to update view
+            self.fikaMode()
+        }
+    }
     
     //MARK: Outlets
     @IBOutlet weak var toFikarumButton: UIButton!
@@ -21,25 +27,20 @@ class GoFikaViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func goFikaAction(_ sender: Any) {
-        print(status)
-            //Perform action depending on current status (toggle)
-            if(status == "offline"){
-                //Set online
-                dataModel.setStatus(status: "online")
-                
-                //View update
-                goFikaButton.setTitle("Jag vill inte fika", for: .normal)
-                toFikarumButton.isHidden = false
-            }
-            else if(status == "online"){
-                //Set offline
-                dataModel.setStatus(status: "offline")
-                
-                //View update
-                goFikaButton.setTitle("Jag vill fika", for: .normal)
-                toFikarumButton.isHidden = true
-            }
+        //Perform action depending on current status (toggle)
+        if(status == "offline"){
+            //Set online
+            dataModel.setStatus(status: "online")
+            
+        }
+        else if(status == "online"){
+            //Set offline
+            dataModel.setStatus(status: "offline")
+      
+        }
     }
+    
+    //MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +50,21 @@ class GoFikaViewController: UIViewController {
             //When we have the data we can use it here
             self?.useData(data: data)
         }
-        goFikaAction(self)
-
     }
+    
+    //Toggle fikamode buttons depending on status
+    func fikaMode(){
+        if(self.status == "offline"){
+            goFikaButton.setTitle("Jag vill fika", for: .normal)
+            toFikarumButton.isHidden = true
+        }
+        else{
+            goFikaButton.setTitle("Jag vill inte fika", for: .normal)
+            toFikarumButton.isHidden = false
+        }
+    }
+    
+    //MARK: Private functions
     
     //Using the data that we got from the model
     private func useData(data: NSDictionary) {

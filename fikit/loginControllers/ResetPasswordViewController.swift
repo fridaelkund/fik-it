@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class ResetPasswordViewController: UIViewController {
     
-    //MARK: Labels
+    //MARK: Outlets
     @IBOutlet weak var emailTextField: UITextField!
     
     //MARK: Actions

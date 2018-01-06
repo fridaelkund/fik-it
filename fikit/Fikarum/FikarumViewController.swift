@@ -10,23 +10,23 @@ import Firebase
 import FirebaseDatabase
 
 class FikarumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
-    @IBOutlet weak var collectionView: UICollectionView!
     
+    //MARK: Outlets
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var emptyStateLabel: UILabel!
     
-    //MARK: Variables
+    //MARK: Properties
     var dataModel = DataModel()
     var friends: Array<Any> = []
     
-    // MARK: - Properties
     fileprivate let reuseIdentifier = "Fotocell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
     fileprivate let itemsPerRow: CGFloat = 3
     
+    //MARK: Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         emptyStateLabel.isHidden = true
         
         //Get user data
@@ -36,25 +36,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             self?.collectionView.reloadData()
         }
     }
-    
-    //Using the data that we got from the model
-    private func useData(data: NSDictionary) {
-        if let currentUser = Auth.auth().currentUser{
-            let user = data[currentUser.uid] as! NSDictionary
-            self.friends = user["friends"] as! Array<Any>
-            
-            
-            
-            // Get only online friends
-            if(self.friends.count < 1){
-                emptyStateLabel.isHidden = false
-            }
-        }
-        else{
-            print("error")
-        }
-    }
-    
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "InviteFriendSegue"{
             let destView = segue.destination as! inviteFriendViewController
@@ -63,6 +45,26 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
                 destView.name = self.friends[indexPath[0][1]] as! String
             }
 
+        }
+    }
+    
+    //MARK: Private functions
+    
+    //Using the data that we got from the model
+    private func useData(data: NSDictionary) {
+        if let currentUser = Auth.auth().currentUser{
+            let user = data[currentUser.uid] as! NSDictionary
+            
+            //Call function creating list of current users friends
+            self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<Any>)
+            
+            // Get only online friends
+            if(self.friends.count < 1){
+                emptyStateLabel.isHidden = false
+            }
+        }
+        else{
+            print("error")
         }
     }
 }
