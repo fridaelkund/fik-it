@@ -14,7 +14,7 @@ class SignUpViewController: UIViewController {
     //MARK: Properties
     var dataModel = DataModel()
 
-    //MARK: Labels
+    //MARK: Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     

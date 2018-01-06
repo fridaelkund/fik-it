@@ -111,7 +111,7 @@ class TableViewController: UITableViewController {
             let user = data[currentUser.uid] as! NSDictionary
             
             //Call function creating list of current users friends
-            self.createFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<Any>)
+            self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<Any>)
             
             //loop through all users
             for (key, _) in data as NSDictionary{
@@ -121,7 +121,6 @@ class TableViewController: UITableViewController {
                     var isFriend = false
                     //We check for nonFriends among all users
                     for friend in self.friends {
-                        
                         if(friend as! String == key as! String){
                             isFriend = true
                             break
@@ -139,17 +138,6 @@ class TableViewController: UITableViewController {
             //We append the friend list the the list of other users to the objects array that is displayed in table view
             self.objectArray.append(Objects(sectionName: "Vänner", sectionObjects: self.friends as! [String]))
             self.objectArray.append(Objects(sectionName: "Andra användare", sectionObjects: self.nonFriends as! [String]))
-        }
-    }
-    
-    //Creating friendslist
-    private func createFriendsList(hasFriends: Bool, userFriends: Array<Any>){
-        //If user has friends we fetch them, else we start with empty friends array
-        if(hasFriends == false){
-            self.friends = []
-        }
-        else{
-            self.friends = userFriends
         }
     }
     

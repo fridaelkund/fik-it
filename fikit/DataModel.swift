@@ -9,9 +9,11 @@ import UIKit
 import Firebase
 
 class DataModel {
+    
     //MARK: Properties
     var ref = Database.database().reference()
     var friends: Array<Any> = []
+    var currentUser = Auth.auth().currentUser
     
     //MARK: Functions
     
@@ -28,11 +30,10 @@ class DataModel {
     
 //--- NOT USED ANYMORE BUT WILL FAIL IF WE REMOVE AS LONG AS WE KEEP OLD FILES ---
     func getData(onSuccess:  @escaping (Profile) -> Void) {
-        let currentUser = Auth.auth().currentUser
         self.ref.observe(DataEventType.value, with: { (snapshot) in
             let profileDict = snapshot.value as? [String : AnyObject]
             let users = profileDict!["users"] as?  [String : AnyObject]
-            self.friends = users![(currentUser?.uid)!]!["friends"] as! Array<Any>
+            self.friends = users![(self.currentUser?.uid)!]!["friends"] as! Array<Any>
             print("FRIENDS ARE", self.friends)
             if let profile = Profile(data: users) {
                 onSuccess(profile)
@@ -47,51 +48,32 @@ class DataModel {
     
     //Setting status in database
     func setStatus(status: String){
-        
-        if let currentUser = Auth.auth().currentUser {
-            if(status == "offline"){
-                self.ref.child("users").child(currentUser.uid).child("/status").setValue("offline")
-            }
-            else{
-                self.ref.child("users").child(currentUser.uid).child("/status").setValue("online")
-            }
-        }
-        else{
-            //Add redirect here later (to login page)
-            print("no current user")
-        }
+        self.ref.child("users").child((self.currentUser?.uid)!).child("/status").setValue(status)
     }
     
     
     //Add user info to database
     func addUser(){
-        if let currentUser = Auth.auth().currentUser {
-            self.ref.child("users").child(currentUser.uid).setValue(
-                ["username": currentUser.displayName ?? "no name",
-                 "status": "offline",
-                 "hasFriends": false, //Used to check if user has friends or if we should display empty array
-                 "friends" : ["default friend"], //we need to have a fake-friend as default - else entry won't exist
-                 "id": currentUser.uid]
-            )
-        }
+        self.ref.child("users").child((self.currentUser?.uid)!).setValue(
+            ["username": self.currentUser?.displayName ?? "no name",
+             "status": "offline",
+             "hasFriends": false, //Used to check if user has friends or if we should display empty array
+             "friends" : ["default friend"], //we need to have a fake-friend as default - else entry won't exist
+                "id": self.currentUser?.uid as Any]
+        )
     }
     
     //Add new friends to database
     func addFriends(friends: Array<Any>) {
-         if let currentUser = Auth.auth().currentUser {
-            self.ref.root.child("users").child(currentUser.uid).updateChildValues(["friends": friends])
-            //Now user has friends
-            self.ref.root.child("users").child(currentUser.uid).updateChildValues(["hasFriends": true])
-        }
+        self.ref.root.child("users").child((self.currentUser?.uid)!).updateChildValues(["friends": friends])
+        //Now user has friends
+        self.ref.root.child("users").child((self.currentUser?.uid)!).updateChildValues(["hasFriends": true])
     }
     
     //ARE WE USING ?? check so that it works with addFriends-changes in that case
     // Send data to database
     func updateDatabase(value: Dictionary<String, Any>){
-        print("adding to database")
-        if let currentUser = Auth.auth().currentUser {
-            self.ref.root.child("users").child(currentUser.uid).updateChildValues(value)
-        }
+        self.ref.root.child("users").child((self.currentUser?.uid)!).updateChildValues(value)
     }
     
     //SignUp
@@ -107,6 +89,16 @@ class DataModel {
                completion("Fail")
             }
         }
+    }
+    
+
+    func getFriendsList(hasFriends: Bool, userFriends: Array<Any>) -> Array<Any>{
+        var friends: Array<Any> = []
+        //If user has friends we fetch them, else we start with empty friends array
+        if(hasFriends){
+            friends = userFriends
+        }
+        return friends
     }
     
 }

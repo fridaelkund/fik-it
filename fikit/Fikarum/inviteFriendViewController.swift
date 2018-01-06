@@ -9,13 +9,18 @@ import UIKit
 
 class inviteFriendViewController: UIViewController {
     
+    //MARK: Properties
     var name: String = ""
+    
+    //MARK: Outlets
     @IBOutlet weak var inviteFriendLabel: UILabel!
     
+    //MARK: Actions
     @IBAction func closeModal(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         inviteFriendLabel?.text = name
