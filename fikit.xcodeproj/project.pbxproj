@@ -13,7 +13,6 @@
 		8629F4CF1FA75D5000DBD7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */; };
 		8629F4D21FA75D5000DBD7F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */; };
 		8629F4DD1FA75D5000DBD7F0 /* fikitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4DC1FA75D5000DBD7F0 /* fikitTests.swift */; };
-		863A0FB11FF2699100BCCD84 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A0FB01FF2699100BCCD84 /* SettingsViewController.swift */; };
 		864A5AF81FFCEF09004FC946 /* profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864A5AF71FFCEF09004FC946 /* profil.storyboard */; };
 		8674B09B1FCDAF620070C0D0 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8674B09A1FCDAF620070C0D0 /* settings.storyboard */; };
 		86D4C5511FCC5F2500D75DCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5501FCC5F2500D75DCC /* GoogleService-Info.plist */; };
@@ -69,7 +68,6 @@
 		8629F4D81FA75D5000DBD7F0 /* fikitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fikitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8629F4DC1FA75D5000DBD7F0 /* fikitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fikitTests.swift; sourceTree = "<group>"; };
 		8629F4DE1FA75D5000DBD7F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		863A0FB01FF2699100BCCD84 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		864A5AF71FFCEF09004FC946 /* profil.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = profil.storyboard; sourceTree = "<group>"; };
 		8674B09A1FCDAF620070C0D0 /* settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
 		86D4C5501FCC5F2500D75DCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				A787FC201FFE4301007EE428 /* Table View Cells */,
-				863A0FB01FF2699100BCCD84 /* SettingsViewController.swift */,
 				A75E3FE11FFBE9B300A1C400 /* TableViewController.swift */,
 				A75E3FE31FFC018400A1C400 /* TableViewCell.swift */,
 				A787FC181FFE352E007EE428 /* FriendsViewController.swift */,
@@ -499,7 +496,6 @@
 				A787FC191FFE352E007EE428 /* FriendsViewController.swift in Sources */,
 				86D4C55D1FCD4FDF00D75DCC /* GoFikaViewController.swift in Sources */,
 				A75E3FE21FFBE9B300A1C400 /* TableViewController.swift in Sources */,
-				863A0FB11FF2699100BCCD84 /* SettingsViewController.swift in Sources */,
 				8629F4CA1FA75D5000DBD7F0 /* ViewController.swift in Sources */,
 				A75E3FE41FFC018400A1C400 /* TableViewCell.swift in Sources */,
 				8629F4C81FA75D5000DBD7F0 /* AppDelegate.swift in Sources */,
