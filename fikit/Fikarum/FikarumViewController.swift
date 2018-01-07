@@ -18,7 +18,8 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     //MARK: Properties
     var dataModel = DataModel()
     var friends: Array<AnyObject> = []
-    
+    var onlineFriends: Array<AnyObject> = []
+
     fileprivate let reuseIdentifier = "Fotocell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
     fileprivate let itemsPerRow: CGFloat = 3
@@ -42,7 +43,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             let destView = segue.destination as! inviteFriendViewController
             if let indexPath = collectionView.indexPathsForSelectedItems {
 
-                destView.name = self.friends[indexPath[0][1]]["username"] as! String
+                destView.name = self.onlineFriends[indexPath[0][1]]["username"] as! String
             }
 
         }
@@ -58,8 +59,10 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             //Call function creating list of current users friends
             self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<AnyObject>)
             
+            self.onlineFriends = dataModel.getOnlineFriends(friends: self.friends, allUsers: data)
+            
             // Get only online friends
-            if(self.friends.count < 1){
+            if(self.onlineFriends.count < 1){
                 emptyStateLabel.isHidden = false
             }
         }
@@ -80,7 +83,7 @@ extension FikarumViewController {
     
     //2
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.friends.count
+        return self.onlineFriends.count
     }
     
     //3
@@ -94,6 +97,9 @@ extension FikarumViewController {
         //3
         cell.imageView.layer.cornerRadius = 70
         cell.imageView.clipsToBounds = true
+        
+        // If we have a cell, hide empty state
+        emptyStateLabel.isHidden = true
         
         return cell
     }

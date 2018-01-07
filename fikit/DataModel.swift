@@ -34,7 +34,6 @@ class DataModel {
             let profileDict = snapshot.value as? [String : AnyObject]
             let users = profileDict!["users"] as?  [String : AnyObject]
             self.friends = users![(self.currentUser?.uid)!]!["friends"] as! Array<Any>
-            print("FRIENDS ARE", self.friends)
             if let profile = Profile(data: users) {
                 onSuccess(profile)
             }
@@ -45,16 +44,11 @@ class DataModel {
     }
 // -------------------------------------------------------------------------------
     
-    
-    //Setting status in database
-    func setStatus(status: String){
-        self.ref.child("users").child((self.currentUser?.uid)!).child("/status").setValue(status)
-    }
-    
-    
     //Add user info to database
     func addUser(){
-        self.ref.child("users").child((self.currentUser?.uid)!).setValue(
+        // Get id for new user
+        self.currentUser = Auth.auth().currentUser
+        self.ref.root.child("users").child((self.currentUser?.uid)!).setValue(
             ["username": self.currentUser?.displayName ?? "no name",
              "status": "offline",
              "hasFriends": false, //Used to check if user has friends or if we should display empty array
@@ -71,10 +65,14 @@ class DataModel {
         self.ref.root.child("users").child((self.currentUser?.uid)!).updateChildValues(["hasFriends": true])
     }
     
-    //ARE WE USING ?? check so that it works with addFriends-changes in that case
-    // Send data to database
-    func updateDatabase(value: Dictionary<String, Any>){
+    // Send profile data to database
+    func updateUserProfile(value: Dictionary<String, Any>){
         self.ref.root.child("users").child((self.currentUser?.uid)!).updateChildValues(value)
+    }
+    
+    //Setting status in database
+    func setStatus(status: String){
+        self.ref.child("users").child((self.currentUser?.uid)!).child("/status").setValue(status)
     }
     
     //SignUp
@@ -105,6 +103,7 @@ class DataModel {
     }
     
     //Creating a Dictionary with user info and returning it
+    
     func getUserStructure(user: NSDictionary) -> NSDictionary {
         var userObj: NSDictionary = [:]
         let username = user["username"] as! String
@@ -116,5 +115,18 @@ class DataModel {
         
         return userObj
     }
+    
+    func getOnlineFriends(friends: Array<AnyObject>, allUsers: NSDictionary) -> Array<AnyObject>{
+        var onlineFriends: Array<AnyObject> = []
+        
+        for friend in friends{
+            let friendStatus = (allUsers[friend["id"]] as! NSDictionary)["status"] as! String
+            if friendStatus == "online"{
+                onlineFriends.append(friend)
+            }
+        }
+        return onlineFriends
+    }
+    
     
 }

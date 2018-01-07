@@ -86,7 +86,6 @@ class TableViewController: UITableViewController {
         }
         //If friends section
         else{
-            print("we should not add")
             //MAYBE REMOVE FRIEND HERE
         }
     }
@@ -134,7 +133,6 @@ class TableViewController: UITableViewController {
                     //If user was not a friend we add to 'nonFriends'
                     if(!isFriend){
                         self.nonFriends.append(userObj)
-                        print(self.nonFriends)
                     }
                     
                 }
@@ -160,7 +158,6 @@ class TableViewController: UITableViewController {
         
         // Cancel - don't add this friend
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
-            print("No, don't add this friend");
         }
         alertController.addAction(cancelAction)
         
