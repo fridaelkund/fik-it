@@ -14,9 +14,9 @@ class DataModel {
     var ref = Database.database().reference()
     var friends: Array<Any> = []
     var currentUser = Auth.auth().currentUser
+    let storageRef = Storage.storage().reference()
     
     //MARK: Functions
-    
     //Observing and parsing user data
     func observeDatabase(completion: @escaping ((_ data: NSDictionary) -> Void)) {
             self.ref.observe(DataEventType.value, with: { (snapshot) in
@@ -26,6 +26,17 @@ class DataModel {
                 //Completion - we have the user data
                 completion(users!)
             })
+    }
+    
+    //Observing and parsing user data
+    func observeStorage(completion: @escaping ((_ data: NSDictionary) -> Void)) {
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let users = value?["users"] as? NSDictionary
+            
+            //Completion - we have the user data
+            completion(users!)
+        })
     }
     
 //--- NOT USED ANYMORE BUT WILL FAIL IF WE REMOVE AS LONG AS WE KEEP OLD FILES ---
@@ -54,13 +65,22 @@ class DataModel {
              "hasFriends": false, //Used to check if user has friends or if we should display empty array
              "friends" : ["default friend"], //we need to have a fake-friend as default - else entry won't exist
             "id": self.currentUser?.uid as Any,
-            "image": "no image"]
+            "image": "images/\(self.currentUser?.uid as! String).jpg"]
         )
     }
     
     //Add new friends to database
     func addFriends(friends: Array<Any>) {
-        self.ref.root.child("users").child((self.currentUser?.uid)!).updateChildValues(["friends": friends])
+        var friendIDs: Array <Any> = []
+        // Appending only IDs to database
+        for friend in friends{
+            let friend = friend as! NSDictionary
+            let userObj = ["id": friend["id"] as! String]
+            friendIDs.append(userObj)
+        }
+        
+        self.ref.root.child("users").child((self.currentUser?.uid)!).updateChildValues(["friends": friendIDs])
+        
         //Now user has friends
         self.ref.root.child("users").child((self.currentUser?.uid)!).updateChildValues(["hasFriends": true])
     }
@@ -104,11 +124,12 @@ class DataModel {
     
     //Creating a Dictionary with user info and returning it
     
-    func getUserStructure(user: NSDictionary) -> NSDictionary {
-        var userObj: NSDictionary = [:]
+    func getUserStructure(user: NSDictionary) -> Dictionary <AnyHashable, Any> {
+        var userObj: Dictionary = [:] as Dictionary
         let username = user["username"] as! String
         let userid = user["id"] as! String
         let userImage = user["image"] as! String
+        
         userObj = ["id": userid,
                    "username": username,
                    "image": userImage]
@@ -122,11 +143,24 @@ class DataModel {
         for friend in friends{
             let friendStatus = (allUsers[friend["id"]] as! NSDictionary)["status"] as! String
             if friendStatus == "online"{
-                onlineFriends.append(friend)
+                onlineFriends.append(allUsers[friend["id"]] as! NSDictionary)
             }
         }
         return onlineFriends
     }
     
-    
+    func displayImage(imageViewToUse: UIImageView, userImageRef:StorageReference){
+        // Fetch the download URL
+        userImageRef.downloadURL { url, error in
+            if error != nil {
+                print("Error")
+            } else {
+                let data = NSData(contentsOf: url!)
+                let image = UIImage(data: data! as Data)!
+                imageViewToUse.image = image
+            }
+        }
+    }
+
+
 }

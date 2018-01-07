@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             displayUserAuths(currentUser: currentUser)
             
-            userObj = dataModel.getUserStructure(user: user)
+            userObj = dataModel.getUserStructure(user: user) as NSDictionary
             displayUserData()
         }
         else{
@@ -82,22 +82,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Displaying name
         self.tableVC?.nameInputField.text =  userObj["username"] as? String
         
-        // Displaying image
-        let userImage = userObj["image"]
-        if userImage as! String != "no image" {
-        //    let url = NSURL(string:(user.image?.absoluteString)!)
-            let url = NSURL(string:(userImage as! String))
-            let data = NSData(contentsOf:url! as URL)
-            
-            // If data is not null
-            if data!.length > 0 {
-                profileImage.image = UIImage(data:data! as Data)
-            }
-        }else{
-            profileImage.image = UIImage(named: "placeholderImage")
-        }
+        let userID = userObj["id"] as! String
+        let imageRef = dataModel.storageRef.child("image/\(userID).jpg") as StorageReference
         
+        dataModel.displayImage(imageViewToUse: self.profileImage, userImageRef: imageRef)
     }
+
 
     // Entering editing mode
     @objc func enterEditing(sender: UIBarButtonItem) {
@@ -110,7 +100,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         changeProfileImageBtn.isHidden = false
         tableVC?.nameInputField.isUserInteractionEnabled = true
         tableVC?.nameInputField.clearButtonMode = UITextFieldViewMode.always
-        
     }
     
     // Leaving editing mode
@@ -144,6 +133,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         dataModel.updateUserProfile(value: ["username" : tableVC?.nameInputField.text! ?? "no name"])
         
         //FIX ME: Add image to database too
+        self.uploadImageToStorage(){url in
+            if url != nil {
+            }
+        }
     }
     
 
@@ -167,14 +160,30 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // Update image in the view
         profileImage.image = chosenImage
-        
+    
         dismiss(animated: true, completion: nil)
     }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
-
+    
+    func uploadImageToStorage(completion: @escaping (_ url: String?) -> Void) {
+        let userID = userObj["id"] as! String
+        let userImageRef = dataModel.storageRef.child("image/\(userID).jpg")
+        
+        if let uploadData = UIImagePNGRepresentation(self.profileImage.image!) {
+            userImageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    print("error")
+                    completion(nil)
+                } else {
+                    completion((metadata?.downloadURL()?.absoluteString)!)
+                }
+            }
+        }
+    }
 
     // Logout and redirect to sign in
     func logOut(){

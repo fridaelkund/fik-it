@@ -30,7 +30,7 @@
                                     <action selector="changeImageAction:" destination="9II-F1-Qc5" eventType="touchUpInside" id="pKo-Ea-q7r"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImage" translatesAutoresizingMaskIntoConstraints="NO" id="bbq-wP-4Ul">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabBarCoffee" translatesAutoresizingMaskIntoConstraints="NO" id="bbq-wP-4Ul">
                                 <rect key="frame" x="127.5" y="84" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="b0d-Vi-mJ5"/>
@@ -189,6 +189,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="placeholderImage" width="435" height="435"/>
+        <image name="tabBarCoffee" width="25" height="25"/>
     </resources>
 </document>

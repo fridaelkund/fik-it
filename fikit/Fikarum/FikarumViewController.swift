@@ -36,13 +36,14 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             self?.useData(data: data)
             self?.collectionView.reloadData()
         }
+        
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "InviteFriendSegue"{
             let destView = segue.destination as! inviteFriendViewController
             if let indexPath = collectionView.indexPathsForSelectedItems {
-
+                print(self.onlineFriends)
                 destView.name = self.onlineFriends[indexPath[0][1]]["username"] as! String
             }
 
@@ -60,11 +61,12 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<AnyObject>)
             
             self.onlineFriends = dataModel.getOnlineFriends(friends: self.friends, allUsers: data)
-            
+                        
             // Get only online friends
             if(self.onlineFriends.count < 1){
                 emptyStateLabel.isHidden = false
             }
+            
         }
         else{
             print("error")
@@ -91,8 +93,14 @@ extension FikarumViewController {
         //1
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! FikarumPhotoCell
+        
         //2
         cell.imageView.image = UIImage(named:"placeholderImage")
+
+        let userID = onlineFriends[indexPath[1]]["id"] as! String
+        let imageRef = dataModel.storageRef.child("image/\(userID).jpg") as StorageReference
+        
+        dataModel.displayImage(imageViewToUse: cell.imageView, userImageRef: imageRef)
         
         //3
         cell.imageView.layer.cornerRadius = 70
