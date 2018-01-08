@@ -14,6 +14,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var emptyStateLabel: UILabel!
+    @IBOutlet weak var youHaveFriendsLabel: UILabel!
     
     //MARK: Properties
     var dataModel = DataModel()
@@ -43,7 +44,6 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         if segue.identifier == "InviteFriendSegue"{
             let destView = segue.destination as! inviteFriendViewController
             if let indexPath = collectionView.indexPathsForSelectedItems {
-                print(self.onlineFriends)
                 destView.name = self.onlineFriends[indexPath[0][1]]["username"] as! String
             }
 
@@ -65,6 +65,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             // Get only online friends
             if(self.onlineFriends.count < 1){
                 emptyStateLabel.isHidden = false
+                youHaveFriendsLabel.isHidden = true
             }
             
         }
@@ -108,6 +109,7 @@ extension FikarumViewController {
         
         // If we have a cell, hide empty state
         emptyStateLabel.isHidden = true
+        youHaveFriendsLabel.isHidden = false
         
         return cell
     }
