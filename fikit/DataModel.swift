@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class DataModel {
     
@@ -148,6 +149,7 @@ class DataModel {
         }
         return onlineFriends
     }
+    
     
     func displayImage(imageViewToUse: UIImageView, userImageRef:StorageReference){
         // Fetch the download URL
