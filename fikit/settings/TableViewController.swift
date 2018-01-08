@@ -70,7 +70,10 @@ class TableViewController: UITableViewController {
         
         // Set the right image
         let userID = user["id"] as! String
-        let imageRef = dataModel.storageRef.child("image/\(userID).jpg") as StorageReference
+        let imageRef = dataModel.storageRef.child("image/\(userID).jpg")
+       
+        let imageurl = "image/\(userID).jpg" as String
+        
         dataModel.displayImage(imageViewToUse: cell.imageView!, userImageRef: imageRef)
         
         return cell

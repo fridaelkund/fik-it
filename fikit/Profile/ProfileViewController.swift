@@ -84,8 +84,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.tableVC?.nameInputField.text =  userObj["username"] as? String
         
         let userID = userObj["id"] as! String
-        let imageRef = dataModel.storageRef.child("image/\(userID).jpg") as StorageReference
-        
+        let imageRef = dataModel.storageRef.child("image/\(userID).jpg")
+        let imageurl = "image/\(userID).jpg"
         dataModel.displayImage(imageViewToUse: self.profileImage, userImageRef: imageRef)
     }
 
