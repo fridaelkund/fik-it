@@ -208,6 +208,7 @@
                     <connections>
                         <outlet property="collectionView" destination="axZ-uc-WOZ" id="LCw-hj-h13"/>
                         <outlet property="emptyStateLabel" destination="Mtb-AS-5uc" id="Qpo-FY-eqM"/>
+                        <outlet property="youHaveFriendsLabel" destination="iiQ-Th-U51" id="XH1-uh-NvD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Df-k7-Fb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
