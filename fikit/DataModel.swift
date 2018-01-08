@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import SDWebImage
 
 class DataModel {
     
@@ -60,6 +61,7 @@ class DataModel {
     func addUser(){
         // Get id for new user
         self.currentUser = Auth.auth().currentUser
+        
         self.ref.root.child("users").child((self.currentUser?.uid)!).setValue(
             ["username": self.currentUser?.displayName ?? "no name",
              "status": "offline",
@@ -151,15 +153,12 @@ class DataModel {
     }
     
     
-    func displayImage(imageViewToUse: UIImageView, userImageRef:StorageReference){
-        // Fetch the download URL
+    func displayImage(imageViewToUse: UIImageView, userImageRef: StorageReference){
         userImageRef.downloadURL { url, error in
             if error != nil {
                 print("Error")
             } else {
-                let data = NSData(contentsOf: url!)
-                let image = UIImage(data: data! as Data)!
-                imageViewToUse.image = image
+                imageViewToUse.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholderImage"))
             }
         }
     }

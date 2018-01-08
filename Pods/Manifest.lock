@@ -74,6 +74,9 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - SDWebImage (4.1.2):
+    - SDWebImage/Core (= 4.1.2)
+  - SDWebImage/Core (4.1.2)
 
 DEPENDENCIES:
   - Bolts
@@ -86,6 +89,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - SDWebImage (~> 4.0)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -106,7 +110,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
 
-PODFILE CHECKSUM: 97656358a7f83c86e08041dcc85a2e76d00868f9
+PODFILE CHECKSUM: aad051014a8d32fa485985ffd89f10624e5149d0
 
 COCOAPODS: 1.3.1

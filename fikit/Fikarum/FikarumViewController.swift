@@ -100,9 +100,10 @@ extension FikarumViewController {
         cell.imageView.image = UIImage(named:"placeholderImage")
 
         let userID = onlineFriends[indexPath[1]]["id"] as! String
-        let imageRef = dataModel.storageRef.child("image/\(userID).jpg") as StorageReference
+        let imageRef = dataModel.storageRef.child("image/\(userID).jpg")
+      
         
-        dataModel.displayImage(imageViewToUse: cell.imageView, userImageRef: imageRef)
+       dataModel.displayImage(imageViewToUse: cell.imageView, userImageRef: imageRef)
         
         //3
         cell.imageView.layer.cornerRadius = 70
