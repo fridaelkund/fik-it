@@ -14,6 +14,7 @@ class TableViewController: UITableViewController {
 
     //MARK: Properties
     var dataModel = DataModel()
+    var friendIDs: Array <AnyObject> = []
     var friends: Array<AnyObject> = []
     var nonFriends: Array<AnyObject> = []
 
@@ -66,6 +67,11 @@ class TableViewController: UITableViewController {
         cell.textLabel?.text = user["username"] as? String
         cell.imageView?.image = UIImage(named:"placeholderImage")
         
+        // Set the right image
+        let userID = user["id"] as! String
+        let imageRef = dataModel.storageRef.child("image/\(userID).jpg") as StorageReference
+        dataModel.displayImage(imageViewToUse: cell.imageView!, userImageRef: imageRef)
+        
         return cell
     }
     
@@ -86,7 +92,6 @@ class TableViewController: UITableViewController {
         }
         //If friends section
         else{
-            print("we should not add")
             //MAYBE REMOVE FRIEND HERE
         }
     }
@@ -110,31 +115,31 @@ class TableViewController: UITableViewController {
         if let currentUser = Auth.auth().currentUser{
             let user = data[currentUser.uid] as! NSDictionary
             
-            //Call function creating list of current users friends
-            self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<AnyObject>)
+            //Call function creating list of current users friendIDs
+            self.friendIDs = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<AnyObject>)
         
             //loop through all users
             for (key, _) in data as NSDictionary{
                 let user = data[key] as! NSDictionary
                
-                //Create user structure to be appended to friends or nonFriends lists
+                //Create user structure to be appended friend UserObject to friends or nonFriends lists
                 let userObj = dataModel.getUserStructure(user: user)
-              
+                
                 if key as? String != currentUser.uid {
                     
                     var isFriend = false
                     //We check for nonFriends among all users
-                    for friend in self.friends {
+                    for friend in self.friendIDs {
                         if(friend["id"] as! String == key as! String){
                             isFriend = true
+                            self.friends.append(userObj as AnyObject)
                             break
                         }
                     }
 
                     //If user was not a friend we add to 'nonFriends'
                     if(!isFriend){
-                        self.nonFriends.append(userObj)
-                        print(self.nonFriends)
+                        self.nonFriends.append(userObj as AnyObject)
                     }
                     
                 }
@@ -143,6 +148,7 @@ class TableViewController: UITableViewController {
             self.objectArray.append(Objects(sectionName: "Vänner", sectionObjects: self.friends))
             self.objectArray.append(Objects(sectionName: "Andra användare", sectionObjects: self.nonFriends))
         }
+        
     }
     
    // Modal for confirming adding a user
@@ -160,7 +166,6 @@ class TableViewController: UITableViewController {
         
         // Cancel - don't add this friend
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
-            print("No, don't add this friend");
         }
         alertController.addAction(cancelAction)
         
