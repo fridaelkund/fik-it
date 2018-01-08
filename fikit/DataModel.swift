@@ -30,46 +30,19 @@ class DataModel {
             })
     }
     
-    //Observing and parsing user data
-    func observeStorage(completion: @escaping ((_ data: NSDictionary) -> Void)) {
-        self.ref.observe(DataEventType.value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let users = value?["users"] as? NSDictionary
-            
-            //Completion - we have the user data
-            completion(users!)
-        })
-    }
-    
-//--- NOT USED ANYMORE BUT WILL FAIL IF WE REMOVE AS LONG AS WE KEEP OLD FILES ---
-    func getData(onSuccess:  @escaping (Profile) -> Void) {
-        self.ref.observe(DataEventType.value, with: { (snapshot) in
-            let profileDict = snapshot.value as? [String : AnyObject]
-            let users = profileDict!["users"] as?  [String : AnyObject]
-            self.friends = users![(self.currentUser?.uid)!]!["friends"] as! Array<Any>
-            if let profile = Profile(data: users) {
-                onSuccess(profile)
-            }
-            else{
-                print("no profile")
-            }
-        })
-    }
-// -------------------------------------------------------------------------------
-    
     //Add user info to database
     func addUser(){
-        // Get id for new user
-        self.currentUser = Auth.auth().currentUser
-        
-        self.ref.root.child("users").child((self.currentUser?.uid)!).setValue(
-            ["username": self.currentUser?.displayName ?? "no name",
-             "status": "offline",
-             "hasFriends": false, //Used to check if user has friends or if we should display empty array
-             "friends" : ["default friend"], //we need to have a fake-friend as default - else entry won't exist
-            "id": self.currentUser?.uid as Any,
-            "image": "images/\(self.currentUser?.uid as! String).jpg"]
-        )
+        // We can only add the user if there is one
+        if let currentUser = Auth.auth().currentUser {
+            self.ref.root.child("users").child(currentUser.uid).setValue(
+                ["username": currentUser.displayName ?? "no name",
+                 "status": "offline",
+                 "hasFriends": false, //Used to check if user has friends or if we should display empty array
+                 "friends" : ["default friend"], //we need to have a fake-friend as default - else entry won't exist
+                "id": currentUser.uid as Any,
+                "image": "images/\(currentUser.uid).jpg"]
+            )
+        }
     }
     
     //Add new friends to database
@@ -95,7 +68,7 @@ class DataModel {
     
     //Setting status in database
     func setStatus(status: String){
-        self.ref.child("users").child((self.currentUser?.uid)!).child("/status").setValue(status)
+        self.ref.child("users").child((self.currentUser?.uid)!).updateChildValues(["status" : status])
     }
     
     //SignUp
