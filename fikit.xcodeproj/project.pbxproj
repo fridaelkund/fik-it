@@ -10,7 +10,6 @@
 		5D255EF7E415E172A86A8F28 /* Pods_fikit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD7E66F75ADD080D8981F4E /* Pods_fikit.framework */; };
 		8626046A2004C62F0022FDD8 /* onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 862604692004C62F0022FDD8 /* onboarding.storyboard */; };
 		8626046E2004DE730022FDD8 /* addNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626046D2004DE730022FDD8 /* addNameViewController.swift */; };
-		862604702004DF320022FDD8 /* addEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626046F2004DF320022FDD8 /* addEmailViewController.swift */; };
 		862604722004EDC50022FDD8 /* addImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862604712004EDC50022FDD8 /* addImageViewController.swift */; };
 		862604742004EDD00022FDD8 /* addBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862604732004EDD00022FDD8 /* addBioViewController.swift */; };
 		8629F4C81FA75D5000DBD7F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */; };
@@ -27,6 +26,7 @@
 		86D4C5621FCD561E00D75DCC /* FikarumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4C5611FCD561E00D75DCC /* FikarumViewController.swift */; };
 		86D4C5641FCD576A00D75DCC /* FikarumPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4C5631FCD576A00D75DCC /* FikarumPhotoCell.swift */; };
 		86D4C5671FCD59B500D75DCC /* inviteFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4C5651FCD59B400D75DCC /* inviteFriendViewController.swift */; };
+		86FA009B2004F25200AD26E8 /* addPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FA009A2004F25200AD26E8 /* addPhoneViewController.swift */; };
 		9CF8F1D8E01D4CB0E9EA0034 /* Pods_fikitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B00E6CAB2B3E47D577A335 /* Pods_fikitTests.framework */; };
 		A732F69B1FB708C30096C287 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F69A1FB708C30096C287 /* SignUpViewController.swift */; };
 		A732F69D1FB7104D0096C287 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F69C1FB7104C0096C287 /* LoginViewController.swift */; };
@@ -56,7 +56,6 @@
 		818D8D457888BD3641C30237 /* Pods-fikitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fikitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fikitTests/Pods-fikitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		862604692004C62F0022FDD8 /* onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = onboarding.storyboard; sourceTree = "<group>"; };
 		8626046D2004DE730022FDD8 /* addNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNameViewController.swift; sourceTree = "<group>"; };
-		8626046F2004DF320022FDD8 /* addEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addEmailViewController.swift; sourceTree = "<group>"; };
 		862604712004EDC50022FDD8 /* addImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addImageViewController.swift; sourceTree = "<group>"; };
 		862604732004EDD00022FDD8 /* addBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBioViewController.swift; sourceTree = "<group>"; };
 		8629F4C41FA75D5000DBD7F0 /* fikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fikit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +76,7 @@
 		86D4C5611FCD561E00D75DCC /* FikarumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikarumViewController.swift; sourceTree = "<group>"; };
 		86D4C5631FCD576A00D75DCC /* FikarumPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FikarumPhotoCell.swift; sourceTree = "<group>"; };
 		86D4C5651FCD59B400D75DCC /* inviteFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteFriendViewController.swift; sourceTree = "<group>"; };
+		86FA009A2004F25200AD26E8 /* addPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = addPhoneViewController.swift; path = /Users/Frida/GitHub/fikit/fikit/onboarding/addPhoneViewController.swift; sourceTree = "<absolute>"; };
 		A732F69A1FB708C30096C287 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A732F69C1FB7104C0096C287 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -133,8 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				862604712004EDC50022FDD8 /* addImageViewController.swift */,
+				86FA009A2004F25200AD26E8 /* addPhoneViewController.swift */,
 				862604732004EDD00022FDD8 /* addBioViewController.swift */,
-				8626046F2004DF320022FDD8 /* addEmailViewController.swift */,
 				8626046D2004DE730022FDD8 /* addNameViewController.swift */,
 			);
 			path = onboarding;
@@ -484,11 +484,11 @@
 				862604722004EDC50022FDD8 /* addImageViewController.swift in Sources */,
 				A75E3FE21FFBE9B300A1C400 /* TableViewController.swift in Sources */,
 				8629F4CA1FA75D5000DBD7F0 /* ViewController.swift in Sources */,
+				86FA009B2004F25200AD26E8 /* addPhoneViewController.swift in Sources */,
 				A75E3FE41FFC018400A1C400 /* TableViewCell.swift in Sources */,
 				8626046E2004DE730022FDD8 /* addNameViewController.swift in Sources */,
 				8629F4C81FA75D5000DBD7F0 /* AppDelegate.swift in Sources */,
 				A7AB19D61FF3E04D00F59B2C /* DataModel.swift in Sources */,
-				862604702004DF320022FDD8 /* addEmailViewController.swift in Sources */,
 				A732F69D1FB7104D0096C287 /* LoginViewController.swift in Sources */,
 				862604742004EDD00022FDD8 /* addBioViewController.swift in Sources */,
 				86D4C5621FCD561E00D75DCC /* FikarumViewController.swift in Sources */,

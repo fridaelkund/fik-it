@@ -11,16 +11,23 @@ class addNameViewController: UIViewController {
     var dataModel = DataModel()
     
     @IBOutlet weak var addName: UITextField!
+    @IBOutlet weak var missingName: UILabel!
     
     @IBAction func toEmail(_ sender: Any) {
-        dataModel.updateUserProfile(value: ["username" : addName.text! ?? "no name"])
+        if addName.text != ""{
+            dataModel.updateUserProfile(value: ["username" : addName.text! ])
         
-        let viewController:UIViewController = UIStoryboard(name: "onboarding", bundle: nil).instantiateViewController(withIdentifier: "addEmail") as UIViewController
-        self.present(viewController, animated: false, completion: nil)
+            let viewController:UIViewController = UIStoryboard(name: "onboarding", bundle: nil).instantiateViewController(withIdentifier: "addPhone") as UIViewController
+            self.present(viewController, animated: false, completion: nil)
+        }
+        else{
+            missingName.isHidden = false
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         missingName.isHidden = true
     }
-
+    
 }

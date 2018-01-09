@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tuj-QR-Dsr">
-                                <rect key="frame" x="0.0" y="121" width="375" height="426.5"/>
+                                <rect key="frame" x="0.0" y="176.5" width="375" height="316"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="242-7h-7yf">
                                         <rect key="frame" x="137.5" y="0.0" width="100" height="96"/>
@@ -43,7 +43,7 @@
                                             <constraint firstAttribute="height" constant="40" id="j0o-ru-8Fy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5q-ap-Olt">
                                         <rect key="frame" x="30" y="266" width="315" height="50"/>
@@ -58,32 +58,8 @@
                                             <action selector="loginAction:" destination="DUD-dy-5oN" eventType="touchUpInside" id="RPv-1E-3yn"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eller logga in med" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTp-gK-Py9">
-                                        <rect key="frame" x="119.5" y="356" width="136" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hew-9O-tZJ">
-                                        <rect key="frame" x="167.5" y="386.5" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3Ug-uD-1tZ"/>
-                                            <constraint firstAttribute="width" constant="40" id="IY9-h8-1rG"/>
-                                            <constraint firstAttribute="height" constant="40" id="JYl-xY-8bB"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="PKh-Pv-DM8"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="facebook_icon">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="facebookLoginAction:" destination="DUD-dy-5oN" eventType="touchUpInside" id="eVD-8K-dMB"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="CTp-gK-Py9" firstAttribute="centerX" secondItem="tuj-QR-Dsr" secondAttribute="centerX" id="641-fk-6m2"/>
                                     <constraint firstItem="242-7h-7yf" firstAttribute="centerX" secondItem="tuj-QR-Dsr" secondAttribute="centerX" id="G4m-2K-ezo"/>
                                     <constraint firstItem="c5q-ap-Olt" firstAttribute="leading" secondItem="tuj-QR-Dsr" secondAttribute="leading" constant="30" id="KVX-VW-HdW"/>
                                     <constraint firstAttribute="trailing" secondItem="HsK-Qh-I8a" secondAttribute="trailing" constant="30" id="L7b-Wb-iXp"/>
@@ -92,11 +68,8 @@
                                     <constraint firstAttribute="trailing" secondItem="cAU-jb-7JK" secondAttribute="trailing" constant="30" id="VDm-M2-6bt"/>
                                     <constraint firstItem="cAU-jb-7JK" firstAttribute="leading" secondItem="tuj-QR-Dsr" secondAttribute="leading" constant="30" id="Vcw-So-hKz"/>
                                     <constraint firstItem="HsK-Qh-I8a" firstAttribute="top" secondItem="242-7h-7yf" secondAttribute="bottom" constant="50" id="Y86-yg-du1"/>
-                                    <constraint firstItem="CTp-gK-Py9" firstAttribute="top" secondItem="c5q-ap-Olt" secondAttribute="bottom" constant="40" id="cmh-F6-vDt"/>
-                                    <constraint firstItem="Hew-9O-tZJ" firstAttribute="centerX" secondItem="tuj-QR-Dsr" secondAttribute="centerX" id="fa4-Vk-LOD"/>
                                     <constraint firstItem="HsK-Qh-I8a" firstAttribute="leading" secondItem="tuj-QR-Dsr" secondAttribute="leading" constant="30" id="iiA-lW-iDv"/>
                                     <constraint firstAttribute="trailing" secondItem="c5q-ap-Olt" secondAttribute="trailing" constant="30" id="jfb-O9-CvD"/>
-                                    <constraint firstItem="Hew-9O-tZJ" firstAttribute="top" secondItem="CTp-gK-Py9" secondAttribute="bottom" constant="10" id="rlz-hh-MmR"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="qi7-oY-cZL">
@@ -191,12 +164,13 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5aZ-ZF-jXq">
                                 <rect key="frame" x="83" y="167" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.95675891637802124" green="0.95692259073257446" blue="0.95674854516983032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20392156859999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="akP-Zd-9Q8"/>
                     </view>
                     <connections>
@@ -316,7 +290,6 @@
     </scenes>
     <resources>
         <image name="coffee_emoji" width="256" height="256"/>
-        <image name="facebook_icon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xaz-39-Oqr"/>

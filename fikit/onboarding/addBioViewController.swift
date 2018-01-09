@@ -8,27 +8,26 @@
 import UIKit
 
 class addBioViewController: UIViewController {
-
+    var dataModel = DataModel()
+    
+    @IBOutlet weak var missingBio: UILabel!
+    @IBOutlet weak var addBio: UITextField!
+    
+    @IBAction func doneWithBio(_ sender: Any) {
+        if(addBio.text != ""){
+            dataModel.updateUserProfile(value: ["bio" : addBio.text! ])
+            
+            let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
+            self.present(viewController, animated: false, completion: nil)
+        }else{
+            missingBio.isHidden = false
+        }
+     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        missingBio.isHidden = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
