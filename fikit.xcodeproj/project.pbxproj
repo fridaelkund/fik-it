@@ -76,7 +76,7 @@
 		86D4C5611FCD561E00D75DCC /* FikarumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikarumViewController.swift; sourceTree = "<group>"; };
 		86D4C5631FCD576A00D75DCC /* FikarumPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FikarumPhotoCell.swift; sourceTree = "<group>"; };
 		86D4C5651FCD59B400D75DCC /* inviteFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteFriendViewController.swift; sourceTree = "<group>"; };
-		86FA009A2004F25200AD26E8 /* addPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = addPhoneViewController.swift; path = /Users/Frida/GitHub/fikit/fikit/onboarding/addPhoneViewController.swift; sourceTree = "<absolute>"; };
+		86FA009A2004F25200AD26E8 /* addPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addPhoneViewController.swift; sourceTree = "<group>"; };
 		A732F69A1FB708C30096C287 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A732F69C1FB7104C0096C287 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
