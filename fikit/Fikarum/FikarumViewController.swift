@@ -11,7 +11,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import MessageUI
 
-class FikarumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class FikarumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MFMessageComposeViewControllerDelegate {
     
     //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -97,19 +97,21 @@ extension FikarumViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! FikarumPhotoCell
         
-        //2
-        cell.imageView.image = UIImage(named:"placeholderImage")
-
+        //Creating image
         let userID = onlineFriends[indexPath[1]]["id"] as! String
         let imageRef = dataModel.storageRef.child("image/\(userID).jpg")
-      
+        dataModel.displayImage(imageViewToUse: cell.imageView, userImageRef: imageRef)
         
-       dataModel.displayImage(imageViewToUse: cell.imageView, userImageRef: imageRef)
+        //Setting nameLabel
+        cell.nameLabel.text = onlineFriends[indexPath[1]]["username"] as? String
         
-        //3
-        cell.imageView.layer.cornerRadius = 70
+        //Setting image styling
+        cell.imageView.layer.masksToBounds = true
+        cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
         cell.imageView.clipsToBounds = true
+
         
+         cell.onlineSymbol.layer.cornerRadius = cell.onlineSymbol.frame.height/2
         // If we have a cell, hide empty state
         emptyStateLabel.isHidden = true
         youHaveFriendsLabel.isHidden = false
@@ -124,8 +126,8 @@ extension FikarumViewController {
     }
     
     //Show action options
-    func showActionSheet(friend: Any){
-        print(friend)
+    func showActionSheet(friend: AnyObject){
+        print(friend["phoneNumber"])
         
         // 1
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
@@ -133,19 +135,21 @@ extension FikarumViewController {
         // 2
         let SMSAction = UIAlertAction(title: "SMS", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
-            print("SMS sent")
-            self.sendSMSText(phoneNumber: "+46707496422")
+            self.sendSMSText(phoneNumber: friend["phoneNumber"] as! String, username: friend["username"] as! String)
         })
         
         let callAction = UIAlertAction(title: "Call", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             print("Call")
+            //MAKE PHONE CALL
+            self.callFriend(phoneNumber: friend["phoneNumber"] as! String)
         })
         
         // 3
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
             print("Cancelled")
+            //CLOSING - no action
         })
         
         // 4
@@ -158,8 +162,29 @@ extension FikarumViewController {
     }
     
     
-    func sendSMSText(phoneNumber: String) {
-        UIApplication.shared.open(URL(string: "sms:"+phoneNumber)!, options: [:], completionHandler: nil)
+    func sendSMSText(phoneNumber: String, username: String) {
+        if (MFMessageComposeViewController.canSendText()) {
+            let controller = MFMessageComposeViewController()
+            controller.body = "Hej " + username + "! Jag såg att du var fikasugen på fik-it. Vill du fika med mig?"
+            controller.recipients = [phoneNumber]
+            controller.messageComposeDelegate = self as MFMessageComposeViewControllerDelegate
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        //... handle sms screen actions
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func callFriend(phoneNumber: String){
+        if let url = URL(string: "tel://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
     
 }

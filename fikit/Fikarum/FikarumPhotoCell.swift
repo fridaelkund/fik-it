@@ -12,4 +12,6 @@ class FikarumPhotoCell: UICollectionViewCell {
     //MARK: Outlets
     @IBOutlet weak var imageView: UIImageView!
 
+    @IBOutlet weak var onlineSymbol: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
 }
