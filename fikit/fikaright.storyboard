@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,61 +19,65 @@
             <objects>
                 <viewController id="6A3-Vg-uvh" customClass="GoFikaViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3NA-WG-ChA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vill du fika? " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crc-P9-7pj">
-                                <rect key="frame" x="123" y="204" width="129" height="28"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="EVe-sJ-XU5">
-                                <rect key="frame" x="106.5" y="252" width="162" height="156"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZB-bl-Fg6">
+                                <rect key="frame" x="132" y="218.66666666666666" width="150" height="298.66666666666674"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vill du fika? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crc-P9-7pj">
+                                        <rect key="frame" x="10.666666666666657" y="0.0" width="129" height="20.666666666666668"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="EVe-sJ-XU5">
+                                        <rect key="frame" x="0.0" y="35" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Oc0-Nc-EWN"/>
+                                            <constraint firstAttribute="height" constant="150" id="xW1-vg-GDE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsc-jc-7TT">
+                                        <rect key="frame" x="5" y="203.66666666666666" width="140" height="40"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="3xX-dX-Xh1"/>
+                                            <constraint firstAttribute="height" constant="40" id="Ohh-Z5-ocS"/>
+                                        </constraints>
+                                        <state key="normal" title="Jag vill fika!">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goFikaAction:" destination="6A3-Vg-uvh" eventType="touchUpInside" id="oFf-FU-xgc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sU-AW-2yn">
+                                        <rect key="frame" x="5" y="258.66666666666663" width="140" height="40"/>
+                                        <color key="backgroundColor" red="0.3548433781" green="0.63476294280000001" blue="0.46166265010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="aBd-ZP-qFu"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="aUc-Rp-JCT"/>
+                                            <constraint firstAttribute="height" constant="40" id="zIO-x6-Azi"/>
+                                        </constraints>
+                                        <state key="normal" title="Till fikarum">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="hQ3-mK-YgX" kind="show" id="W85-uO-13E"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="162" id="YJ1-pl-WTt"/>
-                                    <constraint firstAttribute="height" constant="156" id="vj1-JE-9Sj"/>
+                                    <constraint firstItem="Tsc-jc-7TT" firstAttribute="top" secondItem="EVe-sJ-XU5" secondAttribute="bottom" constant="20" id="6CV-i1-QJB"/>
+                                    <constraint firstItem="4sU-AW-2yn" firstAttribute="top" secondItem="Tsc-jc-7TT" secondAttribute="bottom" constant="15" id="Ha5-50-pnn"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsc-jc-7TT">
-                                <rect key="frame" x="117" y="458" width="140" height="40"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="vNN-al-SC3"/>
-                                    <constraint firstAttribute="height" constant="40" id="xLG-YE-5jn"/>
-                                </constraints>
-                                <state key="normal" title="Jag vill fika!">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="goFikaAction:" destination="6A3-Vg-uvh" eventType="touchUpInside" id="oFf-FU-xgc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sU-AW-2yn">
-                                <rect key="frame" x="117" y="518" width="140" height="40"/>
-                                <color key="backgroundColor" red="0.3548433781" green="0.63476294280000001" blue="0.46166265010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="Qq8-cV-SPL"/>
-                                    <constraint firstAttribute="height" constant="40" id="zIO-x6-Azi"/>
-                                </constraints>
-                                <state key="normal" title="Till fikarum">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="hQ3-mK-YgX" kind="show" id="W85-uO-13E"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20392156859999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Crc-P9-7pj" firstAttribute="centerX" secondItem="3NA-WG-ChA" secondAttribute="centerX" id="5KQ-De-b8T"/>
-                            <constraint firstItem="Tsc-jc-7TT" firstAttribute="centerX" secondItem="3NA-WG-ChA" secondAttribute="centerX" id="I9W-KO-M14"/>
-                            <constraint firstItem="EVe-sJ-XU5" firstAttribute="centerX" secondItem="3NA-WG-ChA" secondAttribute="centerX" id="QQV-w7-DuM"/>
-                            <constraint firstItem="4sU-AW-2yn" firstAttribute="centerX" secondItem="3NA-WG-ChA" secondAttribute="centerX" id="Qgy-3k-uZf"/>
-                            <constraint firstItem="EVe-sJ-XU5" firstAttribute="top" secondItem="Crc-P9-7pj" secondAttribute="bottom" constant="20" id="Vk5-kd-W8G"/>
-                            <constraint firstItem="Crc-P9-7pj" firstAttribute="top" secondItem="oZe-mS-YvA" secondAttribute="top" constant="140" id="Xet-a7-jCS"/>
-                            <constraint firstItem="Tsc-jc-7TT" firstAttribute="top" secondItem="EVe-sJ-XU5" secondAttribute="bottom" constant="50" id="Yix-ov-G1O"/>
-                            <constraint firstItem="4sU-AW-2yn" firstAttribute="top" secondItem="Tsc-jc-7TT" secondAttribute="bottom" constant="20" id="nZ4-Na-JXF"/>
+                            <constraint firstItem="gZB-bl-Fg6" firstAttribute="centerY" secondItem="3NA-WG-ChA" secondAttribute="centerY" id="AZk-e4-ghc"/>
+                            <constraint firstItem="gZB-bl-Fg6" firstAttribute="centerX" secondItem="3NA-WG-ChA" secondAttribute="centerX" id="y7q-Hi-6aB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oZe-mS-YvA"/>
                     </view>
@@ -138,7 +142,7 @@
             <objects>
                 <viewController id="hQ3-mK-YgX" customClass="FikarumViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w7a-Md-eOv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have no friends online, come back later!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mtb-AS-5uc">
@@ -198,7 +202,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du har vänner som vill fika!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiQ-Th-U51">
-                                <rect key="frame" x="71.5" y="84" width="232" height="24"/>
+                                <rect key="frame" x="91" y="84" width="232" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="HGk-yQ-1Xc"/>
                                 </constraints>
@@ -230,14 +234,14 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="9oo-Ix-M5h" customClass="inviteFriendViewController" customModule="fikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zgi-2N-B4b">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhy-HG-ljR">
-                                <rect key="frame" x="20" y="170" width="335" height="200"/>
+                                <rect key="frame" x="20" y="170" width="374" height="200"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="a59-KQ-nqj">
-                                        <rect key="frame" x="29" y="20" width="277" height="50"/>
+                                        <rect key="frame" x="48.666666666666657" y="20" width="276.66666666666674" height="50"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="3dO-Pf-iPP">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -247,10 +251,10 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EPE-W4-2Y8">
-                                                <rect key="frame" x="70" y="0.0" width="207" height="50"/>
+                                                <rect key="frame" x="69.999999999999986" y="0.0" width="206.66666666666663" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namn" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyF-Rc-vJb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="29"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="206.66666666666666" height="29"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
                                                         </accessibility>
@@ -259,7 +263,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="är just nu sugen på att fika!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpW-NJ-KJC">
-                                                        <rect key="frame" x="0.0" y="29" width="207" height="21"/>
+                                                        <rect key="frame" x="0.0" y="29" width="206.66666666666666" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="oIN-ab-dMr"/>
                                                         </constraints>
@@ -272,7 +276,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ct1-9G-lhr">
-                                        <rect key="frame" x="20" y="140" width="295" height="40"/>
+                                        <rect key="frame" x="20" y="140" width="334" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOy-h9-6jB">
                                                 <rect key="frame" x="0.0" y="0.0" width="87" height="40"/>
@@ -286,7 +290,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEm-M9-fCv">
-                                                <rect key="frame" x="153" y="0.0" width="142" height="40"/>
+                                                <rect key="frame" x="192" y="0.0" width="142" height="40"/>
                                                 <color key="backgroundColor" red="0.3548433781" green="0.63476294280000001" blue="0.46166265010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="142" id="I8r-kZ-p10"/>
@@ -337,7 +341,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3fI-VB-AQ7">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
@@ -360,7 +364,7 @@
                     <tabBarItem key="tabBarItem" title="Vänner" image="tabBarFriends" landscapeImage="tabBarFriends" largeContentSizeImage="tabBarFriends" id="tMe-YH-64j"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UvE-C2-bdr">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -383,7 +387,7 @@
                     <tabBarItem key="tabBarItem" title="Profil" image="tabBarProfileImage" landscapeImage="tabBarProfileImage" largeContentSizeImage="tabBarProfileImage" id="PVd-X5-uBF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Gq-9I-q8s">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
