@@ -109,12 +109,14 @@ class DataModel {
         let userImage = user["image"] as! String
         let phoneNumber = user["phoneNumber"] as! String
         let bio = user["bio"] as! String
+        let status = user["status"] as! String
         
-        userObj = ["id": userid,
-                   "username": username,
-                   "image": userImage,
-                   "phoneNumber": phoneNumber,
-                   "bio": bio]
+        userObj = ["id" : userid,
+                   "username" : username,
+                   "image" : userImage,
+                   "phoneNumber" : phoneNumber,
+                   "bio" : bio,
+                   "status" : status]
         
         return userObj
     }

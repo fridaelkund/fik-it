@@ -62,7 +62,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 85
     }
     // creating cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> TableViewCell {
@@ -70,6 +70,17 @@ class TableViewController: UITableViewController {
         let user = objectArray[indexPath.section].sectionObjects[indexPath.row]
         
         cell.userName.text = user["username"] as? String
+        cell.userBio.text = user["bio"] as? String
+        
+        cell.onlineStatus.layer.cornerRadius = cell.onlineStatus.frame.height/2
+        
+      
+        if(user["status"] as! String == "online"){
+            cell.onlineStatus.backgroundColor = UIColor.green
+        }
+        else{
+            print("else")
+        }
         
         //Round images
         cell.userImage.layer.masksToBounds = false
