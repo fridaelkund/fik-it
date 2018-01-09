@@ -80,12 +80,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     // Load initial data and display name, profile picture, etc
     func displayUserData(){
-        // Displaying name
-        self.tableVC?.nameInputField.text =  userObj["username"] as? String
         
+        // Displaying user info
+        self.tableVC?.nameInputField.text =  userObj["username"] as? String
+        self.tableVC?.phoneLabel.text = userObj["phoneNumber"] as? String
+        self.tableVC?.bioLabel.text = userObj["bio"] as? String
+        
+            //image
         let userID = userObj["id"] as! String
         let imageRef = dataModel.storageRef.child("image/\(userID).jpg")
-        let imageurl = "image/\(userID).jpg"
         dataModel.displayImage(imageViewToUse: self.profileImage, userImageRef: imageRef)
     }
 
@@ -99,8 +102,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                                                               action: #selector(doneEditing(sender:))), animated: true)
         // Displays editing features
         changeProfileImageBtn.isHidden = false
+ 
         tableVC?.nameInputField.isUserInteractionEnabled = true
         tableVC?.nameInputField.clearButtonMode = UITextFieldViewMode.always
+  
+        tableVC?.phoneLabel.isUserInteractionEnabled = true
+        tableVC?.phoneLabel.clearButtonMode = UITextFieldViewMode.always
+        
+        tableVC?.bioLabel.isUserInteractionEnabled = true
+      //  tableVC?.bioLabel.clear = UITextFieldViewMode.always
+        
     }
     
     // Leaving editing mode
@@ -114,6 +125,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         changeProfileImageBtn.isHidden = true
         tableVC?.nameInputField.isUserInteractionEnabled = false
         tableVC?.nameInputField.clearButtonMode = UITextFieldViewMode.never
+        
+        tableVC?.phoneLabel.isUserInteractionEnabled = false
+        tableVC?.phoneLabel.clearButtonMode = UITextFieldViewMode.never
+        
+        tableVC?.bioLabel.isUserInteractionEnabled = false
+       // tableVC?.bioLabel.clearButtonMode = UITextFieldViewMode.never
     }
     
     // MARK: Actions
@@ -130,17 +147,41 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc func doneEditing(sender: UIBarButtonItem) {
         leaveEditing()
         
-        // Saving changes to database
+        // --- SAVE CHANGES ---
+        // Username
         dataModel.updateUserProfile(value: ["username" : tableVC?.nameInputField.text! ?? "no name"])
         
-        //FIX ME: Add image to database too
+        //Phone number
+        let isPhoneNumber = checkPhoneNumber(value: (tableVC?.phoneLabel.text)!)
+        //Only update phone number if it's valid
+        if(isPhoneNumber){
+            dataModel.updateUserProfile(value: ["phoneNumber" : tableVC?.phoneLabel.text!])
+        }
+        
+        // Bio
+        dataModel.updateUserProfile(value: ["bio" : tableVC?.bioLabel.text!])
+        
+        //Image
         self.uploadImageToStorage(){url in
             if url != nil {
+                
             }
         }
+        
+        //--- UPDATE VIEW ---
+        displayUserData()
+        
     }
     
-
+    //Check phone number with regular expression to see if it's valid
+    func checkPhoneNumber(value: String) -> Bool {
+        let correctNumber = "^[0-9]{9}$"
+        let checkNumber = NSPredicate(format: "SELF MATCHES %@", correctNumber)
+        let isValid = checkNumber.evaluate(with: value)
+        return isValid
+    }
+    
+    
     // Styling profile image
     func profileImageToCircle(){
         profileImage.layer.masksToBounds = false
@@ -209,6 +250,8 @@ class NameTableViewController: UITableViewController {
     // MARK: - Table view data source
     @IBOutlet weak var nameInputField: UITextField!
     @IBOutlet weak var mailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UITextField!
+    @IBOutlet weak var bioLabel: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -219,7 +262,7 @@ class NameTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
 }
