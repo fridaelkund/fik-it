@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController {
             dataModel.addUser()
 
             //SignUp successful - we login (Go to FikaView)
-            self.presentFikaView()
+            self.setUpProfile()
             
         }
         else{
@@ -62,9 +62,15 @@ class SignUpViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //Go to fikaView if signup is successful (because then we login)
-    private func presentFikaView(){
-        let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
+    private func setUpProfile(){
+        let viewController:UIViewController = UIStoryboard(name: "onboarding", bundle: nil).instantiateViewController(withIdentifier: "addName") as UIViewController
         self.present(viewController, animated: false, completion: nil)
     }
+    
+    
+    //Go to fikaView if signup is successful (because then we login)
+//    private func presentFikaView(){
+//        let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
+//        self.present(viewController, animated: false, completion: nil)
+//    }
 }

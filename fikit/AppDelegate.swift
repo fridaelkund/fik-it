@@ -18,15 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        //SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+        // Initate firebase
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+    
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
         var initialViewController: UIViewController
         
+//         Depending if user is logged in, redirect to different screens
         if(Auth.auth().currentUser != nil){
             initialViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
         }else{
@@ -38,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         
