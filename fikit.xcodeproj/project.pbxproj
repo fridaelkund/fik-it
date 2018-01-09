@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5D255EF7E415E172A86A8F28 /* Pods_fikit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD7E66F75ADD080D8981F4E /* Pods_fikit.framework */; };
+		8626046A2004C62F0022FDD8 /* onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 862604692004C62F0022FDD8 /* onboarding.storyboard */; };
+		8626046E2004DE730022FDD8 /* addNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626046D2004DE730022FDD8 /* addNameViewController.swift */; };
+		862604702004DF320022FDD8 /* addEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626046F2004DF320022FDD8 /* addEmailViewController.swift */; };
+		862604722004EDC50022FDD8 /* addImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862604712004EDC50022FDD8 /* addImageViewController.swift */; };
+		862604742004EDD00022FDD8 /* addBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862604732004EDD00022FDD8 /* addBioViewController.swift */; };
 		8629F4C81FA75D5000DBD7F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */; };
 		8629F4CA1FA75D5000DBD7F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4C91FA75D5000DBD7F0 /* ViewController.swift */; };
 		8629F4CF1FA75D5000DBD7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */; };
@@ -49,6 +54,11 @@
 		1F0BB4938FEE3DBB258506FA /* Pods-fikit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fikit.release.xcconfig"; path = "Pods/Target Support Files/Pods-fikit/Pods-fikit.release.xcconfig"; sourceTree = "<group>"; };
 		38CD2F7268B04C14AFA5E0DD /* Pods-fikit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fikit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fikit/Pods-fikit.debug.xcconfig"; sourceTree = "<group>"; };
 		818D8D457888BD3641C30237 /* Pods-fikitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fikitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fikitTests/Pods-fikitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		862604692004C62F0022FDD8 /* onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = onboarding.storyboard; sourceTree = "<group>"; };
+		8626046D2004DE730022FDD8 /* addNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNameViewController.swift; sourceTree = "<group>"; };
+		8626046F2004DF320022FDD8 /* addEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addEmailViewController.swift; sourceTree = "<group>"; };
+		862604712004EDC50022FDD8 /* addImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addImageViewController.swift; sourceTree = "<group>"; };
+		862604732004EDD00022FDD8 /* addBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBioViewController.swift; sourceTree = "<group>"; };
 		8629F4C41FA75D5000DBD7F0 /* fikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fikit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8629F4C91FA75D5000DBD7F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +129,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		862604752004EDE20022FDD8 /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				862604712004EDC50022FDD8 /* addImageViewController.swift */,
+				862604732004EDD00022FDD8 /* addBioViewController.swift */,
+				8626046F2004DF320022FDD8 /* addEmailViewController.swift */,
+				8626046D2004DE730022FDD8 /* addNameViewController.swift */,
+			);
+			path = onboarding;
+			sourceTree = "<group>";
+		};
 		8629F4BB1FA75D5000DBD7F0 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +177,8 @@
 				86D4C5581FCC67F500D75DCC /* fikaright.storyboard */,
 				8674B09A1FCDAF620070C0D0 /* settings.storyboard */,
 				864A5AF71FFCEF09004FC946 /* profil.storyboard */,
+				862604692004C62F0022FDD8 /* onboarding.storyboard */,
+				862604752004EDE20022FDD8 /* onboarding */,
 				86D4C55E1FCD54C000D75DCC /* Fikarum */,
 				8629F4D31FA75D5000DBD7F0 /* Info.plist */,
 			);
@@ -270,6 +293,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
 					};
 					8629F4D71FA75D5000DBD7F0 = {
@@ -310,6 +336,7 @@
 				86D4C5511FCC5F2500D75DCC /* GoogleService-Info.plist in Resources */,
 				8629F4CF1FA75D5000DBD7F0 /* Assets.xcassets in Resources */,
 				864A5AF81FFCEF09004FC946 /* profil.storyboard in Resources */,
+				8626046A2004C62F0022FDD8 /* onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,12 +481,16 @@
 			files = (
 				86D4C5671FCD59B500D75DCC /* inviteFriendViewController.swift in Sources */,
 				86D4C55D1FCD4FDF00D75DCC /* GoFikaViewController.swift in Sources */,
+				862604722004EDC50022FDD8 /* addImageViewController.swift in Sources */,
 				A75E3FE21FFBE9B300A1C400 /* TableViewController.swift in Sources */,
 				8629F4CA1FA75D5000DBD7F0 /* ViewController.swift in Sources */,
 				A75E3FE41FFC018400A1C400 /* TableViewCell.swift in Sources */,
+				8626046E2004DE730022FDD8 /* addNameViewController.swift in Sources */,
 				8629F4C81FA75D5000DBD7F0 /* AppDelegate.swift in Sources */,
 				A7AB19D61FF3E04D00F59B2C /* DataModel.swift in Sources */,
+				862604702004DF320022FDD8 /* addEmailViewController.swift in Sources */,
 				A732F69D1FB7104D0096C287 /* LoginViewController.swift in Sources */,
+				862604742004EDD00022FDD8 /* addBioViewController.swift in Sources */,
 				86D4C5621FCD561E00D75DCC /* FikarumViewController.swift in Sources */,
 				86D4C5641FCD576A00D75DCC /* FikarumPhotoCell.swift in Sources */,
 				A732F69B1FB708C30096C287 /* SignUpViewController.swift in Sources */,
@@ -621,7 +652,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = fikit/fikit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9B959M2YP5;
 				INFOPLIST_FILE = fikit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.fikit;
@@ -639,7 +670,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = fikit/fikit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9B959M2YP5;
 				INFOPLIST_FILE = fikit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.fikit;
