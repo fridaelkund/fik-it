@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseStorage
+import MessageUI
 
 class FikarumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -41,15 +42,15 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "InviteFriendSegue"{
-            let destView = segue.destination as! inviteFriendViewController
-            if let indexPath = collectionView.indexPathsForSelectedItems {
-                destView.name = self.onlineFriends[indexPath[0][1]]["username"] as! String
-            }
-
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "InviteFriendSegue"{
+//            let destView = segue.destination as! inviteFriendViewController
+//            if let indexPath = collectionView.indexPathsForSelectedItems {
+//                destView.name = self.onlineFriends[indexPath[0][1]]["username"] as! String
+//            }
+//
+//        }
+//    }
     
     //MARK: Private functions
     
@@ -115,6 +116,52 @@ extension FikarumViewController {
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
+        //SMS OR CALL THIS USER
+        showActionSheet(friend: self.onlineFriends[indexPath[1]])
+    }
+    
+    //Show action options
+    func showActionSheet(friend: Any){
+        print(friend)
+        
+        // 1
+        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        
+        // 2
+        let SMSAction = UIAlertAction(title: "SMS", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("SMS sent")
+            self.sendSMSText(phoneNumber: "+46707496422")
+        })
+        
+        let callAction = UIAlertAction(title: "Call", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Call")
+        })
+        
+        // 3
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Cancelled")
+        })
+        
+        // 4
+        optionMenu.addAction(SMSAction)
+        optionMenu.addAction(callAction)
+        optionMenu.addAction(cancelAction)
+        
+        // 5
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    
+    func sendSMSText(phoneNumber: String) {
+        UIApplication.shared.open(URL(string: "sms:"+phoneNumber)!, options: [:], completionHandler: nil)
+    }
+    
 }
 
 
