@@ -37,6 +37,8 @@ class DataModel {
             self.ref.root.child("users").child(currentUser.uid).setValue(
                 ["username": currentUser.displayName ?? "no name",
                  "status": "offline",
+                 "phoneNumber" : "+46707496422",
+                 "bio" : "biotext",
                  "hasFriends": false, //Used to check if user has friends or if we should display empty array
                  "friends" : ["default friend"], //we need to have a fake-friend as default - else entry won't exist
                 "id": currentUser.uid as Any,
@@ -105,10 +107,14 @@ class DataModel {
         let username = user["username"] as! String
         let userid = user["id"] as! String
         let userImage = user["image"] as! String
+        let phoneNumber = user["phoneNumber"] as! String
+        let bio = user["bio"] as! String
         
         userObj = ["id": userid,
                    "username": username,
-                   "image": userImage]
+                   "image": userImage,
+                   "phoneNumber": phoneNumber,
+                   "bio": bio]
         
         return userObj
     }

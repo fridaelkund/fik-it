@@ -179,7 +179,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="zAE-DF-PWj" id="Vkw-My-Dw3"/>
-                                            <segue destination="9oo-Ix-M5h" kind="modal" identifier="InviteFriendSegue" id="DGm-SR-jvt"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
