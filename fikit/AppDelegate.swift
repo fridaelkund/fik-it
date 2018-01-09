@@ -25,11 +25,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         var initialViewController: UIViewController
         
-//         Depending if user is logged in, redirect to different screens
-        if(Auth.auth().currentUser != nil){
-            initialViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
-        }else{
-            initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn") as UIViewController
+        // If users first time, redirect to new user
+        
+        let flag = UserDefaults.standard.bool(forKey: "fikit.firsttime.wasTheAppLoadedAlready")
+        if !flag {
+            initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUp") as UIViewController
+
+            UserDefaults.standard.set(true, forKey: "fikit.firsttime.wasTheAppLoadedAlready")
+        } else {
+            //   Depending if user is logged in, redirect to different screens
+            if(Auth.auth().currentUser != nil){
+                initialViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
+            }else{
+                initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn") as UIViewController
+            }
         }
         
         self.window?.rootViewController = initialViewController
