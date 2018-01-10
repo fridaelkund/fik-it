@@ -19,7 +19,6 @@
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tuj-QR-Dsr">
                                 <rect key="frame" x="0.0" y="165.5" width="375" height="336"/>
-
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="242-7h-7yf">
                                         <rect key="frame" x="137.5" y="0.0" width="100" height="96"/>
@@ -285,7 +284,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Nxg-lR-x7W"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lösenord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z80-zw-8BU">
@@ -295,7 +294,7 @@
                                             <constraint firstAttribute="height" constant="40" id="HcH-hs-oa1"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9va-ix-t5u">
@@ -371,6 +370,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4eq-W9-T1x"/>
-        <segue reference="Psf-Kk-TKW"/>
+        <segue reference="Qa6-fm-cqL"/>
     </inferredMetricsTieBreakers>
 </document>
