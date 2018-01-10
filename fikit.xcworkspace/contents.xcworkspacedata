@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/Frida/GitHub/fikit/fikit/onboarding/addPhoneViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:fikit.xcodeproj">
    </FileRef>
    <FileRef

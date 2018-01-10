@@ -8,35 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		5D255EF7E415E172A86A8F28 /* Pods_fikit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD7E66F75ADD080D8981F4E /* Pods_fikit.framework */; };
-		8626046A2004C62F0022FDD8 /* onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 862604692004C62F0022FDD8 /* onboarding.storyboard */; };
-		8626046E2004DE730022FDD8 /* addNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626046D2004DE730022FDD8 /* addNameViewController.swift */; };
-		862604722004EDC50022FDD8 /* addImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862604712004EDC50022FDD8 /* addImageViewController.swift */; };
-		862604742004EDD00022FDD8 /* addBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862604732004EDD00022FDD8 /* addBioViewController.swift */; };
 		8629F4C81FA75D5000DBD7F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */; };
 		8629F4CA1FA75D5000DBD7F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4C91FA75D5000DBD7F0 /* ViewController.swift */; };
+		8629F4CD1FA75D5000DBD7F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4CB1FA75D5000DBD7F0 /* Main.storyboard */; };
 		8629F4CF1FA75D5000DBD7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */; };
 		8629F4D21FA75D5000DBD7F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */; };
 		8629F4DD1FA75D5000DBD7F0 /* fikitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629F4DC1FA75D5000DBD7F0 /* fikitTests.swift */; };
-		864A5AF81FFCEF09004FC946 /* profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864A5AF71FFCEF09004FC946 /* profil.storyboard */; };
-		8674B09B1FCDAF620070C0D0 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8674B09A1FCDAF620070C0D0 /* settings.storyboard */; };
-		86C0E02520062D9E002F47A0 /* launchAnimation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86C0E02420062D9E002F47A0 /* launchAnimation.storyboard */; };
-		86C0E02720062DBB002F47A0 /* launchAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0E02620062DBB002F47A0 /* launchAnimationViewController.swift */; };
 		86D4C5511FCC5F2500D75DCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5501FCC5F2500D75DCC /* GoogleService-Info.plist */; };
-		86D4C5571FCC678D00D75DCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5551FCC678D00D75DCC /* Main.storyboard */; };
-		86D4C5591FCC67F500D75DCC /* fikaright.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86D4C5581FCC67F500D75DCC /* fikaright.storyboard */; };
-		86D4C55D1FCD4FDF00D75DCC /* GoFikaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4C55C1FCD4FDF00D75DCC /* GoFikaViewController.swift */; };
-		86D4C5621FCD561E00D75DCC /* FikarumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4C5611FCD561E00D75DCC /* FikarumViewController.swift */; };
-		86D4C5641FCD576A00D75DCC /* FikarumPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4C5631FCD576A00D75DCC /* FikarumPhotoCell.swift */; };
-		86D4C5671FCD59B500D75DCC /* inviteFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4C5651FCD59B400D75DCC /* inviteFriendViewController.swift */; };
-		86FA009B2004F25200AD26E8 /* addPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FA009A2004F25200AD26E8 /* addPhoneViewController.swift */; };
 		9CF8F1D8E01D4CB0E9EA0034 /* Pods_fikitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B00E6CAB2B3E47D577A335 /* Pods_fikitTests.framework */; };
 		A732F69B1FB708C30096C287 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F69A1FB708C30096C287 /* SignUpViewController.swift */; };
 		A732F69D1FB7104D0096C287 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F69C1FB7104C0096C287 /* LoginViewController.swift */; };
+		A732F69F1FB712D10096C287 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F69E1FB712D10096C287 /* HomeViewController.swift */; };
 		A732F6A11FB71C340096C287 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */; };
-		A75E3FE21FFBE9B300A1C400 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75E3FE11FFBE9B300A1C400 /* TableViewController.swift */; };
-		A75E3FE41FFC018400A1C400 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75E3FE31FFC018400A1C400 /* TableViewCell.swift */; };
-		A7A63E021FF64C0800D7B545 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A63E011FF64C0800D7B545 /* ProfileViewController.swift */; };
-		A7AB19D61FF3E04D00F59B2C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB19D51FF3E04C00F59B2C /* DataModel.swift */; };
 		A7E994E71FB23E1400566902 /* fikit in Resources */ = {isa = PBXBuildFile; fileRef = A7E994E61FB23E1400566902 /* fikit */; };
 /* End PBXBuildFile section */
 
@@ -56,39 +39,22 @@
 		1F0BB4938FEE3DBB258506FA /* Pods-fikit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fikit.release.xcconfig"; path = "Pods/Target Support Files/Pods-fikit/Pods-fikit.release.xcconfig"; sourceTree = "<group>"; };
 		38CD2F7268B04C14AFA5E0DD /* Pods-fikit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fikit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fikit/Pods-fikit.debug.xcconfig"; sourceTree = "<group>"; };
 		818D8D457888BD3641C30237 /* Pods-fikitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fikitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fikitTests/Pods-fikitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		862604692004C62F0022FDD8 /* onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = onboarding.storyboard; sourceTree = "<group>"; };
-		8626046D2004DE730022FDD8 /* addNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNameViewController.swift; sourceTree = "<group>"; };
-		862604712004EDC50022FDD8 /* addImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addImageViewController.swift; sourceTree = "<group>"; };
-		862604732004EDD00022FDD8 /* addBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBioViewController.swift; sourceTree = "<group>"; };
 		8629F4C41FA75D5000DBD7F0 /* fikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fikit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8629F4C91FA75D5000DBD7F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8629F4CC1FA75D5000DBD7F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8629F4D11FA75D5000DBD7F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8629F4D31FA75D5000DBD7F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8629F4D81FA75D5000DBD7F0 /* fikitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fikitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8629F4DC1FA75D5000DBD7F0 /* fikitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fikitTests.swift; sourceTree = "<group>"; };
 		8629F4DE1FA75D5000DBD7F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		864A5AF71FFCEF09004FC946 /* profil.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = profil.storyboard; sourceTree = "<group>"; };
-		8674B09A1FCDAF620070C0D0 /* settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
-		86C0E02420062D9E002F47A0 /* launchAnimation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = launchAnimation.storyboard; sourceTree = "<group>"; };
-		86C0E02620062DBB002F47A0 /* launchAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launchAnimationViewController.swift; sourceTree = "<group>"; };
 		86D4C5501FCC5F2500D75DCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		86D4C5561FCC678D00D75DCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		86D4C5581FCC67F500D75DCC /* fikaright.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = fikaright.storyboard; sourceTree = "<group>"; };
-		86D4C55C1FCD4FDF00D75DCC /* GoFikaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoFikaViewController.swift; sourceTree = "<group>"; };
-		86D4C5611FCD561E00D75DCC /* FikarumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikarumViewController.swift; sourceTree = "<group>"; };
-		86D4C5631FCD576A00D75DCC /* FikarumPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FikarumPhotoCell.swift; sourceTree = "<group>"; };
-		86D4C5651FCD59B400D75DCC /* inviteFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteFriendViewController.swift; sourceTree = "<group>"; };
-		86FA009A2004F25200AD26E8 /* addPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addPhoneViewController.swift; sourceTree = "<group>"; };
 		A732F69A1FB708C30096C287 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A732F69C1FB7104C0096C287 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A732F69E1FB712D10096C287 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
-		A75E3FE11FFBE9B300A1C400 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		A75E3FE31FFC018400A1C400 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		A779BF951FC9DC7F00E0C1F4 /* fikit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fikit.entitlements; sourceTree = "<group>"; };
-		A7A63E011FF64C0800D7B545 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		A7AB19D51FF3E04C00F59B2C /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		A7E994E61FB23E1400566902 /* fikit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fikit; sourceTree = SOURCE_ROOT; };
 		B4B00E6CAB2B3E47D577A335 /* Pods_fikitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fikitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -133,17 +99,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		862604752004EDE20022FDD8 /* onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				862604712004EDC50022FDD8 /* addImageViewController.swift */,
-				86FA009A2004F25200AD26E8 /* addPhoneViewController.swift */,
-				862604732004EDD00022FDD8 /* addBioViewController.swift */,
-				8626046D2004DE730022FDD8 /* addNameViewController.swift */,
-			);
-			path = onboarding;
-			sourceTree = "<group>";
-		};
 		8629F4BB1FA75D5000DBD7F0 = {
 			isa = PBXGroup;
 			children = (
@@ -168,24 +123,16 @@
 		8629F4C61FA75D5000DBD7F0 /* fikit */ = {
 			isa = PBXGroup;
 			children = (
-				863A0FA91FF2668C00BCCD84 /* settings */,
-				86D4C5521FCC643C00D75DCC /* loginControllers */,
-				864A5AF91FFD082F004FC946 /* Profile */,
 				A779BF951FC9DC7F00E0C1F4 /* fikit.entitlements */,
 				8629F4C71FA75D5000DBD7F0 /* AppDelegate.swift */,
-				A7AB19D51FF3E04C00F59B2C /* DataModel.swift */,
 				8629F4C91FA75D5000DBD7F0 /* ViewController.swift */,
-				86D4C5551FCC678D00D75DCC /* Main.storyboard */,
+				A732F69A1FB708C30096C287 /* SignUpViewController.swift */,
+				A732F69C1FB7104C0096C287 /* LoginViewController.swift */,
+				A732F69E1FB712D10096C287 /* HomeViewController.swift */,
+				A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */,
+				8629F4CB1FA75D5000DBD7F0 /* Main.storyboard */,
 				8629F4CE1FA75D5000DBD7F0 /* Assets.xcassets */,
 				8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */,
-				86C0E02420062D9E002F47A0 /* launchAnimation.storyboard */,
-				86C0E02620062DBB002F47A0 /* launchAnimationViewController.swift */,
-				86D4C5581FCC67F500D75DCC /* fikaright.storyboard */,
-				8674B09A1FCDAF620070C0D0 /* settings.storyboard */,
-				864A5AF71FFCEF09004FC946 /* profil.storyboard */,
-				862604692004C62F0022FDD8 /* onboarding.storyboard */,
-				862604752004EDE20022FDD8 /* onboarding */,
-				86D4C55E1FCD54C000D75DCC /* Fikarum */,
 				8629F4D31FA75D5000DBD7F0 /* Info.plist */,
 			);
 			path = fikit;
@@ -199,44 +146,6 @@
 				8629F4DE1FA75D5000DBD7F0 /* Info.plist */,
 			);
 			path = fikitTests;
-			sourceTree = "<group>";
-		};
-		863A0FA91FF2668C00BCCD84 /* settings */ = {
-			isa = PBXGroup;
-			children = (
-				A75E3FE11FFBE9B300A1C400 /* TableViewController.swift */,
-				A75E3FE31FFC018400A1C400 /* TableViewCell.swift */,
-			);
-			path = settings;
-			sourceTree = "<group>";
-		};
-		864A5AF91FFD082F004FC946 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				A7A63E011FF64C0800D7B545 /* ProfileViewController.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		86D4C5521FCC643C00D75DCC /* loginControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A732F69A1FB708C30096C287 /* SignUpViewController.swift */,
-				A732F69C1FB7104C0096C287 /* LoginViewController.swift */,
-				A732F6A01FB71C340096C287 /* ResetPasswordViewController.swift */,
-			);
-			path = loginControllers;
-			sourceTree = "<group>";
-		};
-		86D4C55E1FCD54C000D75DCC /* Fikarum */ = {
-			isa = PBXGroup;
-			children = (
-				86D4C5631FCD576A00D75DCC /* FikarumPhotoCell.swift */,
-				86D4C5611FCD561E00D75DCC /* FikarumViewController.swift */,
-				86D4C55C1FCD4FDF00D75DCC /* GoFikaViewController.swift */,
-				86D4C5651FCD59B400D75DCC /* inviteFriendViewController.swift */,
-			);
-			path = Fikarum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,9 +208,6 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
-							com.apple.Push = {
-								enabled = 0;
-							};
 						};
 					};
 					8629F4D71FA75D5000DBD7F0 = {
@@ -335,15 +241,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86D4C5591FCC67F500D75DCC /* fikaright.storyboard in Resources */,
-				8674B09B1FCDAF620070C0D0 /* settings.storyboard in Resources */,
 				8629F4D21FA75D5000DBD7F0 /* LaunchScreen.storyboard in Resources */,
-				86D4C5571FCC678D00D75DCC /* Main.storyboard in Resources */,
 				86D4C5511FCC5F2500D75DCC /* GoogleService-Info.plist in Resources */,
 				8629F4CF1FA75D5000DBD7F0 /* Assets.xcassets in Resources */,
-				864A5AF81FFCEF09004FC946 /* profil.storyboard in Resources */,
-				8626046A2004C62F0022FDD8 /* onboarding.storyboard in Resources */,
-				86C0E02520062D9E002F47A0 /* launchAnimation.storyboard in Resources */,
+				8629F4CD1FA75D5000DBD7F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +305,6 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -419,7 +319,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -486,23 +385,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86D4C5671FCD59B500D75DCC /* inviteFriendViewController.swift in Sources */,
-				86D4C55D1FCD4FDF00D75DCC /* GoFikaViewController.swift in Sources */,
-				862604722004EDC50022FDD8 /* addImageViewController.swift in Sources */,
-				A75E3FE21FFBE9B300A1C400 /* TableViewController.swift in Sources */,
 				8629F4CA1FA75D5000DBD7F0 /* ViewController.swift in Sources */,
-				86FA009B2004F25200AD26E8 /* addPhoneViewController.swift in Sources */,
-				A75E3FE41FFC018400A1C400 /* TableViewCell.swift in Sources */,
-				8626046E2004DE730022FDD8 /* addNameViewController.swift in Sources */,
-				86C0E02720062DBB002F47A0 /* launchAnimationViewController.swift in Sources */,
 				8629F4C81FA75D5000DBD7F0 /* AppDelegate.swift in Sources */,
-				A7AB19D61FF3E04D00F59B2C /* DataModel.swift in Sources */,
 				A732F69D1FB7104D0096C287 /* LoginViewController.swift in Sources */,
-				862604742004EDD00022FDD8 /* addBioViewController.swift in Sources */,
-				86D4C5621FCD561E00D75DCC /* FikarumViewController.swift in Sources */,
-				86D4C5641FCD576A00D75DCC /* FikarumPhotoCell.swift in Sources */,
 				A732F69B1FB708C30096C287 /* SignUpViewController.swift in Sources */,
-				A7A63E021FF64C0800D7B545 /* ProfileViewController.swift in Sources */,
+				A732F69F1FB712D10096C287 /* HomeViewController.swift in Sources */,
 				A732F6A11FB71C340096C287 /* ResetPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,20 +413,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8629F4CB1FA75D5000DBD7F0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8629F4CC1FA75D5000DBD7F0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		8629F4D01FA75D5000DBD7F0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8629F4D11FA75D5000DBD7F0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		86D4C5551FCC678D00D75DCC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				86D4C5561FCC678D00D75DCC /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -577,7 +464,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9B959M2YP5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -635,7 +521,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9B959M2YP5;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -662,7 +547,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = fikit/fikit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9B959M2YP5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = fikit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.fikit;
@@ -680,7 +565,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = fikit/fikit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9B959M2YP5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = fikit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.fikit;

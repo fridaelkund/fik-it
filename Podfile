@@ -18,11 +18,7 @@ target 'fikit' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-  pod 'Firebase/Storage'
   
-
-  pod 'SDWebImage', '~> 4.0'
-
   target 'fikitTests' do
     inherit! :search_paths
     # Pods for testing
