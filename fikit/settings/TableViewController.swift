@@ -107,7 +107,7 @@ class TableViewController: UITableViewController {
         //If non-friends section
         if(indexPath.section == 1){
             let user = objectArray[indexPath.section].sectionObjects[indexPath.row]["username"] as! String
-            alertWindow(title: "Add friend", message: "Do you want do add " + user + " as your friend?", indexPath: indexPath)
+            alertWindow(title: "Lägg till vän", message: "Vill du lägga till " + user + " som vän?", indexPath: indexPath)
             
         }
         //If friends section
@@ -176,7 +176,7 @@ class TableViewController: UITableViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // YES - add this friend
-        let OKAction = UIAlertAction(title: "YES", style: .default) { (action:UIAlertAction!) in
+        let OKAction = UIAlertAction(title: "Lägg till vän", style: .default) { (action:UIAlertAction!) in
             
             // We add this friend in friendslist and database
             self.friends.append(self.objectArray[indexPath.section].sectionObjects[indexPath.row])
@@ -185,7 +185,7 @@ class TableViewController: UITableViewController {
         alertController.addAction(OKAction)
         
         // Cancel - don't add this friend
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+        let cancelAction = UIAlertAction(title: "Avbryt", style: .cancel) { (action:UIAlertAction!) in
         }
         alertController.addAction(cancelAction)
         

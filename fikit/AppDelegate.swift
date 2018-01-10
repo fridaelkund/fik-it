@@ -21,25 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initate firebase
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-    
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        var initialViewController: UIViewController
-        
-        // If users first time, redirect to new user
-        
-        let flag = UserDefaults.standard.bool(forKey: "fikit.firsttime.wasTheAppLoadedAlready")
-        if !flag {
-            initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUp") as UIViewController
-
-            UserDefaults.standard.set(true, forKey: "fikit.firsttime.wasTheAppLoadedAlready")
-        } else {
-            //   Depending if user is logged in, redirect to different screens
-            if(Auth.auth().currentUser != nil){
-                initialViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
-            }else{
-                initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn") as UIViewController
-            }
-        }
+ 
+        let initialViewController = UIStoryboard(name: "launchAnimation", bundle: nil).instantiateViewController(withIdentifier: "launch") as UIViewController
         
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
