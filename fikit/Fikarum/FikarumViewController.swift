@@ -157,7 +157,7 @@ extension FikarumViewController {
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
             controller.body = "Hej " + username + "! Jag såg att du var fikasugen på fik-it. Vill du fika med mig? /" + fromUser
-            controller.recipients = [phoneNumber]
+            controller.recipients = ["0" + phoneNumber]
             controller.messageComposeDelegate = self as MFMessageComposeViewControllerDelegate
             self.present(controller, animated: true, completion: nil)
         }
@@ -169,7 +169,7 @@ extension FikarumViewController {
     }
     
     func callFriend(phoneNumber: String){
-        if let url = URL(string: "tel://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+        if let url = URL(string: "tel:0//\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url)
             } else {
