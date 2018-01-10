@@ -40,7 +40,7 @@
                                             <constraint firstAttribute="height" constant="40" id="sNl-FD-Lz9"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                         <connections>
                                             <outlet property="delegate" destination="DUD-dy-5oN" id="jRe-JO-i4K"/>
                                         </connections>
@@ -198,7 +198,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                         <connections>
                                             <outlet property="delegate" destination="8zP-Yk-bMl" id="Z5F-Vj-i0s"/>
                                         </connections>
@@ -294,7 +294,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                         <connections>
                                             <outlet property="delegate" destination="GH9-d1-CdV" id="f1a-oZ-nFI"/>
                                         </connections>
@@ -384,7 +384,7 @@
         <image name="coffee_emoji" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xaz-39-Oqr"/>
-        <segue reference="Psf-Kk-TKW"/>
+        <segue reference="4eq-W9-T1x"/>
+        <segue reference="Qa6-fm-cqL"/>
     </inferredMetricsTieBreakers>
 </document>
