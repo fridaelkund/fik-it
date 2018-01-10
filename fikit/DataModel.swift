@@ -144,7 +144,7 @@ class DataModel {
         }
     }
     
-    //Check phone number with regular expression to see if it's valid
+    //Check phone number with regular expression to see if it's valid or not
     func checkPhoneNumber(value: String) -> Bool {
         let correctNumber = "^[0-9]{9}$"
         let checkNumber = NSPredicate(format: "SELF MATCHES %@", correctNumber)
