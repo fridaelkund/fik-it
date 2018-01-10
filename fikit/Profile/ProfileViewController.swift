@@ -153,7 +153,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         dataModel.updateUserProfile(value: ["username" : tableVC?.nameInputField.text! ?? "no name"])
         
         //Phone number
-        let isPhoneNumber = checkPhoneNumber(value: (tableVC?.phoneLabel.text)!)
+        let isPhoneNumber = dataModel.checkPhoneNumber(value: (tableVC?.phoneLabel.text)!)
         //Only update phone number if it's valid
         if(isPhoneNumber){
             dataModel.updateUserProfile(value: ["phoneNumber" : tableVC?.phoneLabel.text!])
@@ -172,14 +172,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         //--- UPDATE VIEW ---
         displayUserData()
         
-    }
-    
-    //Check phone number with regular expression to see if it's valid
-    func checkPhoneNumber(value: String) -> Bool {
-        let correctNumber = "^[0-9]{9}$"
-        let checkNumber = NSPredicate(format: "SELF MATCHES %@", correctNumber)
-        let isValid = checkNumber.evaluate(with: value)
-        return isValid
     }
     
     
