@@ -22,6 +22,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     var dataModel = DataModel()
     var friends: Array<AnyObject> = []
     var onlineFriends: Array<AnyObject> = []
+    var userOnline: Dictionary <AnyHashable, Any> = [:]
 
     fileprivate let reuseIdentifier = "Fotocell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
@@ -41,16 +42,6 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
     }
-   
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "InviteFriendSegue"{
-//            let destView = segue.destination as! inviteFriendViewController
-//            if let indexPath = collectionView.indexPathsForSelectedItems {
-//                destView.name = self.onlineFriends[indexPath[0][1]]["username"] as! String
-//            }
-//
-//        }
-//    }
     
     //MARK: Private functions
     
@@ -58,6 +49,7 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
     private func useData(data: NSDictionary) {
         if let currentUser = Auth.auth().currentUser{
             let user = data[currentUser.uid] as! NSDictionary
+            userOnline = dataModel.getUserStructure(user: user)
             
             //Call function creating list of current users friends
             self.friends = dataModel.getFriendsList(hasFriends: user["hasFriends"] as! Bool, userFriends: user["friends"] as! Array<AnyObject>)
@@ -72,7 +64,8 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
             
         }
         else{
-            print("error")
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogIn") as UIViewController
+            self.present(viewController, animated: false, completion: nil)
         }
     }
 }
@@ -127,18 +120,16 @@ extension FikarumViewController {
     
     //Show action options
     func showActionSheet(friend: AnyObject){
-        print(friend["phoneNumber"])
-        
         // 1
-        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        let optionMenu = UIAlertController(title: nil, message: "Bjud in till fika", preferredStyle: .actionSheet)
         
         // 2
-        let SMSAction = UIAlertAction(title: "SMS", style: .default, handler: {
+        let SMSAction = UIAlertAction(title: "Sms", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
-            self.sendSMSText(phoneNumber: friend["phoneNumber"] as! String, username: friend["username"] as! String)
+            self.sendSMSText(phoneNumber: friend["phoneNumber"] as! String, username: friend["username"] as! String, fromUser: self.userOnline["username"] as! String)
         })
         
-        let callAction = UIAlertAction(title: "Call", style: .default, handler: {
+        let callAction = UIAlertAction(title: "Ring", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             print("Call")
             //MAKE PHONE CALL
@@ -146,7 +137,7 @@ extension FikarumViewController {
         })
         
         // 3
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+        let cancelAction = UIAlertAction(title: "Avbryt", style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
             print("Cancelled")
             //CLOSING - no action
@@ -162,10 +153,10 @@ extension FikarumViewController {
     }
     
     
-    func sendSMSText(phoneNumber: String, username: String) {
+    func sendSMSText(phoneNumber: String, username: String, fromUser: String) {
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
-            controller.body = "Hej " + username + "! Jag såg att du var fikasugen på fik-it. Vill du fika med mig?"
+            controller.body = "Hej " + username + "! Jag såg att du var fikasugen på fik-it. Vill du fika med mig? /" + fromUser
             controller.recipients = [phoneNumber]
             controller.messageComposeDelegate = self as MFMessageComposeViewControllerDelegate
             self.present(controller, animated: true, completion: nil)
