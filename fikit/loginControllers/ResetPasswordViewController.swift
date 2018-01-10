@@ -71,6 +71,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
 }
 
 //Solution for this here: https://stackoverflow.com/questions/25367502/create-space-at-the-beginning-of-a-uitextfield
+
 extension UITextField {
     //Setting left padding for any text field
     func setLeftPadding(_ amount:CGFloat){

@@ -48,14 +48,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //MARK: Functions
+    // MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.setLeftPadding(10)
         emailTextField.setRightPadding(10)
         passwordTextField.setLeftPadding(10)
         passwordTextField.setRightPadding(10)
-
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -63,7 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    //MARK: Private functions
+    // MARK: Private functions
     
     // Alert window
     private func alertWindow(title: String, message: String){
@@ -78,46 +77,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
         self.present(viewController, animated: false, completion: nil)
     }
-    
-    
-    //Facebook login
-    //    @IBAction func facebookLoginAction(_ sender: UIButton) {
-    //        let fbLoginManager = FBSDKLoginManager()
-    //        //Login with chosen permissions
-    //        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (result, error) in
-    //            if let error = error {
-    //                print("Facebook login failed: \(error.localizedDescription)")
-    //                return
-    //            }
-    //
-    //            //Watch for accessToken and save it to accessToken variable when there is one
-    //            guard let accessToken = FBSDKAccessToken.current() else {
-    //                print("Getting access token failed")
-    //                return
-    //            }
-    //            //Save credentials to variable
-    //            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-    //
-    //            // Perform login by calling Firebase APIs
-    //            Auth.auth().signIn(with: credential, completion: { (user, error) in
-    //                if let error = error {
-    //                    print("Firebase login failed: \(error.localizedDescription)")
-    //
-    //                    //Send an alert to the user if login failed
-    //                    self.alertWindow(title: "Login error", message: error.localizedDescription)
-    //                    return
-    //                }
-    //                else{
-    //                    print("Facebook and firebase login successfulSuccess", user ?? "no user")
-    //
-    //                    //Go to FikaView if the login is sucessful
-    //                    self.presentFikaView()
-    //
-    //                }
-    //            })
-    //
-    //        }
-    //    }
-    //
 }
 

@@ -8,6 +8,7 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
+    
     //MARK: Properties
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userImage: UIImageView!
@@ -21,7 +22,6 @@ class TableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

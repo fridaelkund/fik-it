@@ -79,10 +79,4 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.present(viewController, animated: false, completion: nil)
     }
     
-    
-    //Go to fikaView if signup is successful (because then we login)
-//    private func presentFikaView(){
-//        let viewController:UIViewController = UIStoryboard(name: "fikaright", bundle: nil).instantiateViewController(withIdentifier: "Gofika") as UIViewController
-//        self.present(viewController, animated: false, completion: nil)
-//    }
 }
