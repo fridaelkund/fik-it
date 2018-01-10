@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class ResetPasswordViewController: UIViewController {
     
-    //MARK: Outlets
+    //MARK: Properties
     @IBOutlet weak var emailTextField: UITextField!
     
     //MARK: Actions
@@ -34,8 +34,8 @@ class ResetPasswordViewController: UIViewController {
                     title = "Error!"
                     message = (error?.localizedDescription)!
                 } else {
-                    title = "Success!"
-                    message = "Password reset email sent."
+                    title = ""
+                    message = "Ett mejl med en länk för att ändra lösenord har skickats till dig."
                     self.emailTextField.text = ""
                 }
                 
@@ -44,6 +44,13 @@ class ResetPasswordViewController: UIViewController {
         
             })
         }
+    }
+    
+    //MARK: Functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        emailTextField.setLeftPadding(10)
+        emailTextField.setRightPadding(10)
     }
     
     //MARK: Private functions
@@ -57,3 +64,22 @@ class ResetPasswordViewController: UIViewController {
         
     }
 }
+
+//Solution for this here: https://stackoverflow.com/questions/25367502/create-space-at-the-beginning-of-a-uitextfield
+extension UITextField {
+    //Setting left padding for any text field
+    func setLeftPadding(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    
+    //Set right padding for any text-field
+    func setRightPadding(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
+}
+
+

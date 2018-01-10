@@ -75,8 +75,8 @@ class TableViewController: UITableViewController {
         cell.onlineStatus.layer.cornerRadius = cell.onlineStatus.frame.height/2
         
       
-        if(user["status"] as! String == "online"){
-            cell.onlineStatus.backgroundColor = UIColor.green
+        if(user["status"] as! String == "offline"){
+            cell.onlineStatus.backgroundColor = UIColor.gray
         }
         else{
             print("else")

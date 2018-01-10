@@ -50,7 +50,7 @@
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a80-2D-3Ku">
                                             <rect key="frame" x="89" y="17" width="10" height="10"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.99795752760000001" green="0.45764537830000002" blue="0.4242675387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.3548433781" green="0.63476294280000001" blue="0.46166265010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -78,7 +78,6 @@
         <!--Navigation Controller-->
         <scene sceneID="qX8-iC-8hy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lD9-dT-PWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B5j-Lj-gQF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uMd-Lh-IFR">
@@ -90,11 +89,12 @@
                         <segue destination="jMN-PN-g5y" kind="relationship" relationship="rootViewController" id="7UT-LU-xQG"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lD9-dT-PWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-351" y="719"/>
         </scene>
     </scenes>
     <resources>
-        <image name="placeholderImage" width="435" height="435"/>
+        <image name="placeholderImage" width="200" height="200"/>
     </resources>
 </document>
