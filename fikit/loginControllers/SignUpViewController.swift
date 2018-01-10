@@ -13,8 +13,6 @@ class SignUpViewController: UIViewController {
     
     //MARK: Properties
     var dataModel = DataModel()
-
-    //MARK: Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -33,6 +31,15 @@ class SignUpViewController: UIViewController {
                 self?.useData(data: data)
             }
         }
+    }
+    
+    //MARK: Functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        emailTextField.setLeftPadding(10)
+        emailTextField.setRightPadding(10)
+        passwordTextField.setLeftPadding(10)
+        passwordTextField.setRightPadding(10)
     }
     
     //MARK: Private functions

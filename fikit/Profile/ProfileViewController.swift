@@ -44,6 +44,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // View did load
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         picker.delegate = self
         
         //Get user data
@@ -255,6 +256,8 @@ class NameTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameInputField.setRightPadding(10)
+        phoneLabel.setRightPadding(10)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
