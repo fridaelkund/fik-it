@@ -96,6 +96,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     // Entering editing mode
     @objc func enterEditing(sender: UIBarButtonItem) {
+        print("start editing")
         // Setting buttons to done and cancle
         self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .cancel, target: self,
                                                              action: #selector(cancelEditing(sender:))), animated: true)
@@ -111,7 +112,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         tableVC?.phoneLabel.clearButtonMode = UITextFieldViewMode.always
         
         tableVC?.bioLabel.isUserInteractionEnabled = true
-      //  tableVC?.bioLabel.clear = UITextFieldViewMode.always
+        
+        tableVC?.bioLabel.isEditable = true
+        tableVC?.bioLabel.isSelectable = true
         
     }
     
@@ -131,7 +134,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         tableVC?.phoneLabel.clearButtonMode = UITextFieldViewMode.never
         
         tableVC?.bioLabel.isUserInteractionEnabled = false
-       // tableVC?.bioLabel.clearButtonMode = UITextFieldViewMode.never
+        
+        tableVC?.bioLabel.isEditable = false
+        tableVC?.bioLabel.isSelectable = false
     }
     
     // MARK: Actions
@@ -248,8 +253,6 @@ class NameTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameInputField.setRightPadding(10)
-        phoneLabel.setRightPadding(10)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class addNameViewController: UIViewController {
+class addNameViewController: UIViewController, UITextFieldDelegate {
     var dataModel = DataModel()
     
     @IBOutlet weak var addName: UITextField!
@@ -28,6 +28,11 @@ class addNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          missingName.isHidden = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
 }

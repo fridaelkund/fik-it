@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Properties
     @IBOutlet weak var emailTextField: UITextField!
@@ -51,6 +51,11 @@ class ResetPasswordViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.setLeftPadding(10)
         emailTextField.setRightPadding(10)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     //MARK: Private functions

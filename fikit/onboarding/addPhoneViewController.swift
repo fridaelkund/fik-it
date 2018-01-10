@@ -7,7 +7,7 @@
 
 import UIKit
 
-class addPhoneViewController: UIViewController {
+class addPhoneViewController: UIViewController, UITextFieldDelegate {
     var dataModel = DataModel()
     
     @IBOutlet weak var phoneNumber: UITextField!
@@ -35,5 +35,11 @@ class addPhoneViewController: UIViewController {
         super.viewDidLoad()
         missingPhoneNumber.isHidden = true
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
 
 }

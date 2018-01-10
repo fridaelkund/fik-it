@@ -7,7 +7,7 @@
 
 import UIKit
 
-class addBioViewController: UIViewController {
+class addBioViewController: UIViewController, UITextFieldDelegate {
     var dataModel = DataModel()
     
     @IBOutlet weak var missingBio: UILabel!
@@ -28,6 +28,11 @@ class addBioViewController: UIViewController {
         super.viewDidLoad()
 
         missingBio.isHidden = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 
 }

@@ -9,7 +9,7 @@ import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Properties
     @IBOutlet weak var emailTextField: UITextField!
@@ -56,6 +56,11 @@ class LoginViewController: UIViewController {
         passwordTextField.setLeftPadding(10)
         passwordTextField.setRightPadding(10)
 
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     //MARK: Private functions

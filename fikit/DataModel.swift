@@ -37,7 +37,7 @@ class DataModel {
             self.ref.root.child("users").child(currentUser.uid).setValue(
                 ["username": currentUser.displayName ?? "no name",
                  "status": "offline",
-                 "phoneNumber" : "+46707496422",
+                 "phoneNumber" : "707496422",
                  "bio" : "biotext",
                  "hasFriends": false, //Used to check if user has friends or if we should display empty array
                  "friends" : ["default friend"], //we need to have a fake-friend as default - else entry won't exist

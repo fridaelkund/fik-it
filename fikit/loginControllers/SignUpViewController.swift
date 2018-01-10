@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Properties
     var dataModel = DataModel()
@@ -40,6 +40,11 @@ class SignUpViewController: UIViewController {
         emailTextField.setRightPadding(10)
         passwordTextField.setLeftPadding(10)
         passwordTextField.setRightPadding(10)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     //MARK: Private functions

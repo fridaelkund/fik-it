@@ -71,7 +71,6 @@
                             <constraint firstItem="zeP-56-MbD" firstAttribute="leading" secondItem="mEs-g0-Yzp" secondAttribute="leading" id="KTj-HE-HbG"/>
                             <constraint firstItem="Eku-Fp-3UJ" firstAttribute="centerX" secondItem="TES-nf-o6c" secondAttribute="centerX" id="KUb-sy-hAE"/>
                             <constraint firstItem="zeP-56-MbD" firstAttribute="bottom" secondItem="mEs-g0-Yzp" secondAttribute="bottom" id="L8h-l5-qXX"/>
-                            <constraint firstItem="LWR-BM-b1V" firstAttribute="trailing" secondItem="mEs-g0-Yzp" secondAttribute="trailing" constant="60" id="S4A-Kk-6qW"/>
                             <constraint firstItem="LWR-BM-b1V" firstAttribute="top" secondItem="DYh-6G-VWc" secondAttribute="bottom" constant="20" id="VmP-3H-Bko"/>
                             <constraint firstItem="LWR-BM-b1V" firstAttribute="leading" secondItem="mEs-g0-Yzp" secondAttribute="leading" id="Z3I-eM-cEs"/>
                             <constraint firstItem="zeP-56-MbD" firstAttribute="trailing" secondItem="mEs-g0-Yzp" secondAttribute="trailing" id="n3S-th-RMR"/>
@@ -115,12 +114,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qVu-iM-55A">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qVu-iM-55A">
                                                     <rect key="frame" x="157" y="6" width="195" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -163,12 +162,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="taU-gQ-Bc0">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="taU-gQ-Bc0">
                                                     <rect key="frame" x="206" y="6" width="146" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="+46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMC-n7-ddC">
                                                     <rect key="frame" x="164" y="6" width="34" height="30"/>
@@ -194,12 +193,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView contentMode="scaleToFill" ambiguous="YES" contentInsetAdjustmentBehavior="always" keyboardDismissMode="interactive" usesAttributedText="YES" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt7-Eb-FsU">
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" contentInsetAdjustmentBehavior="always" keyboardDismissMode="interactive" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt7-Eb-FsU">
                                                     <rect key="frame" x="161" y="11" width="177" height="103"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="50" maxY="0.0"/>
-                                                    <attributedString key="attributedText"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
@@ -227,6 +225,7 @@
         <!--Navigation Controller-->
         <scene sceneID="4HR-Ze-K79">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9eD-SR-GJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XyY-3Q-dgQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jU5-qb-3ge">
@@ -242,7 +241,6 @@
                         <segue destination="9II-F1-Qc5" kind="relationship" relationship="rootViewController" id="Uj4-lk-Esb"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9eD-SR-GJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-662" y="-108"/>
         </scene>
