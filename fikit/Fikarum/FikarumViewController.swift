@@ -8,8 +8,10 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseStorage
+import MessageUI
 
-class FikarumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class FikarumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MFMessageComposeViewControllerDelegate {
     
     //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,15 +42,15 @@ class FikarumViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "InviteFriendSegue"{
-            let destView = segue.destination as! inviteFriendViewController
-            if let indexPath = collectionView.indexPathsForSelectedItems {
-                destView.name = self.onlineFriends[indexPath[0][1]]["username"] as! String
-            }
-
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "InviteFriendSegue"{
+//            let destView = segue.destination as! inviteFriendViewController
+//            if let indexPath = collectionView.indexPathsForSelectedItems {
+//                destView.name = self.onlineFriends[indexPath[0][1]]["username"] as! String
+//            }
+//
+//        }
+//    }
     
     //MARK: Private functions
     
@@ -95,24 +97,96 @@ extension FikarumViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! FikarumPhotoCell
         
-        //2
-        cell.imageView.image = UIImage(named:"placeholderImage")
-
+        //Creating image
         let userID = onlineFriends[indexPath[1]]["id"] as! String
-        let imageRef = dataModel.storageRef.child("image/\(userID).jpg") as StorageReference
-        
+        let imageRef = dataModel.storageRef.child("image/\(userID).jpg")
         dataModel.displayImage(imageViewToUse: cell.imageView, userImageRef: imageRef)
         
-        //3
-        cell.imageView.layer.cornerRadius = 70
-        cell.imageView.clipsToBounds = true
+        //Setting nameLabel
+        cell.nameLabel.text = onlineFriends[indexPath[1]]["username"] as? String
         
+        //Setting image styling
+        cell.imageView.layer.masksToBounds = true
+        cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
+        cell.imageView.clipsToBounds = true
+
+        
+         cell.onlineSymbol.layer.cornerRadius = cell.onlineSymbol.frame.height/2
         // If we have a cell, hide empty state
         emptyStateLabel.isHidden = true
         youHaveFriendsLabel.isHidden = false
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
+        //SMS OR CALL THIS USER
+        showActionSheet(friend: self.onlineFriends[indexPath[1]])
+    }
+    
+    //Show action options
+    func showActionSheet(friend: AnyObject){
+        print(friend["phoneNumber"])
+        
+        // 1
+        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        
+        // 2
+        let SMSAction = UIAlertAction(title: "SMS", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.sendSMSText(phoneNumber: friend["phoneNumber"] as! String, username: friend["username"] as! String)
+        })
+        
+        let callAction = UIAlertAction(title: "Call", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Call")
+            //MAKE PHONE CALL
+            self.callFriend(phoneNumber: friend["phoneNumber"] as! String)
+        })
+        
+        // 3
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Cancelled")
+            //CLOSING - no action
+        })
+        
+        // 4
+        optionMenu.addAction(SMSAction)
+        optionMenu.addAction(callAction)
+        optionMenu.addAction(cancelAction)
+        
+        // 5
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    
+    func sendSMSText(phoneNumber: String, username: String) {
+        if (MFMessageComposeViewController.canSendText()) {
+            let controller = MFMessageComposeViewController()
+            controller.body = "Hej " + username + "! Jag såg att du var fikasugen på fik-it. Vill du fika med mig?"
+            controller.recipients = [phoneNumber]
+            controller.messageComposeDelegate = self as MFMessageComposeViewControllerDelegate
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        //... handle sms screen actions
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func callFriend(phoneNumber: String){
+        if let url = URL(string: "tel://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
 }
 
 

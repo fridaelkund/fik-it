@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class TableViewController: UITableViewController {
 
@@ -30,6 +31,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Get user data
         dataModel.observeDatabase { [weak self] (data: NSDictionary) in
             //When we have the data we can use it here
@@ -38,6 +40,7 @@ class TableViewController: UITableViewController {
         }
         self.tableView.delegate = self
         self.tableView.dataSource = self
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,19 +61,36 @@ class TableViewController: UITableViewController {
         return objectArray[section].sectionObjects.count
     }
 
-  
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
+    }
     // creating cells
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> TableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         let user = objectArray[indexPath.section].sectionObjects[indexPath.row]
         
-        cell.textLabel?.text = user["username"] as? String
-        cell.imageView?.image = UIImage(named:"placeholderImage")
+        cell.userName.text = user["username"] as? String
+        cell.userBio.text = user["bio"] as? String
+        
+        cell.onlineStatus.layer.cornerRadius = cell.onlineStatus.frame.height/2
+        
+      
+        if(user["status"] as! String == "online"){
+            cell.onlineStatus.backgroundColor = UIColor.green
+        }
+        else{
+            print("else")
+        }
+        
+        //Round images
+        cell.userImage.layer.masksToBounds = false
+        cell.userImage.layer.cornerRadius = cell.userImage.frame.height/2
+        cell.userImage.clipsToBounds = true
         
         // Set the right image
         let userID = user["id"] as! String
-        let imageRef = dataModel.storageRef.child("image/\(userID).jpg") as StorageReference
-        dataModel.displayImage(imageViewToUse: cell.imageView!, userImageRef: imageRef)
+        let imageRef = dataModel.storageRef.child("image/\(userID).jpg")
+        dataModel.displayImage(imageViewToUse: cell.userImage, userImageRef: imageRef)
         
         return cell
     }
@@ -95,7 +115,7 @@ class TableViewController: UITableViewController {
             //MAYBE REMOVE FRIEND HERE
         }
     }
-    
+
     
     //MARK: Private functions
     

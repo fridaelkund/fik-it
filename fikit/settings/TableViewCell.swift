@@ -8,7 +8,12 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
+    //MARK: Properties
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userBio: UILabel!
+    @IBOutlet weak var onlineStatus: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
