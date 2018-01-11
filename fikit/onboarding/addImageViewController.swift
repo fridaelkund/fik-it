@@ -10,23 +10,21 @@ import Firebase
 import FirebaseStorage
 
 class addImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // MARK: Properties
     var dataModel = DataModel()
     let picker = UIImagePickerController()
-
-    // Error message
     @IBOutlet weak var missingImage: UILabel!
-    
-    // Display the chosen image
     @IBOutlet weak var displayImage: UIImageView!
-    
     @IBOutlet weak var buttonOne: UIButton!
     @IBOutlet weak var buttonTwo: UIButton!
     @IBOutlet weak var buttonThree: UIButton!
-    
-    
+
     // Variable to store chosen image
     var chosenImage: UIImage?
 
+    // MARK: Actions
+    
     // Adding profile picture from camera roll
     @IBAction func addImage(_ sender: Any) {
         changeImage()
@@ -34,25 +32,25 @@ class addImageViewController: UIViewController, UIImagePickerControllerDelegate,
         missingImage.isHidden = true
     }
     
-    
+    //First image
     @IBAction func imageOne(_ sender: Any) {
         missingImage.isHidden = true
         chosenImage = UIImage(named: "johnny_cake")
         displayImage.image = chosenImage
     }
-    
+    //Second image
     @IBAction func imageTwo(_ sender: Any) {
         missingImage.isHidden = true
         chosenImage = UIImage(named: "julia_cake")
         displayImage.image = chosenImage
     }
-    
+    //Third Image
     @IBAction func imageThree(_ sender: Any) {
         missingImage.isHidden = true
         chosenImage = UIImage(named: "ryan_cake")
         displayImage.image = chosenImage
     }
-    
+    //Add your own image
     @IBAction func toAddBio(_ sender: Any) {
         if chosenImage != nil{
             //Add image to database too
@@ -68,25 +66,31 @@ class addImageViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    // MARK: Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
         
         missingImage.isHidden = true
-        
+
         // Making images to circles
-        displayImage.layer.masksToBounds = false
-        displayImage.layer.cornerRadius = displayImage.frame.height/2
-        displayImage.clipsToBounds = true
-        
-        buttonOne.layer.cornerRadius = 0.5 * buttonOne.bounds.size.width
-        buttonOne.clipsToBounds = true
-        
-        buttonTwo.layer.cornerRadius = 0.5 * buttonTwo.bounds.size.width
-        buttonTwo.clipsToBounds = true
-        
-        buttonThree.layer.cornerRadius = 0.5 * buttonThree.bounds.size.width
-        buttonThree.clipsToBounds = true
+        circledImages(image: displayImage)
+        circledButtonImage(button: buttonOne)
+        circledButtonImage(button: buttonTwo)
+        circledButtonImage(button: buttonThree)
+    }
+    
+    //Makes image circled
+    func circledImages(image: UIImageView){
+        image.layer.cornerRadius = image.frame.height/2
+        image.clipsToBounds = true
+    }
+    
+    //Makes buttonimage circled
+    func circledButtonImage(button: UIButton){
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        button.clipsToBounds = true
     }
     
     // Change profile image

@@ -8,11 +8,13 @@
 import UIKit
 
 class addNameViewController: UIViewController, UITextFieldDelegate {
-    var dataModel = DataModel()
     
+    // MARK: Properties
+    var dataModel = DataModel()
     @IBOutlet weak var addName: UITextField!
     @IBOutlet weak var missingName: UILabel!
     
+    // MARK: Actions
     @IBAction func toEmail(_ sender: Any) {
         if addName.text != ""{
             dataModel.updateUserProfile(value: ["username" : addName.text! ])
@@ -25,6 +27,7 @@ class addNameViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
          missingName.isHidden = true

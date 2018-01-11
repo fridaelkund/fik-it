@@ -8,10 +8,13 @@
 import UIKit
 
 class addBioViewController: UIViewController, UITextFieldDelegate {
-    var dataModel = DataModel()
     
+    // MARK: Properties
+    var dataModel = DataModel()
     @IBOutlet weak var missingBio: UILabel!
     @IBOutlet weak var addBio: UITextField!
+    
+    // MARK: Actions
     
     @IBAction func doneWithBio(_ sender: Any) {
         if(addBio.text != ""){
@@ -24,6 +27,7 @@ class addBioViewController: UIViewController, UITextFieldDelegate {
         }
      }
     
+    //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
 

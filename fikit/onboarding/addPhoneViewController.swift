@@ -8,10 +8,13 @@
 import UIKit
 
 class addPhoneViewController: UIViewController, UITextFieldDelegate {
-    var dataModel = DataModel()
     
+    // MARK: Properties
+    var dataModel = DataModel()
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var missingPhoneNumber: UILabel!
+    
+    // MARK: Actions
     
     @IBAction func toImage(_ sender: Any) {
         if phoneNumber.text != nil{
@@ -30,6 +33,8 @@ class addPhoneViewController: UIViewController, UITextFieldDelegate {
             missingPhoneNumber.isHidden = false
         }
      }
+    
+    // MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -167,15 +167,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Du har inga vänner som är fikasugna just nu, kom tillbaka senare!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mtb-AS-5uc">
-                                <rect key="frame" x="83" y="177" width="208" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Du har inga vänner som är fikasugna just nu, kom tillbaka senare!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mtb-AS-5uc">
+                                <rect key="frame" x="70" y="177" width="274" height="91"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du har vänner som vill fika!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiQ-Th-U51">
+                                <rect key="frame" x="91" y="84" width="232" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="HGk-yQ-1Xc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axZ-uc-WOZ">
-                                <rect key="frame" x="0.0" y="122" width="375" height="545"/>
+                                <rect key="frame" x="20" y="116" width="375" height="545"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="15" id="Nki-LS-KNw">
@@ -223,20 +231,15 @@
                                     <outlet property="delegate" destination="hQ3-mK-YgX" id="lOW-y6-fD0"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du har vänner som vill fika!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiQ-Th-U51">
-                                <rect key="frame" x="91" y="84" width="232" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="HGk-yQ-1Xc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20392156859999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Mtb-AS-5uc" firstAttribute="centerX" secondItem="w7a-Md-eOv" secondAttribute="centerX" id="Enh-RO-pkI"/>
                             <constraint firstItem="iiQ-Th-U51" firstAttribute="centerX" secondItem="w7a-Md-eOv" secondAttribute="centerX" id="IGM-2K-UdV"/>
+                            <constraint firstAttribute="trailing" secondItem="Mtb-AS-5uc" secondAttribute="trailing" constant="70" id="Sh8-nS-D6W"/>
                             <constraint firstItem="iiQ-Th-U51" firstAttribute="top" secondItem="1nk-hT-j6p" secondAttribute="top" constant="20" id="Ss7-0u-9to"/>
+                            <constraint firstItem="Mtb-AS-5uc" firstAttribute="leading" secondItem="w7a-Md-eOv" secondAttribute="leading" constant="70" id="fWm-DC-Wbx"/>
+                            <constraint firstItem="Mtb-AS-5uc" firstAttribute="centerX" secondItem="w7a-Md-eOv" secondAttribute="centerX" id="r2I-yd-6yj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1nk-hT-j6p"/>
                     </view>
@@ -249,7 +252,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Df-k7-Fb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="cHT-CX-HV7"/>
             </objects>
-            <point key="canvasLocation" x="-1252" y="1766.2668665667168"/>
+            <point key="canvasLocation" x="-1252.1739130434783" y="1765.7608695652175"/>
         </scene>
         <!--Invite Friend View Controller-->
         <scene sceneID="dNS-Ua-tjd">
